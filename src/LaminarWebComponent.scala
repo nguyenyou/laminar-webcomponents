@@ -1,5 +1,5 @@
 import com.raquo.laminar.api.L.*
-import com.raquo.laminar.nodes.DetachedRoot
+import com.raquo.laminar.nodes.{DetachedRoot, Slot}
 import com.raquo.laminar.tags.CustomHtmlTag
 import org.scalajs.dom
 import scala.scalajs.js

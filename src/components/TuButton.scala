@@ -1,4 +1,5 @@
 import com.raquo.laminar.api.L.*
+import com.raquo.laminar.nodes.Slot
 import CssMacro.css
 
 object TuButton extends LaminarWebComponent("tu-button") {
@@ -62,6 +63,11 @@ object TuButton extends LaminarWebComponent("tu-button") {
     attr.string("variant", "primary")
   val btnSize = attr.string("size", "medium")
   val btnDisabled = attr.boolean("disabled", false)
+
+  object slots {
+    val prefix: Slot = Slot("prefix")
+    val suffix: Slot = Slot("suffix")
+  }
 
   override def render: View = button(
     cls <-- variant.signal

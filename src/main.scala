@@ -95,19 +95,19 @@ def main(): Unit = {
         gap := "12px",
         alignItems := "center",
         TuButton(
-          TuIcon(TuIcon.iconName := "add", slot := "prefix"),
+          TuButton.slots.prefix(TuIcon(TuIcon.iconName := "add")),
           "Add Item"
         ),
         TuButton(
           TuButton.variant := "outline",
           "Download",
-          TuIcon(TuIcon.iconName := "download", slot := "suffix")
+          TuButton.slots.suffix(TuIcon(TuIcon.iconName := "download"))
         ),
         TuButton(
           TuButton.variant := "secondary",
-          TuIcon(TuIcon.iconName := "arrow_back", slot := "prefix"),
+          TuButton.slots.prefix(TuIcon(TuIcon.iconName := "arrow_back")),
           "Back",
-          TuIcon(TuIcon.iconName := "arrow_forward", slot := "suffix")
+          TuButton.slots.suffix(TuIcon(TuIcon.iconName := "arrow_forward"))
         )
       )
     ),
