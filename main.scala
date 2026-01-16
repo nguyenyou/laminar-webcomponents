@@ -6,14 +6,32 @@
 
 import com.raquo.laminar.api.L.*
 import org.scalajs.dom
+import scala.scalajs.js
+import scala.scalajs.js.annotation.*
+
+// Define a custom web component
+@js.native
+@JSGlobal
+class HTMLElement extends dom.HTMLElement
+
+class HelloWorld extends HTMLElement {
+  // Called when the element is added to the DOM
+  def connectedCallback(): Unit = {
+    val shadowRoot = this.attachShadow(new dom.ShadowRootInit {
+      var mode = dom.ShadowRootMode.open
+    })
+    val container = dom.document.createElement("div")
+    shadowRoot.appendChild(container)
+    render(container, div("Hello, World!"))
+  }
+}
 
 @main
 def main(): Unit = {
-  val app = div(
-    h1("Welcome to Laminar"),
-    p("This is a Scala.js web component built with Laminar")
-  )
+  // Register the custom element
+  dom.window.customElements.define("hello-world", js.constructorOf[HelloWorld])
 
-  val container = dom.document.getElementById("app")
-  render(container, app)
+  // Add the custom element to the page
+  val app = dom.document.getElementById("app")
+  app.innerHTML = "<hello-world></hello-world>"
 }

@@ -2921,24 +2921,10 @@ function $h_Lmain$package$() {
 }
 $h_Lmain$package$.prototype = $c_Lmain$package$.prototype;
 $c_Lmain$package$.prototype.main__V = (function() {
-  var $x_3 = $n($n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L).div__Lcom_raquo_laminar_tags_HtmlTag());
-  var $x_1 = $n($n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L).h1__Lcom_raquo_laminar_tags_HtmlTag());
-  var this$1 = $n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L);
-  var r = $m_Lcom_raquo_laminar_modifiers_RenderableText$().Lcom_raquo_laminar_modifiers_RenderableText$__f_stringRenderable;
-  var x0 = $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode(this$1, "Welcome to Laminar", r);
-  var array = [x0];
-  var x0$2 = $x_1.apply__sci_Seq__Lcom_raquo_laminar_nodes_ReactiveHtmlElement(new $c_sjsr_WrappedVarArgs(array));
-  var $x_2 = $n($n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L).p__Lcom_raquo_laminar_tags_HtmlTag());
-  var this$5 = $n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L);
-  var r$1 = $m_Lcom_raquo_laminar_modifiers_RenderableText$().Lcom_raquo_laminar_modifiers_RenderableText$__f_stringRenderable;
-  var x0$1 = $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode(this$5, "This is a Scala.js web component built with Laminar", r$1);
-  var array$1 = [x0$1];
-  var x1 = $x_2.apply__sci_Seq__Lcom_raquo_laminar_nodes_ReactiveHtmlElement(new $c_sjsr_WrappedVarArgs(array$1));
-  var array$2 = [x0$2, x1];
-  var app = $x_3.apply__sci_Seq__Lcom_raquo_laminar_nodes_ReactiveHtmlElement(new $c_sjsr_WrappedVarArgs(array$2));
-  var container = document.getElementById("app");
-  $n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L);
-  new $c_Lcom_raquo_laminar_nodes_RootNode(container, app);
+  var \u03b41$ = window.customElements;
+  \u03b41$.define("hello-world", $a_LHelloWorld());
+  var app = document.getElementById("app");
+  app.innerHTML = "<hello-world></hello-world>";
 });
 var $d_Lmain$package$ = new $TypeData().initClass($c_Lmain$package$, "main$package$", ({
   Lmain$package$: 1
@@ -8095,6 +8081,38 @@ function $isArrayOf_sc_Seq(obj, depth) {
 function $asArrayOf_sc_Seq(obj, depth) {
   return (($isArrayOf_sc_Seq(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lscala.collection.Seq;", depth));
 }
+function $s_LHelloWorld__connectedCallback__LHelloWorld__V(this$1) {
+  var shadowRoot = this$1.attachShadow((() => {
+    var this$2 = ({});
+    this$2.mode = null;
+    this$2.mode = "open";
+    return this$2;
+  })());
+  var container = document.createElement("div");
+  shadowRoot.appendChild(container);
+  $n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L);
+  var $x_1 = $n($n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L).div__Lcom_raquo_laminar_tags_HtmlTag());
+  var this$3 = $n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L);
+  var r = $m_Lcom_raquo_laminar_modifiers_RenderableText$().Lcom_raquo_laminar_modifiers_RenderableText$__f_stringRenderable;
+  var x0 = $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode(this$3, "Hello, World!", r);
+  var array = [x0];
+  var rootNode = $x_1.apply__sci_Seq__Lcom_raquo_laminar_nodes_ReactiveHtmlElement(new $c_sjsr_WrappedVarArgs(array));
+  new $c_Lcom_raquo_laminar_nodes_RootNode(container, rootNode);
+}
+var $b_LHelloWorld;
+function $a_LHelloWorld() {
+  if ((!$b_LHelloWorld)) {
+    $b_LHelloWorld = class $b_LHelloWorld extends HTMLElement {
+    constructor() {
+      super();
+    }
+    "connectedCallback"() {
+      $s_LHelloWorld__connectedCallback__LHelloWorld__V(this);
+    }
+    };
+  }
+  return $b_LHelloWorld;
+}
 /** @constructor */
 function $c_sc_AbstractSeq() {
 }
@@ -8183,10 +8201,6 @@ $c_sc_SeqView$Id.prototype.isEmpty__Z = (function() {
 });
 /** @constructor */
 function $c_Lcom_raquo_laminar_api_package$$anon$1() {
-  this.Lcom_raquo_laminar_api_package$$anon$1__f_h1$lzy1 = null;
-  this.Lcom_raquo_laminar_api_package$$anon$1__f_h1bitmap$1 = false;
-  this.Lcom_raquo_laminar_api_package$$anon$1__f_p$lzy1 = null;
-  this.Lcom_raquo_laminar_api_package$$anon$1__f_pbitmap$1 = false;
   this.Lcom_raquo_laminar_api_package$$anon$1__f_div$lzy1 = null;
   this.Lcom_raquo_laminar_api_package$$anon$1__f_divbitmap$1 = false;
   this.Lcom_raquo_laminar_api_package$$anon$1__f_className = null;
@@ -8205,20 +8219,6 @@ $c_Lcom_raquo_laminar_api_package$$anon$1.prototype.constructor = $c_Lcom_raquo_
 function $h_Lcom_raquo_laminar_api_package$$anon$1() {
 }
 $h_Lcom_raquo_laminar_api_package$$anon$1.prototype = $c_Lcom_raquo_laminar_api_package$$anon$1.prototype;
-$c_Lcom_raquo_laminar_api_package$$anon$1.prototype.h1__Lcom_raquo_laminar_tags_HtmlTag = (function() {
-  if ((!this.Lcom_raquo_laminar_api_package$$anon$1__f_h1bitmap$1)) {
-    this.Lcom_raquo_laminar_api_package$$anon$1__f_h1$lzy1 = new $c_Lcom_raquo_laminar_tags_HtmlTag("h1", false);
-    this.Lcom_raquo_laminar_api_package$$anon$1__f_h1bitmap$1 = true;
-  }
-  return this.Lcom_raquo_laminar_api_package$$anon$1__f_h1$lzy1;
-});
-$c_Lcom_raquo_laminar_api_package$$anon$1.prototype.p__Lcom_raquo_laminar_tags_HtmlTag = (function() {
-  if ((!this.Lcom_raquo_laminar_api_package$$anon$1__f_pbitmap$1)) {
-    this.Lcom_raquo_laminar_api_package$$anon$1__f_p$lzy1 = new $c_Lcom_raquo_laminar_tags_HtmlTag("p", false);
-    this.Lcom_raquo_laminar_api_package$$anon$1__f_pbitmap$1 = true;
-  }
-  return this.Lcom_raquo_laminar_api_package$$anon$1__f_p$lzy1;
-});
 $c_Lcom_raquo_laminar_api_package$$anon$1.prototype.div__Lcom_raquo_laminar_tags_HtmlTag = (function() {
   if ((!this.Lcom_raquo_laminar_api_package$$anon$1__f_divbitmap$1)) {
     this.Lcom_raquo_laminar_api_package$$anon$1__f_div$lzy1 = new $c_Lcom_raquo_laminar_tags_HtmlTag("div", false);
