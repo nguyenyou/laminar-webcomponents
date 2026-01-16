@@ -95,8 +95,7 @@ object HelloCounter
   }
 
   @JSExportStatic
-  val observedAttributes: js.Array[String] =
-    extractObservedAttributes[attrs.type]
+  val observedAttributes = extractObservedAttributes[attrs.type]
 
   val count: HtmlAttr[Int] = intAttr("count")
   val step: HtmlAttr[Int] = intAttr("step")

@@ -40,8 +40,7 @@ object HelloWorld extends WebComponentCompanion[HelloWorld]("hello-world") {
   }
 
   @JSExportStatic
-  val observedAttributes: js.Array[String] =
-    extractObservedAttributes[attrs.type]
+  val observedAttributes = extractObservedAttributes[attrs.type]
 
   val name: HtmlAttr[String] = stringAttr("name")
 }
