@@ -5,6 +5,7 @@
 //> using dep org.scala-js::scalajs-dom::2.8.1
 
 import com.raquo.laminar.api.L.*
+import com.raquo.laminar.nodes.DetachedRoot
 import org.scalajs.dom
 import scala.scalajs.js
 import scala.scalajs.js.annotation.*
@@ -14,15 +15,25 @@ import scala.scalajs.js.annotation.*
 @JSGlobal
 class HTMLElement extends dom.HTMLElement
 
-class HelloWorld extends HTMLElement {
+class HelloWorld extends dom.HTMLElement {
+  private var detachedRoot: Option[DetachedRoot[HtmlElement]] = None
+
   // Called when the element is added to the DOM
   def connectedCallback(): Unit = {
+    println("connectedCallback")
     val shadowRoot = this.attachShadow(new dom.ShadowRootInit {
       var mode = dom.ShadowRootMode.open
     })
-    val container = dom.document.createElement("div")
-    shadowRoot.appendChild(container)
-    render(container, div("Hello, World!"))
+    val element = renderDetached(div("Hello, World!"), activateNow = true)
+    detachedRoot = Some(element)
+    shadowRoot.appendChild(element.ref)
+  }
+
+  // Called when the element is removed from the DOM
+  def disconnectedCallback(): Unit = {
+    println("disconnectedCallback")
+    detachedRoot.foreach(_.deactivate())
+    detachedRoot = None
   }
 }
 
