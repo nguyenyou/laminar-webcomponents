@@ -1,4 +1,5 @@
 import com.raquo.laminar.api.L.*
+import CssMacro.css
 
 // =============================================================================
 // HelloWorld Web Component
@@ -6,11 +7,7 @@ import com.raquo.laminar.api.L.*
 
 object HelloWorld extends LaminarWebComponent("hello-world") {
 
-  val name = attr.string("name", "World")
-
-  override def attributes = name
-
-  override def styles: String = """
+  private val (_styles, classNames) = css"""
     .container {
       padding: 20px;
       background-color: #4a90d9;
@@ -23,9 +20,15 @@ object HelloWorld extends LaminarWebComponent("hello-world") {
     }
   """
 
+  val name = attr.string("name", "World")
+
+  override def attributes = name
+
+  override def styles = _styles
+
   override def render(using Props): HtmlElement = {
     div(
-      cls := "container",
+      cls := classNames.container,
       child.text <-- name.signal.map(n => s"Hello, $n!")
     )
   }

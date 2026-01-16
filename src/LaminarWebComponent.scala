@@ -8,7 +8,7 @@ import scala.scalajs.js
 // LaminarWebComponent - Unified base class for defining web components
 // =============================================================================
 
-abstract class LaminarWebComponent(val tagName: String) { self =>
+abstract class LaminarWebComponent(val tagName: String) {
 
   // -------------------------------------------------------------------------
   // Attribute definitions (override in subclass)
@@ -18,6 +18,15 @@ abstract class LaminarWebComponent(val tagName: String) { self =>
     * ReactiveAttr.
     */
   def attributes: Tuple | ReactiveAttr[?] | EmptyTuple = EmptyTuple
+
+  // -------------------------------------------------------------------------
+  // Style definitions (override in subclass)
+  // -------------------------------------------------------------------------
+
+  /** Override to define component styles. Can return a String or css macro
+    * result.
+    */
+  def styles: Any = ""
 
   // -------------------------------------------------------------------------
   // Attribute factory methods
@@ -35,11 +44,17 @@ abstract class LaminarWebComponent(val tagName: String) { self =>
   }
 
   // -------------------------------------------------------------------------
-  // Override to define styles and render logic
+  // Style and render logic
   // -------------------------------------------------------------------------
 
-  /** Override to define component's CSS styles */
-  def styles: String = ""
+  /** Extracts the CSS string from styles (handles both String and css macro
+    * result)
+    */
+  private def cssString: String = styles match {
+    case s: String => s
+    case t: Tuple  => t.productElement(0).asInstanceOf[String]
+    case _         => ""
+  }
 
   /** Override to define component's render tree. Use attr.signal, attr.get,
     * attr.set directly - Props is implicitly available.
@@ -99,16 +114,17 @@ abstract class LaminarWebComponent(val tagName: String) { self =>
         var mode = dom.ShadowRootMode.open
       })
 
-      if (self.styles.nonEmpty) {
+      val css = cssString
+      if (css.nonEmpty) {
         val styleElement = dom.document.createElement("style")
-        styleElement.textContent = self.styles
+        styleElement.textContent = css
         shadow.appendChild(styleElement)
       }
 
       given props: Props = new Props(this)
       _props = Some(props)
 
-      val root = renderDetached(self.render, activateNow = true)
+      val root = renderDetached(render, activateNow = true)
       _detachedRoot = Some(root)
       shadow.appendChild(root.ref)
     }
