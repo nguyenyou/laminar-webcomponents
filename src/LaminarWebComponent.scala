@@ -49,13 +49,48 @@ abstract class LaminarWebComponent(val tagName: String) {
   }
 
   // -------------------------------------------------------------------------
+  // Props - runtime reactive property access
+  // -------------------------------------------------------------------------
+
+  protected class Props(element: dom.HTMLElement) {
+    private var _propMap: Map[String, ReactiveProp[?]] = Map.empty
+
+    def apply[T](attr: ReactiveAttr[T]): ReactiveProp[T] = {
+      _propMap.get(attr.attrName) match {
+        case Some(p) => p.asInstanceOf[ReactiveProp[T]]
+        case None =>
+          val p = new ReactiveProp(attr)
+          // Initialize from current attribute value
+          val currentValue = element.getAttribute(attr.attrName)
+          if (currentValue != null) {
+            p.handleChange(currentValue)
+          }
+          _propMap = _propMap + (attr.attrName -> p)
+          p
+      }
+    }
+
+    def handleAttributeChange(
+        attrName: String,
+        newValue: String | Null
+    ): Unit = {
+      _propMap.get(attrName).foreach { prop =>
+        prop.asInstanceOf[ReactiveProp[Any]].handleChange(newValue)
+      }
+    }
+  }
+
+  // -------------------------------------------------------------------------
   // Style and render logic
   // -------------------------------------------------------------------------
 
+  /** Context function type - cleaner than `(using Props): HtmlElement` */
+  type View = Props ?=> HtmlElement
+
   /** Override to define component's render tree. Use attr.signal, attr.get,
-    * attr.set directly - Props is implicitly available.
+    * attr.set directly - Props context is automatically available.
     */
-  def render(using Props): HtmlElement
+  def render: View
 
   // Extension methods to access reactive props directly from attributes
   extension [T](attr: ReactiveAttr[T])(using props: Props) {
@@ -66,44 +101,12 @@ abstract class LaminarWebComponent(val tagName: String) {
   }
 
   // -------------------------------------------------------------------------
-  // Props - runtime reactive property access
-  // -------------------------------------------------------------------------
-
-  class Props(element: dom.HTMLElement) {
-    private var _props: Map[String, ReactiveProp[?]] = Map.empty
-
-    def apply[T](attr: ReactiveAttr[T]): ReactiveProp[T] = {
-      _props.get(attr.attrName) match {
-        case Some(p) => p.asInstanceOf[ReactiveProp[T]]
-        case None =>
-          val p = new ReactiveProp(attr)
-          // Initialize from current attribute value
-          val currentValue = element.getAttribute(attr.attrName)
-          if (currentValue != null) {
-            p.handleChange(currentValue)
-          }
-          _props = _props + (attr.attrName -> p)
-          p
-      }
-    }
-
-    def handleAttributeChange(
-        attrName: String,
-        newValue: String | Null
-    ): Unit = {
-      _props.get(attrName).foreach { prop =>
-        prop.asInstanceOf[ReactiveProp[Any]].handleChange(newValue)
-      }
-    }
-  }
-
-  // -------------------------------------------------------------------------
   // Internal: Web Component class generation
   // -------------------------------------------------------------------------
 
   private class ComponentInstance extends dom.HTMLElement {
     private var _detachedRoot: Option[DetachedRoot[HtmlElement]] = None
-    private var _props: Option[Props] = None
+    private var _instanceProps: Option[Props] = None
 
     def connectedCallback(): Unit = {
       val shadow = this.attachShadow(new dom.ShadowRootInit {
@@ -116,10 +119,10 @@ abstract class LaminarWebComponent(val tagName: String) {
         shadow.appendChild(styleElement)
       }
 
-      given props: Props = new Props(this)
-      _props = Some(props)
+      given instanceProps: Props = new Props(this)
+      _instanceProps = Some(instanceProps)
 
-      val root = renderDetached(render, activateNow = true)
+      val root = renderDetached(render(using instanceProps), activateNow = true)
       _detachedRoot = Some(root)
       shadow.appendChild(root.ref)
     }
@@ -127,7 +130,7 @@ abstract class LaminarWebComponent(val tagName: String) {
     def disconnectedCallback(): Unit = {
       _detachedRoot.foreach(_.deactivate())
       _detachedRoot = None
-      _props = None
+      _instanceProps = None
     }
 
     def attributeChangedCallback(
@@ -135,7 +138,7 @@ abstract class LaminarWebComponent(val tagName: String) {
         oldValue: String | Null,
         newValue: String | Null
     ): Unit = {
-      _props.foreach(_.handleAttributeChange(attrName, newValue))
+      _instanceProps.foreach(_.handleAttributeChange(attrName, newValue))
     }
   }
 
