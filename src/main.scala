@@ -7,28 +7,64 @@ import org.scalajs.dom
 
 @main
 def main(): Unit = {
-  // Register the custom element
+  // Register all custom elements
   HelloWorld.register()
+  HelloCounter.register()
 
-  // Use the component with typed API
   val app = div(
-    input(
-      typ := "text",
-      placeholder := "Enter your name",
-      padding := "10px",
-      fontSize := "16px",
-      marginBottom := "20px",
-      inContext { thisNode =>
-        onInput.mapToValue --> { value =>
-          // Find the hello-world element and update its attribute
-          thisNode.ref.parentElement
-            .querySelector("hello-world")
-            .setAttribute("name", value)
+    display := "flex",
+    flexDirection := "column",
+    gap := "24px",
+    padding := "24px",
+    maxWidth := "600px",
+    margin := "0 auto",
+    h1("Laminar Web Components Demo"),
+
+    // HelloWorld with input
+    div(
+      display := "flex",
+      flexDirection := "column",
+      gap := "12px",
+      h2("HelloWorld Component"),
+      input(
+        typ := "text",
+        placeholder := "Enter your name",
+        padding := "10px",
+        fontSize := "16px",
+        inContext { thisNode =>
+          onInput.mapToValue --> { value =>
+            thisNode.ref.parentElement
+              .querySelector("hello-world")
+              .setAttribute("name", value)
+          }
         }
-      }
+      ),
+      HelloWorld(
+        HelloWorld.name := "World"
+      )
     ),
-    HelloWorld(
-      HelloWorld.name := "World"
+
+    // HelloCounter demos
+    div(
+      display := "flex",
+      flexDirection := "column",
+      gap := "12px",
+      h2("HelloCounter Components"),
+      div(
+        display := "flex",
+        gap := "16px",
+        flexWrap := "wrap",
+        HelloCounter(
+          HelloCounter.label := "Score",
+          HelloCounter.count := 0,
+          HelloCounter.step := 10
+        ),
+        HelloCounter(
+          HelloCounter.label := "Lives",
+          HelloCounter.count := 3,
+          HelloCounter.step := 1
+        )
+      )
     )
   )
 
