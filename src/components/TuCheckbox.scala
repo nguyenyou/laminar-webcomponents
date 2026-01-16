@@ -2,10 +2,6 @@ import com.raquo.laminar.api.L
 import com.raquo.laminar.api.L.*
 import CssMacro.css
 
-// =============================================================================
-// TuCheckbox - Checkbox component
-// =============================================================================
-
 object TuCheckbox extends LaminarWebComponent("tu-checkbox") {
   private val (_styles, classNames) = css"""
     :host {

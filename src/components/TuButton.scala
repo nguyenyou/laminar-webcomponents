@@ -1,10 +1,6 @@
 import com.raquo.laminar.api.L.*
 import CssMacro.css
 
-// =============================================================================
-// TuButton - Button component with slot support for icons
-// =============================================================================
-
 object TuButton extends LaminarWebComponent("tu-button") {
   private val (_styles, classNames) = css"""
     :host {
@@ -63,8 +59,8 @@ object TuButton extends LaminarWebComponent("tu-button") {
   override def styles = _styles
 
   val variant =
-    attr.string("variant", "primary") // primary, secondary, outline, ghost
-  val btnSize = attr.string("size", "medium") // small, medium, large
+    attr.string("variant", "primary")
+  val btnSize = attr.string("size", "medium")
   val btnDisabled = attr.boolean("disabled", false)
 
   override def render: View = button(

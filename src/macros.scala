@@ -1,10 +1,6 @@
 import com.raquo.laminar.api.L.*
 import com.raquo.laminar.codecs.StringAsIsCodec
 
-// =============================================================================
-// Reactive Attribute - Definition class for web component attributes
-// =============================================================================
-
 class ReactiveAttr[T](
     val attrName: String,
     val default: T,
@@ -13,7 +9,6 @@ class ReactiveAttr[T](
 ) {
   def asHtmlAttr: HtmlAttr[T] = htmlAttr(attrName, codec)
 
-  // Convenience operator for setting attribute values directly
   def :=(value: T): Setter[HtmlElement] = asHtmlAttr := value
 }
 

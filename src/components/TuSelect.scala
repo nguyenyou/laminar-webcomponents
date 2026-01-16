@@ -2,10 +2,6 @@ import com.raquo.laminar.api.L
 import com.raquo.laminar.api.L.*
 import CssMacro.css
 
-// =============================================================================
-// TuSelect - Select dropdown component with slot for tu-option
-// =============================================================================
-
 object TuSelect extends LaminarWebComponent("tu-select") {
   private val (_styles, classNames) = css"""
     :host {
@@ -60,7 +56,7 @@ object TuSelect extends LaminarWebComponent("tu-select") {
   val selectValue = attr.string("value", "")
   val selectPlaceholder = attr.string("placeholder", "Select an option")
   val isDisabled = attr.boolean("disabled", false)
-  val selectSize = attr.string("size", "medium") // small, medium, large
+  val selectSize = attr.string("size", "medium")
 
   override def render: View = div(
     cls := classNames.wrapper,
@@ -79,10 +75,6 @@ object TuSelect extends LaminarWebComponent("tu-select") {
     slotElement()
   )
 }
-
-// =============================================================================
-// TuOption - Option for TuSelect
-// =============================================================================
 
 object TuOption extends LaminarWebComponent("tu-option") {
   private val (_styles, classNames) = css"""

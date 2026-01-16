@@ -1,9 +1,5 @@
 import com.raquo.laminar.api.L.*
 
-// =============================================================================
-// Reactive Property - Instance-level reactive state backed by attr definition
-// =============================================================================
-
 class ReactiveProp[T](attr: ReactiveAttr[T]) {
   private val _var = Var(attr.default)
   val signal: Signal[T] = _var.signal

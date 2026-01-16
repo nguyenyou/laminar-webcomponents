@@ -1,10 +1,6 @@
 import com.raquo.laminar.api.L.*
 import CssMacro.css
 
-// =============================================================================
-// TuIcon - Icon component using Material Symbols
-// =============================================================================
-
 object TuIcon extends LaminarWebComponent("tu-icon") {
   private val (_styles, classNames) = css"""
     :host {

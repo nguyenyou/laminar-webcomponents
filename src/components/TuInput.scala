@@ -1,10 +1,6 @@
 import com.raquo.laminar.api.L.*
 import CssMacro.css
 
-// =============================================================================
-// TuInput - Text input component
-// =============================================================================
-
 object TuInput extends LaminarWebComponent("tu-input") {
   private val (_styles, classNames) = css"""
     :host {
@@ -41,7 +37,7 @@ object TuInput extends LaminarWebComponent("tu-input") {
   val inputType = attr.string("type", "text")
   val inputDisabled = attr.boolean("disabled", false)
   val inputReadonly = attr.boolean("readonly", false)
-  val inputSize = attr.string("size", "medium") // small, medium, large
+  val inputSize = attr.string("size", "medium")
 
   override def render: View = input(
     cls <-- inputSize.signal.map(s => s"${classNames.input} $s"),

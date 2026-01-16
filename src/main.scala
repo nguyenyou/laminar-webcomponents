@@ -2,13 +2,8 @@ import com.raquo.laminar.api.L.*
 import com.raquo.laminar.codecs.StringAsIsCodec
 import org.scalajs.dom
 
-// =============================================================================
-// Main Application
-// =============================================================================
-
 @main
 def main(): Unit = {
-  // Define slot attribute for web component slots
   val slot = htmlAttr("slot", StringAsIsCodec)
 
   val app = div(
@@ -19,8 +14,6 @@ def main(): Unit = {
     maxWidth := "600px",
     margin := "0 auto",
     h1("Laminar Web Components Demo"),
-
-    // HelloWorld with input
     div(
       h2("HelloWorld Component"),
       input(
@@ -38,8 +31,6 @@ def main(): Unit = {
       ),
       HelloWorld(HelloWorld.name := "World")
     ),
-
-    // HelloCounter demos
     div(
       h2("HelloCounter Components"),
       div(
@@ -57,8 +48,6 @@ def main(): Unit = {
         )
       )
     ),
-
-    // TuButton demos
     div(
       h2("TuButton Component"),
       div(
@@ -82,8 +71,6 @@ def main(): Unit = {
         TuButton(TuButton.btnSize := "large", "Large")
       )
     ),
-
-    // TuIcon demos
     div(
       h2("TuIcon Component"),
       div(
@@ -101,8 +88,6 @@ def main(): Unit = {
         )
       )
     ),
-
-    // TuButton with TuIcon (slots)
     div(
       h2("TuButton with Icons (Slots)"),
       div(
@@ -126,8 +111,6 @@ def main(): Unit = {
         )
       )
     ),
-
-    // TuInput demos
     div(
       h2("TuInput Component"),
       div(
@@ -153,8 +136,6 @@ def main(): Unit = {
         )
       )
     ),
-
-    // TuCheckbox demos
     div(
       h2("TuCheckbox Component"),
       div(
@@ -172,8 +153,6 @@ def main(): Unit = {
         )
       )
     ),
-
-    // TuRadio demos
     div(
       h2("TuRadio Component"),
       div(
@@ -198,8 +177,6 @@ def main(): Unit = {
         )
       )
     ),
-
-    // TuTextarea demos
     div(
       h2("TuTextarea Component"),
       TuTextarea(
@@ -207,8 +184,6 @@ def main(): Unit = {
         TuTextarea.numRows := 4
       )
     ),
-
-    // TuSelect demos
     div(
       h2("TuSelect Component"),
       TuSelect(

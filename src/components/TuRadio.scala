@@ -2,10 +2,6 @@ import com.raquo.laminar.api.L
 import com.raquo.laminar.api.L.*
 import CssMacro.css
 
-// =============================================================================
-// TuRadio - Radio button component
-// =============================================================================
-
 object TuRadio extends LaminarWebComponent("tu-radio") {
   private val (_styles, classNames) = css"""
     :host {

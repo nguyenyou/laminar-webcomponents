@@ -4,33 +4,14 @@ import com.raquo.laminar.tags.CustomHtmlTag
 import org.scalajs.dom
 import scala.scalajs.js
 
-// =============================================================================
-// LaminarWebComponent - Unified base class for defining web components
-// =============================================================================
-
 abstract class LaminarWebComponent(val tagName: String) {
-
-  // -------------------------------------------------------------------------
-  // Attribute definitions (auto-registered via attr.* methods)
-  // -------------------------------------------------------------------------
 
   private val _registeredAttrs =
     scala.collection.mutable.ListBuffer[ReactiveAttr[?]]()
 
-  /** All registered attributes for this component (auto-collected) */
   final def registeredAttributes: Seq[ReactiveAttr[?]] = _registeredAttrs.toSeq
 
-  // -------------------------------------------------------------------------
-  // Style definitions (override in subclass)
-  // -------------------------------------------------------------------------
-
-  /** Override to define component styles.
-    */
   def styles: String = ""
-
-  // -------------------------------------------------------------------------
-  // Attribute factory methods (auto-registering)
-  // -------------------------------------------------------------------------
 
   protected object attr {
     private def register[T](ra: ReactiveAttr[T]): ReactiveAttr[T] = {
@@ -48,10 +29,6 @@ abstract class LaminarWebComponent(val tagName: String) {
       register(ReactiveAttr.double(name, default))
   }
 
-  // -------------------------------------------------------------------------
-  // Props - runtime reactive property access
-  // -------------------------------------------------------------------------
-
   protected class Props(element: dom.HTMLElement) {
     private var _propMap: Map[String, ReactiveProp[?]] = Map.empty
 
@@ -60,7 +37,6 @@ abstract class LaminarWebComponent(val tagName: String) {
         case Some(p) => p.asInstanceOf[ReactiveProp[T]]
         case None =>
           val p = new ReactiveProp(attr)
-          // Initialize from current attribute value
           val currentValue = element.getAttribute(attr.attrName)
           if (currentValue != null) {
             p.handleChange(currentValue)
@@ -80,36 +56,22 @@ abstract class LaminarWebComponent(val tagName: String) {
     }
   }
 
-  // -------------------------------------------------------------------------
-  // Style and render logic
-  // -------------------------------------------------------------------------
-
-  /** Context function type - cleaner than `(using Props): HtmlElement` */
   type View = Props ?=> HtmlElement
 
-  /** Override to define component's render tree. Use attr.signal, attr.get,
-    * attr.set directly - Props context is automatically available.
-    */
   def render: View
 
-  /** Helper to create a slot element for content projection */
   protected def slotElement(name: String = ""): HtmlElement = {
     val el = dom.document.createElement("slot").asInstanceOf[dom.html.Element]
     if (name.nonEmpty) el.setAttribute("name", name)
     foreignHtmlElement(el)
   }
 
-  // Extension methods to access reactive props directly from attributes
   extension [T](attr: ReactiveAttr[T])(using props: Props) {
     def signal: Signal[T] = props(attr).signal
     def get: T = props(attr).get
     def set(value: T): Unit = props(attr).set(value)
     def update(f: T => T): Unit = props(attr).set(f(props(attr).get))
   }
-
-  // -------------------------------------------------------------------------
-  // Internal: Web Component class generation
-  // -------------------------------------------------------------------------
 
   private class ComponentInstance extends dom.HTMLElement {
     private var _detachedRoot: Option[DetachedRoot[HtmlElement]] = None
@@ -149,25 +111,18 @@ abstract class LaminarWebComponent(val tagName: String) {
     }
   }
 
-  // -------------------------------------------------------------------------
-  // Registration & Laminar integration
-  // -------------------------------------------------------------------------
-
-  /** Extracts attribute names from registered attributes */
   private def observedAttributeNames: js.Array[String] = {
     js.Array(_registeredAttrs.map(_.attrName).toSeq*)
   }
 
-  /** Register this web component with the browser */
   lazy val register: Unit = {
     val ctor = js.constructorOf[ComponentInstance]
     ctor.observedAttributes = observedAttributeNames
     dom.window.customElements.define(tagName, ctor)
   }
 
-  /** Create an instance of this component in Laminar */
   def apply(mods: Modifier[HtmlElement]*): HtmlElement = {
-    register // Ensure registered
+    register
     CustomHtmlTag[dom.HTMLElement](tagName)(mods*)
   }
 }

@@ -1,10 +1,6 @@
 import com.raquo.laminar.api.L.*
 import CssMacro.css
 
-// =============================================================================
-// TuTextarea - Multiline text input component
-// =============================================================================
-
 object TuTextarea extends LaminarWebComponent("tu-textarea") {
   private val (_styles, classNames) = css"""
     :host {
@@ -40,7 +36,7 @@ object TuTextarea extends LaminarWebComponent("tu-textarea") {
   val isReadonly = attr.boolean("readonly", false)
   val numRows = attr.int("rows", 3)
   val resizeMode =
-    attr.string("resize", "vertical") // none, vertical, horizontal, both
+    attr.string("resize", "vertical")
 
   override def render: View = textArea(
     cls := classNames.textarea,

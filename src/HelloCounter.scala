@@ -1,10 +1,6 @@
 import com.raquo.laminar.api.L.*
 import CssMacro.css
 
-// =============================================================================
-// HelloCounter Web Component - A counter with increment/decrement buttons
-// =============================================================================
-
 object HelloCounter extends LaminarWebComponent("hello-counter") {
 
   private val (_styles, classNames) = css"""
