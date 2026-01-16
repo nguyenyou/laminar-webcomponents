@@ -1009,12 +1009,12 @@ var $d_J = new $TypeData().initPrim(null, "J", "long", $ac_J, (void 0));
 var $d_F = new $TypeData().initPrim(0.0, "F", "float", $ac_F, Float32Array);
 var $d_D = new $TypeData().initPrim(0.0, "D", "double", $ac_D, Float64Array);
 function $f_LLaminarWebComponent__register__sjs_js_Dynamic__LWebComponentApi($thiz, ctor) {
-  var tagName$proxy2 = $thiz.tagName__T();
+  var tagName$proxy1 = $thiz.tagName__T();
   var attrNames = [];
   ctor.observedAttributes = attrNames;
   var \u03b41$ = window.customElements;
-  \u03b41$.define(tagName$proxy2, ctor);
-  return new $c_LWebComponentApi(tagName$proxy2);
+  \u03b41$.define(tagName$proxy1, ctor);
+  return new $c_LWebComponentApi(tagName$proxy1);
 }
 function $f_LLaminarWebComponent__apply__sci_Seq__Lcom_raquo_laminar_nodes_ReactiveHtmlElement($thiz, mods) {
   $n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L);

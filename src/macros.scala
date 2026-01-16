@@ -15,6 +15,9 @@ class ReactiveAttr[T](
     val codec: com.raquo.laminar.codecs.Codec[T, String]
 ) {
   def asHtmlAttr: HtmlAttr[T] = htmlAttr(attrName, codec)
+
+  // Convenience operator for setting attribute values directly
+  def :=(value: T): Setter[HtmlElement] = asHtmlAttr := value
 }
 
 object ReactiveAttr {
