@@ -36,3 +36,5 @@ Thumbs.db
 # Build artifacts
 
 .bsp
+Laminar
+laminar-shoelace-components

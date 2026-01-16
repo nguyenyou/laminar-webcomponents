@@ -5,21 +5,21 @@
 //> using dep org.scala-js::scalajs-dom::2.8.1
 
 import com.raquo.laminar.api.L.*
+import com.raquo.laminar.codecs.StringAsIsCodec
 import com.raquo.laminar.nodes.DetachedRoot
+import com.raquo.laminar.tags.CustomHtmlTag
 import org.scalajs.dom
 import scala.scalajs.js
 import scala.scalajs.js.annotation.*
 
-// Define a custom web component
-@js.native
-@JSGlobal
-class HTMLElement extends dom.HTMLElement
+// =============================================================================
+// HelloWorld Web Component
+// =============================================================================
 
 class HelloWorld extends dom.HTMLElement {
   private var detachedRoot: Option[DetachedRoot[HtmlElement]] = None
   private val nameVar = Var("World")
 
-  // Define styles similar to Lit's css`` tagged template
   private val styles: String = """
     .container {
       padding: 20px;
@@ -33,38 +33,37 @@ class HelloWorld extends dom.HTMLElement {
     }
   """
 
-  // Called when the element is added to the DOM
+  def render = {
+    div(
+      cls := "container",
+      child.text <-- nameVar.signal.map(n => s"Hello, $n!")
+    )
+  }
+
   def connectedCallback(): Unit = {
-    println("connectedCallback")
-    val shadowRoot = this.attachShadow(new dom.ShadowRootInit {
+    val shadow = this.attachShadow(new dom.ShadowRootInit {
       var mode = dom.ShadowRootMode.open
     })
 
-    // Append styles to shadow root (like Lit does)
+    // Inject styles into shadow DOM
     val styleElement = dom.document.createElement("style")
     styleElement.textContent = styles
-    shadowRoot.appendChild(styleElement)
+    shadow.appendChild(styleElement)
 
-    // Append content to shadow root
-    val element = renderDetached(
-      div(
-        cls := "container",
-        child.text <-- nameVar.signal.map(n => s"Hello, $n!")
-      ),
+    // Render Laminar content
+    val root = renderDetached(
+      render,
       activateNow = true
     )
-    detachedRoot = Some(element)
-    shadowRoot.appendChild(element.ref)
+    detachedRoot = Some(root)
+    shadow.appendChild(root.ref)
   }
 
-  // Called when the element is removed from the DOM
   def disconnectedCallback(): Unit = {
-    println("disconnectedCallback")
     detachedRoot.foreach(_.deactivate())
     detachedRoot = None
   }
 
-  // Called when an observed attribute changes
   def attributeChangedCallback(
       name: String,
       oldValue: String | Null,
@@ -81,37 +80,55 @@ class HelloWorld extends dom.HTMLElement {
 }
 
 object HelloWorld {
-  // Static getter for observed attributes - exported as static property on the class
   @JSExportStatic
   val observedAttributes: js.Array[String] = js.Array("name")
+
+  // Register this component with the browser
+  def register(): Unit = {
+    dom.window.customElements
+      .define("hello-world", js.constructorOf[HelloWorld])
+  }
+
+  // Typed Laminar tag for using this component
+  val tag: CustomHtmlTag[dom.HTMLElement] = CustomHtmlTag("hello-world")
+
+  // Type-safe attribute
+  val name: HtmlAttr[String] = htmlAttr("name", StringAsIsCodec)
+
+  // Convenience constructor
+  def apply(mods: Modifier[HtmlElement]*): HtmlElement = tag(mods*)
 }
+
+// =============================================================================
+// Main Application
+// =============================================================================
 
 @main
 def main(): Unit = {
   // Register the custom element
-  dom.window.customElements.define("hello-world", js.constructorOf[HelloWorld])
+  HelloWorld.register()
 
-  // Add the custom element to the page
-  val container = dom.document.getElementById("app")
-  val helloWorldElement =
-    dom.document.createElement("hello-world").asInstanceOf[dom.html.Element]
-
-  val app = renderDetached(
-    div(
-      input(
-        typ := "text",
-        placeholder := "Enter your name",
-        padding := "10px",
-        fontSize := "16px",
-        marginBottom := "20px",
+  // Use the component with typed API
+  val app = div(
+    input(
+      typ := "text",
+      placeholder := "Enter your name",
+      padding := "10px",
+      fontSize := "16px",
+      marginBottom := "20px",
+      inContext { thisNode =>
         onInput.mapToValue --> { value =>
-          println(s"input: $value")
-          helloWorldElement.setAttribute("name", value)
+          // Find the hello-world element and update its attribute
+          thisNode.ref.parentElement
+            .querySelector("hello-world")
+            .setAttribute("name", value)
         }
-      ),
-      foreignHtmlElement(helloWorldElement)
+      }
     ),
-    activateNow = true
+    HelloWorld(
+      HelloWorld.name := "World"
+    )
   )
-  container.appendChild(app.ref)
+
+  render(dom.document.getElementById("app"), app)
 }
