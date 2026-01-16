@@ -1010,9 +1010,8 @@ var $d_F = new $TypeData().initPrim(0.0, "F", "float", $ac_F, Float32Array);
 var $d_D = new $TypeData().initPrim(0.0, "D", "double", $ac_D, Float64Array);
 /** @constructor */
 function $c_LHelloWorld$() {
-  this.LHelloWorld$__f_observedAttributes = null;
   $n_LHelloWorld$ = this;
-  this.LHelloWorld$__f_observedAttributes = ["name"];
+  $a_LHelloWorld().observedAttributes = ["name"];
 }
 $c_LHelloWorld$.prototype = new $h_O();
 $c_LHelloWorld$.prototype.constructor = $c_LHelloWorld$;
@@ -3534,10 +3533,8 @@ function $h_Lmain$package$() {
 }
 $h_Lmain$package$.prototype = $c_Lmain$package$.prototype;
 $c_Lmain$package$.prototype.main__V = (function() {
-  var helloWorldClass = $a_LHelloWorld();
-  helloWorldClass.observedAttributes = $m_LHelloWorld$().LHelloWorld$__f_observedAttributes;
   var \u03b41$ = window.customElements;
-  \u03b41$.define("hello-world", helloWorldClass);
+  \u03b41$.define("hello-world", $a_LHelloWorld());
   var container = document.getElementById("app");
   var helloWorldElement = document.createElement("hello-world");
   $n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L);
@@ -16242,6 +16239,9 @@ function $s_LHelloWorld__attributeChangedCallback__LHelloWorld__T__T__T__V(this$
     $f_Lcom_raquo_airstream_state_Var__set__O__V(this$6, value);
   }
 }
+function $sct_LHelloWorld__clinit__() {
+  $m_LHelloWorld$();
+}
 var $b_LHelloWorld;
 function $a_LHelloWorld() {
   if ((!$b_LHelloWorld)) {
@@ -16268,6 +16268,8 @@ function $a_LHelloWorld() {
       $s_LHelloWorld__attributeChangedCallback__LHelloWorld__T__T__T__V(this, prep0, prep1, prep2);
     }
     };
+    $b_LHelloWorld.observedAttributes = null;
+    $sct_LHelloWorld__clinit__();
   }
   return $b_LHelloWorld;
 }

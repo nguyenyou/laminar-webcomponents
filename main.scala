@@ -81,18 +81,15 @@ class HelloWorld extends dom.HTMLElement {
 }
 
 object HelloWorld {
-  // Static getter for observed attributes
+  // Static getter for observed attributes - exported as static property on the class
+  @JSExportStatic
   val observedAttributes: js.Array[String] = js.Array("name")
 }
 
 @main
 def main(): Unit = {
-  // Register the custom element with observedAttributes
-  val helloWorldClass = js.constructorOf[HelloWorld]
-  // Set the static observedAttributes property on the class constructor
-  helloWorldClass.asInstanceOf[js.Dynamic].observedAttributes =
-    HelloWorld.observedAttributes
-  dom.window.customElements.define("hello-world", helloWorldClass)
+  // Register the custom element
+  dom.window.customElements.define("hello-world", js.constructorOf[HelloWorld])
 
   // Add the custom element to the page
   val container = dom.document.getElementById("app")
