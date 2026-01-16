@@ -92,6 +92,13 @@ abstract class LaminarWebComponent(val tagName: String) {
     */
   def render: View
 
+  /** Helper to create a slot element for content projection */
+  protected def slotElement(name: String = ""): HtmlElement = {
+    val el = dom.document.createElement("slot").asInstanceOf[dom.html.Element]
+    if (name.nonEmpty) el.setAttribute("name", name)
+    foreignHtmlElement(el)
+  }
+
   // Extension methods to access reactive props directly from attributes
   extension [T](attr: ReactiveAttr[T])(using props: Props) {
     def signal: Signal[T] = props(attr).signal
