@@ -1126,7 +1126,7 @@ $c_LLaminarWebComponent$Props.prototype.apply__LReactiveAttr__LReactiveProp = (f
   }
   var x = $m_s_None$();
   if ((x === x1)) {
-    var p$2 = new $c_LReactiveProp(attr);
+    var p$2 = new $c_LReactiveProp(this.LLaminarWebComponent$Props__f_element, attr);
     var currentValue = $as_T(this.LLaminarWebComponent$Props__f_element.getAttribute($n(attr).LReactiveAttr__f_attrName));
     if ((currentValue !== null)) {
       p$2.handleChange__T__V(currentValue);
@@ -1177,28 +1177,30 @@ $c_LLaminarWebComponent$attr$.prototype.constructor = $c_LLaminarWebComponent$at
 function $h_LLaminarWebComponent$attr$() {
 }
 $h_LLaminarWebComponent$attr$.prototype = $c_LLaminarWebComponent$attr$.prototype;
-$c_LLaminarWebComponent$attr$.prototype.string__T__T__LReactiveAttr = (function(name, default$1) {
-  return $p_LLaminarWebComponent$attr$__register__LReactiveAttr__LReactiveAttr(this, $m_LReactiveAttr$().string__T__T__LReactiveAttr(name, default$1));
+$c_LLaminarWebComponent$attr$.prototype.string__T__T__Z__LReactiveAttr = (function(name, default$1, reflect) {
+  return $p_LLaminarWebComponent$attr$__register__LReactiveAttr__LReactiveAttr(this, $m_LReactiveAttr$().string__T__T__Z__LReactiveAttr(name, default$1, reflect));
 });
-$c_LLaminarWebComponent$attr$.prototype.int__T__I__LReactiveAttr = (function(name, default$1) {
-  return $p_LLaminarWebComponent$attr$__register__LReactiveAttr__LReactiveAttr(this, $m_LReactiveAttr$().int__T__I__LReactiveAttr(name, default$1));
+$c_LLaminarWebComponent$attr$.prototype.int__T__I__Z__LReactiveAttr = (function(name, default$1, reflect) {
+  return $p_LLaminarWebComponent$attr$__register__LReactiveAttr__LReactiveAttr(this, $m_LReactiveAttr$().int__T__I__Z__LReactiveAttr(name, default$1, reflect));
 });
-$c_LLaminarWebComponent$attr$.prototype.boolean__T__Z__LReactiveAttr = (function(name, default$1) {
-  return $p_LLaminarWebComponent$attr$__register__LReactiveAttr__LReactiveAttr(this, $m_LReactiveAttr$().boolean__T__Z__LReactiveAttr(name, default$1));
+$c_LLaminarWebComponent$attr$.prototype.boolean__T__Z__Z__LReactiveAttr = (function(name, default$1, reflect) {
+  return $p_LLaminarWebComponent$attr$__register__LReactiveAttr__LReactiveAttr(this, $m_LReactiveAttr$().boolean__T__Z__Z__LReactiveAttr(name, default$1, reflect));
 });
 var $d_LLaminarWebComponent$attr$ = new $TypeData().initClass($c_LLaminarWebComponent$attr$, "LaminarWebComponent$attr$", ({
   LLaminarWebComponent$attr$: 1
 }));
 /** @constructor */
-function $c_LReactiveAttr(attrName, default$1, parse, codec) {
+function $c_LReactiveAttr(attrName, default$1, parse, codec, reflect) {
   this.LReactiveAttr__f_attrName = null;
   this.LReactiveAttr__f_default = null;
   this.LReactiveAttr__f_parse = null;
   this.LReactiveAttr__f_codec = null;
+  this.LReactiveAttr__f_reflect = false;
   this.LReactiveAttr__f_attrName = attrName;
   this.LReactiveAttr__f_default = default$1;
   this.LReactiveAttr__f_parse = parse;
   this.LReactiveAttr__f_codec = codec;
+  this.LReactiveAttr__f_reflect = reflect;
 }
 $c_LReactiveAttr.prototype = new $h_O();
 $c_LReactiveAttr.prototype.constructor = $c_LReactiveAttr;
@@ -1227,24 +1229,24 @@ $c_LReactiveAttr$.prototype.constructor = $c_LReactiveAttr$;
 function $h_LReactiveAttr$() {
 }
 $h_LReactiveAttr$.prototype = $c_LReactiveAttr$.prototype;
-$c_LReactiveAttr$.prototype.string__T__T__LReactiveAttr = (function(name, default$1) {
+$c_LReactiveAttr$.prototype.string__T__T__Z__LReactiveAttr = (function(name, default$1, reflect) {
   return new $c_LReactiveAttr(name, default$1, new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((x$2) => {
     var x = $as_T(x$2);
     return x;
-  })), $m_Lcom_raquo_laminar_codecs_package$().Lcom_raquo_laminar_codecs_package$__f_StringAsIsCodec);
+  })), $m_Lcom_raquo_laminar_codecs_package$().Lcom_raquo_laminar_codecs_package$__f_StringAsIsCodec, reflect);
 });
-$c_LReactiveAttr$.prototype.int__T__I__LReactiveAttr = (function(name, default$1) {
+$c_LReactiveAttr$.prototype.int__T__I__Z__LReactiveAttr = (function(name, default$1, reflect) {
   return new $c_LReactiveAttr(name, default$1, new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((s$2) => {
     var s = $as_T(s$2);
     var this$4 = $n(($m_sc_StringOps$(), $m_sc_StringParsers$().parseInt__T__s_Option(s)));
     return $uI((this$4.isEmpty__Z() ? default$1 : this$4.get__O()));
-  })), $m_Lcom_raquo_laminar_codecs_package$().IntAsStringCodec__Lcom_raquo_laminar_codecs_Codec());
+  })), $m_Lcom_raquo_laminar_codecs_package$().IntAsStringCodec__Lcom_raquo_laminar_codecs_Codec(), reflect);
 });
-$c_LReactiveAttr$.prototype.boolean__T__Z__LReactiveAttr = (function(name, default$1) {
+$c_LReactiveAttr$.prototype.boolean__T__Z__Z__LReactiveAttr = (function(name, default$1, reflect) {
   return new $c_LReactiveAttr(name, default$1, new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$1$2) => {
     var _$1 = $as_T(_$1$2);
     return (_$1 !== null);
-  })), $m_Lcom_raquo_laminar_codecs_package$().BooleanAsTrueFalseStringCodec__Lcom_raquo_laminar_codecs_Codec());
+  })), $m_Lcom_raquo_laminar_codecs_package$().BooleanAsTrueFalseStringCodec__Lcom_raquo_laminar_codecs_Codec(), reflect);
 });
 var $d_LReactiveAttr$ = new $TypeData().initClass($c_LReactiveAttr$, "ReactiveAttr$", ({
   LReactiveAttr$: 1
@@ -1256,13 +1258,32 @@ function $m_LReactiveAttr$() {
   }
   return $n_LReactiveAttr$;
 }
+function $p_LReactiveProp__reflectToAttribute__O__V($thiz, value) {
+  if ($n($thiz.LReactiveProp__f_attr).LReactiveAttr__f_reflect) {
+    var encoded = $as_T($n($n($thiz.LReactiveProp__f_attr).LReactiveAttr__f_codec).encode__O__O(value));
+    $thiz.LReactiveProp__f__isReflecting = true;
+    try {
+      if ((encoded === null)) {
+        $thiz.LReactiveProp__f_element.removeAttribute($n($thiz.LReactiveProp__f_attr).LReactiveAttr__f_attrName);
+      } else {
+        $thiz.LReactiveProp__f_element.setAttribute($n($thiz.LReactiveProp__f_attr).LReactiveAttr__f_attrName, encoded);
+      }
+    } finally {
+      $thiz.LReactiveProp__f__isReflecting = false;
+    }
+  }
+}
 /** @constructor */
-function $c_LReactiveProp(attr) {
+function $c_LReactiveProp(element, attr) {
+  this.LReactiveProp__f_element = null;
   this.LReactiveProp__f_attr = null;
   this.LReactiveProp__f__var = null;
+  this.LReactiveProp__f__isReflecting = false;
   this.LReactiveProp__f_signal = null;
+  this.LReactiveProp__f_element = element;
   this.LReactiveProp__f_attr = attr;
   this.LReactiveProp__f__var = $n($n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L).Lcom_raquo_laminar_api_package$$anon$1__f_Var).apply__O__Lcom_raquo_airstream_state_Var($n(attr).LReactiveAttr__f_default);
+  this.LReactiveProp__f__isReflecting = false;
   this.LReactiveProp__f_signal = $n(this.LReactiveProp__f__var).Lcom_raquo_airstream_state_SourceVar__f_signal;
 }
 $c_LReactiveProp.prototype = new $h_O();
@@ -1279,23 +1300,31 @@ $c_LReactiveProp.prototype.get__O = (function() {
 $c_LReactiveProp.prototype.set__O__V = (function(value) {
   var this$1 = $n(this.LReactiveProp__f__var);
   $f_Lcom_raquo_airstream_state_Var__set__O__V(this$1, value);
+  $p_LReactiveProp__reflectToAttribute__O__V(this, value);
 });
 $c_LReactiveProp.prototype.update__F1__V = (function(f) {
-  var this$1 = $n(this.LReactiveProp__f__var);
-  $f_Lcom_raquo_airstream_state_Var__update__F1__V(this$1, f);
+  var this$2 = $n(this.LReactiveProp__f__var);
+  var mod = new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((old$2) => {
+    var next = $n(f).apply__O__O(old$2);
+    $p_LReactiveProp__reflectToAttribute__O__V(this, next);
+    return next;
+  }));
+  $f_Lcom_raquo_airstream_state_Var__update__F1__V(this$2, mod);
 });
 $c_LReactiveProp.prototype.handleChange__T__V = (function(newValue) {
-  var this$4 = $n(this.LReactiveProp__f__var);
-  var this$1 = $n($m_s_Option$().apply__O__s_Option(newValue));
-  var f = $n(this.LReactiveProp__f_attr).LReactiveAttr__f_parse;
-  if (this$1.isEmpty__Z()) {
-    var this$3 = $m_s_None$();
-  } else {
-    var value = $n(f).apply__O__O(this$1.get__O());
-    var this$3 = new $c_s_Some(value);
+  if ((!this.LReactiveProp__f__isReflecting)) {
+    var this$1 = $n($m_s_Option$().apply__O__s_Option(newValue));
+    var f = $n(this.LReactiveProp__f_attr).LReactiveAttr__f_parse;
+    if (this$1.isEmpty__Z()) {
+      var this$3 = $m_s_None$();
+    } else {
+      var value = $n(f).apply__O__O(this$1.get__O());
+      var this$3 = new $c_s_Some(value);
+    }
+    var nextValue = (this$3.isEmpty__Z() ? $n(this.LReactiveProp__f_attr).LReactiveAttr__f_default : this$3.get__O());
+    var this$4 = $n(this.LReactiveProp__f__var);
+    $f_Lcom_raquo_airstream_state_Var__set__O__V(this$4, nextValue);
   }
-  var value$1 = (this$3.isEmpty__Z() ? $n(this.LReactiveProp__f_attr).LReactiveAttr__f_default : this$3.get__O());
-  $f_Lcom_raquo_airstream_state_Var__set__O__V(this$4, value$1);
 });
 function $as_LReactiveProp(obj) {
   return (((obj instanceof $c_LReactiveProp) || (obj === null)) ? obj : $throwClassCastException(obj, "ReactiveProp"));
@@ -7820,9 +7849,9 @@ function $c_LHelloCounter$() {
   var \u03b44$___2 = _2;
   this.LHelloCounter$__f__styles = $as_T(\u03b44$___1);
   this.LHelloCounter$__f_classNames = $as_T7(\u03b44$___2);
-  this.LHelloCounter$__f_count = $n(this.attr__LLaminarWebComponent$attr$()).int__T__I__LReactiveAttr("count", 0);
-  this.LHelloCounter$__f_step = $n(this.attr__LLaminarWebComponent$attr$()).int__T__I__LReactiveAttr("step", 1);
-  this.LHelloCounter$__f_label = $n(this.attr__LLaminarWebComponent$attr$()).string__T__T__LReactiveAttr("label", "Counter");
+  this.LHelloCounter$__f_count = $n(this.attr__LLaminarWebComponent$attr$()).int__T__I__Z__LReactiveAttr("count", 0, true);
+  this.LHelloCounter$__f_step = $n(this.attr__LLaminarWebComponent$attr$()).int__T__I__Z__LReactiveAttr("step", 1, ($n(this.attr__LLaminarWebComponent$attr$()), false));
+  this.LHelloCounter$__f_label = $n(this.attr__LLaminarWebComponent$attr$()).string__T__T__Z__LReactiveAttr("label", "Counter", ($n(this.attr__LLaminarWebComponent$attr$()), false));
 }
 $c_LHelloCounter$.prototype = new $h_LLaminarWebComponent();
 $c_LHelloCounter$.prototype.constructor = $c_LHelloCounter$;
@@ -7873,7 +7902,7 @@ function $c_LHelloWorld$() {
   this.LHelloWorld$__f_name = null;
   $ct_LLaminarWebComponent__T__(this, "hello-world");
   $n_LHelloWorld$ = this;
-  this.LHelloWorld$__f_name = $n(this.attr__LLaminarWebComponent$attr$()).string__T__T__LReactiveAttr("name", "World");
+  this.LHelloWorld$__f_name = $n(this.attr__LLaminarWebComponent$attr$()).string__T__T__Z__LReactiveAttr("name", "World", ($n(this.attr__LLaminarWebComponent$attr$()), false));
 }
 $c_LHelloWorld$.prototype = new $h_LLaminarWebComponent();
 $c_LHelloWorld$.prototype.constructor = $c_LHelloWorld$;
@@ -7932,9 +7961,9 @@ function $c_LTuButton$() {
   var \u03b44$___2 = _2;
   this.LTuButton$__f__styles = $as_T(\u03b44$___1);
   this.LTuButton$__f_classNames = $as_T10(\u03b44$___2);
-  this.LTuButton$__f_variant = $n(this.attr__LLaminarWebComponent$attr$()).string__T__T__LReactiveAttr("variant", "primary");
-  this.LTuButton$__f_btnSize = $n(this.attr__LLaminarWebComponent$attr$()).string__T__T__LReactiveAttr("size", "medium");
-  this.LTuButton$__f_btnDisabled = $n(this.attr__LLaminarWebComponent$attr$()).boolean__T__Z__LReactiveAttr("disabled", false);
+  this.LTuButton$__f_variant = $n(this.attr__LLaminarWebComponent$attr$()).string__T__T__Z__LReactiveAttr("variant", "primary", ($n(this.attr__LLaminarWebComponent$attr$()), false));
+  this.LTuButton$__f_btnSize = $n(this.attr__LLaminarWebComponent$attr$()).string__T__T__Z__LReactiveAttr("size", "medium", ($n(this.attr__LLaminarWebComponent$attr$()), false));
+  this.LTuButton$__f_btnDisabled = $n(this.attr__LLaminarWebComponent$attr$()).boolean__T__Z__Z__LReactiveAttr("disabled", false, ($n(this.attr__LLaminarWebComponent$attr$()), false));
 }
 $c_LTuButton$.prototype = new $h_LLaminarWebComponent();
 $c_LTuButton$.prototype.constructor = $c_LTuButton$;
@@ -8003,9 +8032,9 @@ function $c_LTuCheckbox$() {
   var \u03b44$___2 = _2;
   this.LTuCheckbox$__f__styles = $as_T(\u03b44$___1);
   this.LTuCheckbox$__f_classNames = $as_T4(\u03b44$___2);
-  this.LTuCheckbox$__f_isChecked = $n(this.attr__LLaminarWebComponent$attr$()).boolean__T__Z__LReactiveAttr("checked", false);
-  this.LTuCheckbox$__f_isDisabled = $n(this.attr__LLaminarWebComponent$attr$()).boolean__T__Z__LReactiveAttr("disabled", false);
-  this.LTuCheckbox$__f_labelText = $n(this.attr__LLaminarWebComponent$attr$()).string__T__T__LReactiveAttr("label", "");
+  this.LTuCheckbox$__f_isChecked = $n(this.attr__LLaminarWebComponent$attr$()).boolean__T__Z__Z__LReactiveAttr("checked", false, ($n(this.attr__LLaminarWebComponent$attr$()), false));
+  this.LTuCheckbox$__f_isDisabled = $n(this.attr__LLaminarWebComponent$attr$()).boolean__T__Z__Z__LReactiveAttr("disabled", false, ($n(this.attr__LLaminarWebComponent$attr$()), false));
+  this.LTuCheckbox$__f_labelText = $n(this.attr__LLaminarWebComponent$attr$()).string__T__T__Z__LReactiveAttr("label", "", ($n(this.attr__LLaminarWebComponent$attr$()), false));
 }
 $c_LTuCheckbox$.prototype = new $h_LLaminarWebComponent();
 $c_LTuCheckbox$.prototype.constructor = $c_LTuCheckbox$;
@@ -8098,9 +8127,9 @@ function $c_LTuIcon$() {
   var \u03b44$___2 = _2;
   this.LTuIcon$__f__styles = $as_T(\u03b44$___1);
   this.LTuIcon$__f_classNames = $as_T1(\u03b44$___2);
-  this.LTuIcon$__f_iconName = $n(this.attr__LLaminarWebComponent$attr$()).string__T__T__LReactiveAttr("name", "star");
-  this.LTuIcon$__f_iconSize = $n(this.attr__LLaminarWebComponent$attr$()).string__T__T__LReactiveAttr("size", "24");
-  this.LTuIcon$__f_filled = $n(this.attr__LLaminarWebComponent$attr$()).boolean__T__Z__LReactiveAttr("filled", false);
+  this.LTuIcon$__f_iconName = $n(this.attr__LLaminarWebComponent$attr$()).string__T__T__Z__LReactiveAttr("name", "star", ($n(this.attr__LLaminarWebComponent$attr$()), false));
+  this.LTuIcon$__f_iconSize = $n(this.attr__LLaminarWebComponent$attr$()).string__T__T__Z__LReactiveAttr("size", "24", ($n(this.attr__LLaminarWebComponent$attr$()), false));
+  this.LTuIcon$__f_filled = $n(this.attr__LLaminarWebComponent$attr$()).boolean__T__Z__Z__LReactiveAttr("filled", false, ($n(this.attr__LLaminarWebComponent$attr$()), false));
 }
 $c_LTuIcon$.prototype = new $h_LLaminarWebComponent();
 $c_LTuIcon$.prototype.constructor = $c_LTuIcon$;
@@ -8174,12 +8203,12 @@ function $c_LTuInput$() {
   var \u03b44$___2 = _2;
   this.LTuInput$__f__styles = $as_T(\u03b44$___1);
   this.LTuInput$__f_classNames = $as_T6(\u03b44$___2);
-  this.LTuInput$__f_inputValue = $n(this.attr__LLaminarWebComponent$attr$()).string__T__T__LReactiveAttr("value", "");
-  this.LTuInput$__f_inputPlaceholder = $n(this.attr__LLaminarWebComponent$attr$()).string__T__T__LReactiveAttr("placeholder", "");
-  this.LTuInput$__f_inputType = $n(this.attr__LLaminarWebComponent$attr$()).string__T__T__LReactiveAttr("type", "text");
-  this.LTuInput$__f_inputDisabled = $n(this.attr__LLaminarWebComponent$attr$()).boolean__T__Z__LReactiveAttr("disabled", false);
-  this.LTuInput$__f_inputReadonly = $n(this.attr__LLaminarWebComponent$attr$()).boolean__T__Z__LReactiveAttr("readonly", false);
-  this.LTuInput$__f_inputSize = $n(this.attr__LLaminarWebComponent$attr$()).string__T__T__LReactiveAttr("size", "medium");
+  this.LTuInput$__f_inputValue = $n(this.attr__LLaminarWebComponent$attr$()).string__T__T__Z__LReactiveAttr("value", "", ($n(this.attr__LLaminarWebComponent$attr$()), false));
+  this.LTuInput$__f_inputPlaceholder = $n(this.attr__LLaminarWebComponent$attr$()).string__T__T__Z__LReactiveAttr("placeholder", "", ($n(this.attr__LLaminarWebComponent$attr$()), false));
+  this.LTuInput$__f_inputType = $n(this.attr__LLaminarWebComponent$attr$()).string__T__T__Z__LReactiveAttr("type", "text", ($n(this.attr__LLaminarWebComponent$attr$()), false));
+  this.LTuInput$__f_inputDisabled = $n(this.attr__LLaminarWebComponent$attr$()).boolean__T__Z__Z__LReactiveAttr("disabled", false, ($n(this.attr__LLaminarWebComponent$attr$()), false));
+  this.LTuInput$__f_inputReadonly = $n(this.attr__LLaminarWebComponent$attr$()).boolean__T__Z__Z__LReactiveAttr("readonly", false, ($n(this.attr__LLaminarWebComponent$attr$()), false));
+  this.LTuInput$__f_inputSize = $n(this.attr__LLaminarWebComponent$attr$()).string__T__T__Z__LReactiveAttr("size", "medium", ($n(this.attr__LLaminarWebComponent$attr$()), false));
 }
 $c_LTuInput$.prototype = new $h_LLaminarWebComponent();
 $c_LTuInput$.prototype.constructor = $c_LTuInput$;
@@ -8255,9 +8284,9 @@ function $c_LTuOption$() {
   var \u03b48$___2 = _2;
   this.LTuOption$__f__styles = $as_T(\u03b48$___1);
   this.LTuOption$__f_classNames = $as_T1(\u03b48$___2);
-  this.LTuOption$__f_optionValue = $n(this.attr__LLaminarWebComponent$attr$()).string__T__T__LReactiveAttr("value", "");
-  this.LTuOption$__f_optionLabel = $n(this.attr__LLaminarWebComponent$attr$()).string__T__T__LReactiveAttr("label", "");
-  $n(this.attr__LLaminarWebComponent$attr$()).boolean__T__Z__LReactiveAttr("disabled", false);
+  this.LTuOption$__f_optionValue = $n(this.attr__LLaminarWebComponent$attr$()).string__T__T__Z__LReactiveAttr("value", "", ($n(this.attr__LLaminarWebComponent$attr$()), false));
+  this.LTuOption$__f_optionLabel = $n(this.attr__LLaminarWebComponent$attr$()).string__T__T__Z__LReactiveAttr("label", "", ($n(this.attr__LLaminarWebComponent$attr$()), false));
+  $n(this.attr__LLaminarWebComponent$attr$()).boolean__T__Z__Z__LReactiveAttr("disabled", false, ($n(this.attr__LLaminarWebComponent$attr$()), false));
 }
 $c_LTuOption$.prototype = new $h_LLaminarWebComponent();
 $c_LTuOption$.prototype.constructor = $c_LTuOption$;
@@ -8320,11 +8349,11 @@ function $c_LTuRadio$() {
   var \u03b44$___2 = _2;
   this.LTuRadio$__f__styles = $as_T(\u03b44$___1);
   this.LTuRadio$__f_classNames = $as_T4(\u03b44$___2);
-  this.LTuRadio$__f_isChecked = $n(this.attr__LLaminarWebComponent$attr$()).boolean__T__Z__LReactiveAttr("checked", false);
-  this.LTuRadio$__f_isDisabled = $n(this.attr__LLaminarWebComponent$attr$()).boolean__T__Z__LReactiveAttr("disabled", false);
-  this.LTuRadio$__f_radioName = $n(this.attr__LLaminarWebComponent$attr$()).string__T__T__LReactiveAttr("name", "");
-  this.LTuRadio$__f_radioValue = $n(this.attr__LLaminarWebComponent$attr$()).string__T__T__LReactiveAttr("value", "");
-  this.LTuRadio$__f_labelText = $n(this.attr__LLaminarWebComponent$attr$()).string__T__T__LReactiveAttr("label", "");
+  this.LTuRadio$__f_isChecked = $n(this.attr__LLaminarWebComponent$attr$()).boolean__T__Z__Z__LReactiveAttr("checked", false, ($n(this.attr__LLaminarWebComponent$attr$()), false));
+  this.LTuRadio$__f_isDisabled = $n(this.attr__LLaminarWebComponent$attr$()).boolean__T__Z__Z__LReactiveAttr("disabled", false, ($n(this.attr__LLaminarWebComponent$attr$()), false));
+  this.LTuRadio$__f_radioName = $n(this.attr__LLaminarWebComponent$attr$()).string__T__T__Z__LReactiveAttr("name", "", ($n(this.attr__LLaminarWebComponent$attr$()), false));
+  this.LTuRadio$__f_radioValue = $n(this.attr__LLaminarWebComponent$attr$()).string__T__T__Z__LReactiveAttr("value", "", ($n(this.attr__LLaminarWebComponent$attr$()), false));
+  this.LTuRadio$__f_labelText = $n(this.attr__LLaminarWebComponent$attr$()).string__T__T__Z__LReactiveAttr("label", "", ($n(this.attr__LLaminarWebComponent$attr$()), false));
 }
 $c_LTuRadio$.prototype = new $h_LLaminarWebComponent();
 $c_LTuRadio$.prototype.constructor = $c_LTuRadio$;
@@ -8420,10 +8449,10 @@ function $c_LTuSelect$() {
   var \u03b46$___2 = _2;
   this.LTuSelect$__f__styles = $as_T(\u03b46$___1);
   this.LTuSelect$__f_classNames = $as_T8(\u03b46$___2);
-  this.LTuSelect$__f_selectValue = $n(this.attr__LLaminarWebComponent$attr$()).string__T__T__LReactiveAttr("value", "");
-  this.LTuSelect$__f_selectPlaceholder = $n(this.attr__LLaminarWebComponent$attr$()).string__T__T__LReactiveAttr("placeholder", "Select an option");
-  this.LTuSelect$__f_isDisabled = $n(this.attr__LLaminarWebComponent$attr$()).boolean__T__Z__LReactiveAttr("disabled", false);
-  this.LTuSelect$__f_selectSize = $n(this.attr__LLaminarWebComponent$attr$()).string__T__T__LReactiveAttr("size", "medium");
+  this.LTuSelect$__f_selectValue = $n(this.attr__LLaminarWebComponent$attr$()).string__T__T__Z__LReactiveAttr("value", "", ($n(this.attr__LLaminarWebComponent$attr$()), false));
+  this.LTuSelect$__f_selectPlaceholder = $n(this.attr__LLaminarWebComponent$attr$()).string__T__T__Z__LReactiveAttr("placeholder", "Select an option", ($n(this.attr__LLaminarWebComponent$attr$()), false));
+  this.LTuSelect$__f_isDisabled = $n(this.attr__LLaminarWebComponent$attr$()).boolean__T__Z__Z__LReactiveAttr("disabled", false, ($n(this.attr__LLaminarWebComponent$attr$()), false));
+  this.LTuSelect$__f_selectSize = $n(this.attr__LLaminarWebComponent$attr$()).string__T__T__Z__LReactiveAttr("size", "medium", ($n(this.attr__LLaminarWebComponent$attr$()), false));
 }
 $c_LTuSelect$.prototype = new $h_LLaminarWebComponent();
 $c_LTuSelect$.prototype.constructor = $c_LTuSelect$;
@@ -8522,12 +8551,12 @@ function $c_LTuTextarea$() {
   var \u03b44$___2 = _2;
   this.LTuTextarea$__f__styles = $as_T(\u03b44$___1);
   this.LTuTextarea$__f_classNames = $as_T3(\u03b44$___2);
-  this.LTuTextarea$__f_textValue = $n(this.attr__LLaminarWebComponent$attr$()).string__T__T__LReactiveAttr("value", "");
-  this.LTuTextarea$__f_textPlaceholder = $n(this.attr__LLaminarWebComponent$attr$()).string__T__T__LReactiveAttr("placeholder", "");
-  this.LTuTextarea$__f_isDisabled = $n(this.attr__LLaminarWebComponent$attr$()).boolean__T__Z__LReactiveAttr("disabled", false);
-  this.LTuTextarea$__f_isReadonly = $n(this.attr__LLaminarWebComponent$attr$()).boolean__T__Z__LReactiveAttr("readonly", false);
-  this.LTuTextarea$__f_numRows = $n(this.attr__LLaminarWebComponent$attr$()).int__T__I__LReactiveAttr("rows", 3);
-  this.LTuTextarea$__f_resizeMode = $n(this.attr__LLaminarWebComponent$attr$()).string__T__T__LReactiveAttr("resize", "vertical");
+  this.LTuTextarea$__f_textValue = $n(this.attr__LLaminarWebComponent$attr$()).string__T__T__Z__LReactiveAttr("value", "", ($n(this.attr__LLaminarWebComponent$attr$()), false));
+  this.LTuTextarea$__f_textPlaceholder = $n(this.attr__LLaminarWebComponent$attr$()).string__T__T__Z__LReactiveAttr("placeholder", "", ($n(this.attr__LLaminarWebComponent$attr$()), false));
+  this.LTuTextarea$__f_isDisabled = $n(this.attr__LLaminarWebComponent$attr$()).boolean__T__Z__Z__LReactiveAttr("disabled", false, ($n(this.attr__LLaminarWebComponent$attr$()), false));
+  this.LTuTextarea$__f_isReadonly = $n(this.attr__LLaminarWebComponent$attr$()).boolean__T__Z__Z__LReactiveAttr("readonly", false, ($n(this.attr__LLaminarWebComponent$attr$()), false));
+  this.LTuTextarea$__f_numRows = $n(this.attr__LLaminarWebComponent$attr$()).int__T__I__Z__LReactiveAttr("rows", 3, ($n(this.attr__LLaminarWebComponent$attr$()), false));
+  this.LTuTextarea$__f_resizeMode = $n(this.attr__LLaminarWebComponent$attr$()).string__T__T__Z__LReactiveAttr("resize", "vertical", ($n(this.attr__LLaminarWebComponent$attr$()), false));
 }
 $c_LTuTextarea$.prototype = new $h_LLaminarWebComponent();
 $c_LTuTextarea$.prototype.constructor = $c_LTuTextarea$;

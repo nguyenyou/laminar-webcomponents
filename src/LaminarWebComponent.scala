@@ -19,14 +19,30 @@ abstract class LaminarWebComponent(val tagName: String) {
       ra
     }
 
-    def string(name: String, default: String = ""): ReactiveAttr[String] =
-      register(ReactiveAttr.string(name, default))
-    def int(name: String, default: Int = 0): ReactiveAttr[Int] =
-      register(ReactiveAttr.int(name, default))
-    def boolean(name: String, default: Boolean = false): ReactiveAttr[Boolean] =
-      register(ReactiveAttr.boolean(name, default))
-    def double(name: String, default: Double = 0.0): ReactiveAttr[Double] =
-      register(ReactiveAttr.double(name, default))
+    def string(
+        name: String,
+        default: String = "",
+        reflect: Boolean = false
+    ): ReactiveAttr[String] =
+      register(ReactiveAttr.string(name, default, reflect))
+    def int(
+        name: String,
+        default: Int = 0,
+        reflect: Boolean = false
+    ): ReactiveAttr[Int] =
+      register(ReactiveAttr.int(name, default, reflect))
+    def boolean(
+        name: String,
+        default: Boolean = false,
+        reflect: Boolean = false
+    ): ReactiveAttr[Boolean] =
+      register(ReactiveAttr.boolean(name, default, reflect))
+    def double(
+        name: String,
+        default: Double = 0.0,
+        reflect: Boolean = false
+    ): ReactiveAttr[Double] =
+      register(ReactiveAttr.double(name, default, reflect))
   }
 
   protected class Props(element: dom.HTMLElement) {
@@ -36,7 +52,7 @@ abstract class LaminarWebComponent(val tagName: String) {
       _propMap.get(attr.attrName) match {
         case Some(p) => p.asInstanceOf[ReactiveProp[T]]
         case None =>
-          val p = new ReactiveProp(attr)
+          val p = new ReactiveProp(element, attr)
           val currentValue = element.getAttribute(attr.attrName)
           if (currentValue != null) {
             p.handleChange(currentValue)

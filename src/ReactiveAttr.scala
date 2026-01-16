@@ -5,7 +5,8 @@ class ReactiveAttr[T](
     val attrName: String,
     val default: T,
     val parse: String => T,
-    val codec: com.raquo.laminar.codecs.Codec[T, String]
+    val codec: com.raquo.laminar.codecs.Codec[T, String],
+    val reflect: Boolean = false
 ) {
   def asHtmlAttr: HtmlAttr[T] = htmlAttr(attrName, codec)
 
@@ -13,31 +14,49 @@ class ReactiveAttr[T](
 }
 
 object ReactiveAttr {
-  def string(name: String, default: String = ""): ReactiveAttr[String] =
-    new ReactiveAttr(name, default, identity, StringAsIsCodec)
+  def string(
+      name: String,
+      default: String = "",
+      reflect: Boolean = false
+  ): ReactiveAttr[String] =
+    new ReactiveAttr(name, default, identity, StringAsIsCodec, reflect)
 
-  def int(name: String, default: Int = 0): ReactiveAttr[Int] =
+  def int(
+      name: String,
+      default: Int = 0,
+      reflect: Boolean = false
+  ): ReactiveAttr[Int] =
     new ReactiveAttr(
       name,
       default,
       s => s.toIntOption.getOrElse(default),
-      com.raquo.laminar.codecs.IntAsStringCodec
+      com.raquo.laminar.codecs.IntAsStringCodec,
+      reflect
     )
 
-  def boolean(name: String, default: Boolean = false): ReactiveAttr[Boolean] =
+  def boolean(
+      name: String,
+      default: Boolean = false,
+      reflect: Boolean = false
+  ): ReactiveAttr[Boolean] =
     new ReactiveAttr(
       name,
       default,
       _ != null,
-      com.raquo.laminar.codecs.BooleanAsTrueFalseStringCodec
+      com.raquo.laminar.codecs.BooleanAsTrueFalseStringCodec,
+      reflect
     )
 
-  def double(name: String, default: Double = 0.0): ReactiveAttr[Double] =
+  def double(
+      name: String,
+      default: Double = 0.0,
+      reflect: Boolean = false
+  ): ReactiveAttr[Double] =
     new ReactiveAttr(
       name,
       default,
       s => s.toDoubleOption.getOrElse(default),
-      com.raquo.laminar.codecs.DoubleAsStringCodec
+      com.raquo.laminar.codecs.DoubleAsStringCodec,
+      reflect
     )
 }
-

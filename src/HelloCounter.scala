@@ -58,7 +58,7 @@ object HelloCounter extends LaminarWebComponent("hello-counter") {
 
   override def styles = _styles
 
-  val count = attr.int("count", 0)
+  val count = attr.int("count", 0, reflect = true)
   val step = attr.int("step", 1)
   val label = attr.string("label", "Counter")
 
