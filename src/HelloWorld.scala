@@ -5,27 +5,16 @@ import scala.scalajs.js
 // HelloWorld Web Component
 // =============================================================================
 
-object HelloWorld {
-  object attrs {
-    val name = ReactiveAttr.string("name", "World")
-  }
+object HelloWorld extends LaminarWebComponent[HelloWorldComponent] {
+  val tagName = "hello-world"
 
-  // One-liner registration - macro handles everything!
-  val api = registerWebComponent(
-    "hello-world",
-    attrs,
-    js.constructorOf[HelloWorldComponent]
-  )
+  val name = attr.string("name", "World")
 
-  // Re-export for convenience
-  def apply(mods: Modifier[HtmlElement]*) = api(mods*)
-  val name = api.stringAttr("name")
+  val api = register(js.constructorOf[HelloWorldComponent])
 }
 
 class HelloWorldComponent extends WebComponent {
-  import HelloWorld.attrs
-
-  private val nameProp = prop(attrs.name)
+  private val nameProp = prop(HelloWorld.name)
 
   override def styles: String = """
     .container {

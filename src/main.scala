@@ -39,7 +39,7 @@ def main(): Unit = {
         }
       ),
       HelloWorld(
-        HelloWorld.name := "World"
+        HelloWorld.name.asHtmlAttr := "World"
       )
     ),
 
@@ -54,14 +54,14 @@ def main(): Unit = {
         gap := "16px",
         flexWrap := "wrap",
         HelloCounter(
-          HelloCounter.label := "Score",
-          HelloCounter.count := 0,
-          HelloCounter.step := 10
+          HelloCounter.label.asHtmlAttr := "Score",
+          HelloCounter.count.asHtmlAttr := 0,
+          HelloCounter.step.asHtmlAttr := 10
         ),
         HelloCounter(
-          HelloCounter.label := "Lives",
-          HelloCounter.count := 3,
-          HelloCounter.step := 1
+          HelloCounter.label.asHtmlAttr := "Lives",
+          HelloCounter.count.asHtmlAttr := 3,
+          HelloCounter.step.asHtmlAttr := 1
         )
       )
     )

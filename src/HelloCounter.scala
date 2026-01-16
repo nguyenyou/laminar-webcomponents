@@ -5,32 +5,20 @@ import scala.scalajs.js
 // HelloCounter Web Component - A counter with increment/decrement buttons
 // =============================================================================
 
-object HelloCounter {
-  object attrs {
-    val count = ReactiveAttr.int("count", 0)
-    val step = ReactiveAttr.int("step", 1)
-    val label = ReactiveAttr.string("label", "Counter")
-  }
+object HelloCounter extends LaminarWebComponent[HelloCounterComponent] {
+  val tagName = "hello-counter"
 
-  // One-liner registration!
-  val api = registerWebComponent(
-    "hello-counter",
-    attrs,
-    js.constructorOf[HelloCounterComponent]
-  )
+  val count = attr.int("count", 0)
+  val step = attr.int("step", 1)
+  val label = attr.string("label", "Counter")
 
-  def apply(mods: Modifier[HtmlElement]*) = api(mods*)
-  val count = api.intAttr("count")
-  val step = api.intAttr("step")
-  val label = api.stringAttr("label")
+  val api = register(js.constructorOf[HelloCounterComponent])
 }
 
 class HelloCounterComponent extends WebComponent {
-  import HelloCounter.attrs
-
-  private val countProp = prop(attrs.count)
-  private val stepProp = prop(attrs.step)
-  private val labelProp = prop(attrs.label)
+  private val countProp = prop(HelloCounter.count)
+  private val stepProp = prop(HelloCounter.step)
+  private val labelProp = prop(HelloCounter.label)
 
   override def styles: String = """
     .counter {

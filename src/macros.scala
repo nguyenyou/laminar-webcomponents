@@ -11,21 +11,39 @@ import com.raquo.laminar.codecs.StringAsIsCodec
 class ReactiveAttr[T](
     val attrName: String,
     val default: T,
-    val parse: String => T
-)
+    val parse: String => T,
+    val codec: com.raquo.laminar.codecs.Codec[T, String]
+) {
+  def asHtmlAttr: HtmlAttr[T] = htmlAttr(attrName, codec)
+}
 
 object ReactiveAttr {
   def string(name: String, default: String = ""): ReactiveAttr[String] =
-    new ReactiveAttr(name, default, identity)
+    new ReactiveAttr(name, default, identity, StringAsIsCodec)
 
   def int(name: String, default: Int = 0): ReactiveAttr[Int] =
-    new ReactiveAttr(name, default, s => s.toIntOption.getOrElse(default))
+    new ReactiveAttr(
+      name,
+      default,
+      s => s.toIntOption.getOrElse(default),
+      com.raquo.laminar.codecs.IntAsStringCodec
+    )
 
   def boolean(name: String, default: Boolean = false): ReactiveAttr[Boolean] =
-    new ReactiveAttr(name, default, _ != null)
+    new ReactiveAttr(
+      name,
+      default,
+      _ != null,
+      com.raquo.laminar.codecs.BooleanAsTrueFalseStringCodec
+    )
 
   def double(name: String, default: Double = 0.0): ReactiveAttr[Double] =
-    new ReactiveAttr(name, default, s => s.toDoubleOption.getOrElse(default))
+    new ReactiveAttr(
+      name,
+      default,
+      s => s.toDoubleOption.getOrElse(default),
+      com.raquo.laminar.codecs.DoubleAsStringCodec
+    )
 }
 
 // =============================================================================
@@ -71,16 +89,11 @@ private def extractObservedAttributesImpl[T: scala.quoted.Type](using
   '{ js.Array(${ Varargs(attrNames) }*) }
 }
 
-/** Registers a WebComponent and returns a typed API - no companion object
-  * needed!
-  */
 inline def registerWebComponent[A](
     tagName: String,
-    attrs: A,
     ctor: js.Dynamic
 ): WebComponentApi = {
   val attrNames = extractObservedAttributes[A]
-  // Set observedAttributes dynamically - no @JSExportStatic needed!
   ctor.observedAttributes = attrNames
   dom.window.customElements.define(tagName, ctor)
   new WebComponentApi(tagName)
