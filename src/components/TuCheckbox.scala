@@ -3,6 +3,7 @@ import com.raquo.laminar.api.L.*
 import CssMacro.css
 
 object TuCheckbox extends LaminarWebComponent("tu-checkbox") {
+  type Self = TuCheckbox.type
   private val (_styles, classNames) = css"""
     :host {
       display: inline-block;

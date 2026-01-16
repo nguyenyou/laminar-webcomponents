@@ -2,6 +2,7 @@ import com.raquo.laminar.api.L.*
 import CssMacro.css
 
 object TuInput extends LaminarWebComponent("tu-input") {
+  type Self = TuInput.type
   private val (_styles, classNames) = css"""
     :host {
       display: inline-block;

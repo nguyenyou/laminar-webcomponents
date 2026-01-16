@@ -2,6 +2,7 @@ import com.raquo.laminar.api.L.*
 import CssMacro.css
 
 object HelloCounter extends LaminarWebComponent("hello-counter") {
+  type Self = HelloCounter.type
 
   private val (_styles, classNames) = css"""
     .counter {

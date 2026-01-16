@@ -2,6 +2,7 @@ import com.raquo.laminar.api.L.*
 import CssMacro.css
 
 object TuTextarea extends LaminarWebComponent("tu-textarea") {
+  type Self = TuTextarea.type
   private val (_styles, classNames) = css"""
     :host {
       display: block;

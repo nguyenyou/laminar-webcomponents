@@ -4,7 +4,13 @@ import com.raquo.laminar.tags.CustomHtmlTag
 import org.scalajs.dom
 import scala.scalajs.js
 
-abstract class LaminarWebComponent(val tagName: String) {
+abstract class LaminarWebComponent(val tagName: String) { self: Self =>
+
+  type Self
+
+  type ModFunction = Self => Modifier[HtmlElement]
+
+  type ComponentMod = Modifier[HtmlElement] | ModFunction
 
   private val _registeredAttrs =
     scala.collection.mutable.ListBuffer[ReactiveAttr[?]]()
@@ -146,8 +152,15 @@ abstract class LaminarWebComponent(val tagName: String) {
     dom.window.customElements.define(tagName, ctor)
   }
 
-  def apply(mods: Modifier[HtmlElement]*): HtmlElement = {
+  def apply(mods: ComponentMod*): HtmlElement = {
     register
-    CustomHtmlTag[dom.HTMLElement](tagName)(mods*)
+    val el = CustomHtmlTag[dom.HTMLElement](tagName)()
+    mods.foreach {
+      case mod: Modifier[_ >: HtmlElement] @unchecked =>
+        mod(el)
+      case modFn: ModFunction @unchecked =>
+        modFn(self)(el)
+    }
+    el
   }
 }

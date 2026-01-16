@@ -3,6 +3,7 @@ import com.raquo.laminar.nodes.Slot
 import CssMacro.css
 
 object TuButton extends LaminarWebComponent("tu-button") {
+  type Self = TuButton.type
   private val (_styles, classNames) = css"""
     :host {
       display: inline-block;

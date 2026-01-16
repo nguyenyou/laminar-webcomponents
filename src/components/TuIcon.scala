@@ -2,6 +2,7 @@ import com.raquo.laminar.api.L.*
 import CssMacro.css
 
 object TuIcon extends LaminarWebComponent("tu-icon") {
+  type Self = TuIcon.type
   private val (_styles, classNames) = css"""
     :host {
       display: inline-flex;

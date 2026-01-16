@@ -29,7 +29,7 @@ def main(): Unit = {
           }
         }
       ),
-      HelloWorld(HelloWorld.name := "World")
+      HelloWorld(_.name := "World")
     ),
     div(
       h2("HelloCounter Components"),
@@ -37,14 +37,14 @@ def main(): Unit = {
         display := "flex",
         gap := "16px",
         HelloCounter(
-          HelloCounter.label := "Score",
-          HelloCounter.count := 0,
-          HelloCounter.step := 10
+          _.label := "Score",
+          _.count := 0,
+          _.step := 10
         ),
         HelloCounter(
-          HelloCounter.label := "Lives",
-          HelloCounter.count := 3,
-          HelloCounter.step := 1
+          _.label := "Lives",
+          _.count := 3,
+          _.step := 1
         )
       )
     ),
@@ -55,20 +55,20 @@ def main(): Unit = {
         gap := "12px",
         flexWrap := "wrap",
         alignItems := "center",
-        TuButton(TuButton.variant := "primary", "Primary"),
-        TuButton(TuButton.variant := "secondary", "Secondary"),
-        TuButton(TuButton.variant := "outline", "Outline"),
-        TuButton(TuButton.variant := "ghost", "Ghost"),
-        TuButton(TuButton.btnDisabled := true, "Disabled")
+        TuButton(_.variant := "primary", "Primary"),
+        TuButton(_.variant := "secondary", "Secondary"),
+        TuButton(_.variant := "outline", "Outline"),
+        TuButton(_.variant := "ghost", "Ghost"),
+        TuButton(_.btnDisabled := true, "Disabled")
       ),
       div(
         marginTop := "12px",
         display := "flex",
         gap := "12px",
         alignItems := "center",
-        TuButton(TuButton.btnSize := "small", "Small"),
-        TuButton(TuButton.btnSize := "medium", "Medium"),
-        TuButton(TuButton.btnSize := "large", "Large")
+        TuButton(_.btnSize := "small", "Small"),
+        TuButton(_.btnSize := "medium", "Medium"),
+        TuButton(_.btnSize := "large", "Large")
       )
     ),
     div(
@@ -77,14 +77,14 @@ def main(): Unit = {
         display := "flex",
         gap := "16px",
         alignItems := "center",
-        TuIcon(TuIcon.iconName := "home"),
-        TuIcon(TuIcon.iconName := "settings"),
-        TuIcon(TuIcon.iconName := "favorite", TuIcon.filled := true),
-        TuIcon(TuIcon.iconName := "star", TuIcon.iconSize := "32"),
+        TuIcon(_.iconName := "home"),
+        TuIcon(_.iconName := "settings"),
+        TuIcon(_.iconName := "favorite", _.filled := true),
+        TuIcon(_.iconName := "star", _.iconSize := "32"),
         TuIcon(
-          TuIcon.iconName := "check_circle",
-          TuIcon.iconSize := "48",
-          TuIcon.filled := true
+          _.iconName := "check_circle",
+          _.iconSize := "48",
+          _.filled := true
         )
       )
     ),
@@ -95,19 +95,19 @@ def main(): Unit = {
         gap := "12px",
         alignItems := "center",
         TuButton(
-          TuButton.slots.prefix(TuIcon(TuIcon.iconName := "add")),
+          _.slots.prefix(TuIcon(_.iconName := "add")),
           "Add Item"
         ),
         TuButton(
-          TuButton.variant := "outline",
+          _.variant := "outline",
           "Download",
-          TuButton.slots.suffix(TuIcon(TuIcon.iconName := "download"))
+          _.slots.suffix(TuIcon(_.iconName := "download"))
         ),
         TuButton(
-          TuButton.variant := "secondary",
-          TuButton.slots.prefix(TuIcon(TuIcon.iconName := "arrow_back")),
+          _.variant := "secondary",
+          _.slots.prefix(TuIcon(_.iconName := "arrow_back")),
           "Back",
-          TuButton.slots.suffix(TuIcon(TuIcon.iconName := "arrow_forward"))
+          _.slots.suffix(TuIcon(_.iconName := "arrow_forward"))
         )
       )
     ),
@@ -117,22 +117,22 @@ def main(): Unit = {
         display := "flex",
         flexDirection := "column",
         gap := "12px",
-        TuInput(TuInput.inputPlaceholder := "Enter text..."),
+        TuInput(_.inputPlaceholder := "Enter text..."),
         TuInput(
-          TuInput.inputType := "password",
-          TuInput.inputPlaceholder := "Password"
+          _.inputType := "password",
+          _.inputPlaceholder := "Password"
         ),
         TuInput(
-          TuInput.inputSize := "small",
-          TuInput.inputPlaceholder := "Small input"
+          _.inputSize := "small",
+          _.inputPlaceholder := "Small input"
         ),
         TuInput(
-          TuInput.inputSize := "large",
-          TuInput.inputPlaceholder := "Large input"
+          _.inputSize := "large",
+          _.inputPlaceholder := "Large input"
         ),
         TuInput(
-          TuInput.inputDisabled := true,
-          TuInput.inputValue := "Disabled input"
+          _.inputDisabled := true,
+          _.inputValue := "Disabled input"
         )
       )
     ),
@@ -142,14 +142,14 @@ def main(): Unit = {
         display := "flex",
         flexDirection := "column",
         gap := "8px",
-        TuCheckbox(TuCheckbox.labelText := "Option 1"),
+        TuCheckbox(_.labelText := "Option 1"),
         TuCheckbox(
-          TuCheckbox.labelText := "Option 2",
-          TuCheckbox.isChecked := true
+          _.labelText := "Option 2",
+          _.isChecked := true
         ),
         TuCheckbox(
-          TuCheckbox.labelText := "Disabled",
-          TuCheckbox.isDisabled := true
+          _.labelText := "Disabled",
+          _.isDisabled := true
         )
       )
     ),
@@ -160,45 +160,45 @@ def main(): Unit = {
         flexDirection := "column",
         gap := "8px",
         TuRadio(
-          TuRadio.radioName := "choice",
-          TuRadio.radioValue := "a",
-          TuRadio.labelText := "Choice A"
+          _.radioName := "choice",
+          _.radioValue := "a",
+          _.labelText := "Choice A"
         ),
         TuRadio(
-          TuRadio.radioName := "choice",
-          TuRadio.radioValue := "b",
-          TuRadio.labelText := "Choice B"
+          _.radioName := "choice",
+          _.radioValue := "b",
+          _.labelText := "Choice B"
         ),
         TuRadio(
-          TuRadio.radioName := "choice",
-          TuRadio.radioValue := "c",
-          TuRadio.labelText := "Choice C",
-          TuRadio.isChecked := true
+          _.radioName := "choice",
+          _.radioValue := "c",
+          _.labelText := "Choice C",
+          _.isChecked := true
         )
       )
     ),
     div(
       h2("TuTextarea Component"),
       TuTextarea(
-        TuTextarea.textPlaceholder := "Enter your message...",
-        TuTextarea.numRows := 4
+        _.textPlaceholder := "Enter your message...",
+        _.numRows := 4
       )
     ),
     div(
       h2("TuSelect Component"),
       TuSelect(
-        TuSelect.selectPlaceholder := "Choose a fruit",
+        _.selectPlaceholder := "Choose a fruit",
         TuOption(
-          TuOption.optionValue := "apple",
-          TuOption.optionLabel := "Apple"
+          _.optionValue := "apple",
+          _.optionLabel := "Apple"
         ),
         TuOption(
-          TuOption.optionValue := "banana",
-          TuOption.optionLabel := "Banana"
+          _.optionValue := "banana",
+          _.optionLabel := "Banana"
         ),
         TuOption(
-          TuOption.optionValue := "cherry",
-          TuOption.optionLabel := "Cherry"
+          _.optionValue := "cherry",
+          _.optionLabel := "Cherry"
         )
       )
     )
