@@ -17,6 +17,7 @@ class HTMLElement extends dom.HTMLElement
 
 class HelloWorld extends dom.HTMLElement {
   private var detachedRoot: Option[DetachedRoot[HtmlElement]] = None
+  private val nameVar = Var("World")
 
   // Define styles similar to Lit's css`` tagged template
   private val styles: String = """
@@ -46,7 +47,10 @@ class HelloWorld extends dom.HTMLElement {
 
     // Append content to shadow root
     val element = renderDetached(
-      div(cls := "container", "Hello, World!"),
+      div(
+        cls := "container",
+        child.text <-- nameVar.signal.map(n => s"Hello, $n!")
+      ),
       activateNow = true
     )
     detachedRoot = Some(element)
@@ -60,14 +64,57 @@ class HelloWorld extends dom.HTMLElement {
     detachedRoot = None
   }
 
+  // Called when an observed attribute changes
+  def attributeChangedCallback(
+      name: String,
+      oldValue: String | Null,
+      newValue: String | Null
+  ): Unit = {
+    println(
+      s"attributeChangedCallback: $name changed from $oldValue to $newValue"
+    )
+    name match {
+      case "name" => nameVar.set(Option(newValue).getOrElse("World"))
+      case _      => ()
+    }
+  }
+}
+
+object HelloWorld {
+  // Static getter for observed attributes
+  val observedAttributes: js.Array[String] = js.Array("name")
 }
 
 @main
 def main(): Unit = {
-  // Register the custom element
-  dom.window.customElements.define("hello-world", js.constructorOf[HelloWorld])
+  // Register the custom element with observedAttributes
+  val helloWorldClass = js.constructorOf[HelloWorld]
+  // Set the static observedAttributes property on the class constructor
+  helloWorldClass.asInstanceOf[js.Dynamic].observedAttributes =
+    HelloWorld.observedAttributes
+  dom.window.customElements.define("hello-world", helloWorldClass)
 
   // Add the custom element to the page
-  val app = dom.document.getElementById("app")
-  app.innerHTML = "<hello-world></hello-world>"
+  val container = dom.document.getElementById("app")
+  val helloWorldElement =
+    dom.document.createElement("hello-world").asInstanceOf[dom.html.Element]
+
+  val app = renderDetached(
+    div(
+      input(
+        typ := "text",
+        placeholder := "Enter your name",
+        padding := "10px",
+        fontSize := "16px",
+        marginBottom := "20px",
+        onInput.mapToValue --> { value =>
+          println(s"input: $value")
+          helloWorldElement.setAttribute("name", value)
+        }
+      ),
+      foreignHtmlElement(helloWorldElement)
+    ),
+    activateNow = true
+  )
+  container.appendChild(app.ref)
 }
