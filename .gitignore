@@ -1,0 +1,38 @@
+# Scala.js / Scala CLI
+.scala-build/
+.bloop/
+.metals/
+.vscode/
+.idea/
+*.class
+*.jar
+*.zip
+target/
+dist/
+out/
+
+# Node.js (if used)
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+
+# OS
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Build artifacts
+
+.bsp
