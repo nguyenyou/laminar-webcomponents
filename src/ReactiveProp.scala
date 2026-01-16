@@ -5,6 +5,7 @@ class ReactiveProp[T](attr: ReactiveAttr[T]) {
   val signal: Signal[T] = _var.signal
   def get: T = _var.now()
   def set(value: T): Unit = _var.set(value)
+  def update(f: T => T): Unit = _var.update(f)
 
   def handleChange(newValue: String | Null): Unit = {
     _var.set(Option(newValue).map(attr.parse).getOrElse(attr.default))

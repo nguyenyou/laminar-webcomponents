@@ -70,7 +70,7 @@ abstract class LaminarWebComponent(val tagName: String) {
     def signal: Signal[T] = props(attr).signal
     def get: T = props(attr).get
     def set(value: T): Unit = props(attr).set(value)
-    def update(f: T => T): Unit = props(attr).set(f(props(attr).get))
+    def update(f: T => T): Unit = props(attr).update(f)
   }
 
   private class ComponentInstance extends dom.HTMLElement {
