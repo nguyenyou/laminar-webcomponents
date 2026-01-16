@@ -59,28 +59,20 @@ object HelloCounter extends LaminarWebComponent("hello-counter") {
     }
   """
 
-  override def render(props: Props): HtmlElement = {
-    val countProp = props(count)
-    val stepProp = props(step)
-    val labelProp = props(label)
-
+  override def render(using Props): HtmlElement = {
     div(
       cls := "counter",
-      span(cls := "label", child.text <-- labelProp.signal),
-      span(cls := "count", child.text <-- countProp.signal.map(_.toString)),
+      span(cls := "label", child.text <-- label.signal),
+      span(cls := "count", child.text <-- count.signal.map(_.toString)),
       div(
         cls := "buttons",
         button(
           "−",
-          onClick --> { _ =>
-            countProp.set(countProp.get - stepProp.get)
-          }
+          onClick --> { _ => count.update(_ - step.get) }
         ),
         button(
           "+",
-          onClick --> { _ =>
-            countProp.set(countProp.get + stepProp.get)
-          }
+          onClick --> { _ => count.update(_ + step.get) }
         )
       )
     )

@@ -23,10 +23,10 @@ object HelloWorld extends LaminarWebComponent("hello-world") {
     }
   """
 
-  override def render(props: Props): HtmlElement = {
+  override def render(using Props): HtmlElement = {
     div(
       cls := "container",
-      child.text <-- props(name).signal.map(n => s"Hello, $n!")
+      child.text <-- name.signal.map(n => s"Hello, $n!")
     )
   }
 }

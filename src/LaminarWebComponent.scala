@@ -41,10 +41,18 @@ abstract class LaminarWebComponent(val tagName: String) { self =>
   /** Override to define component's CSS styles */
   def styles: String = ""
 
-  /** Override to define component's render tree. Use props(attrDef) to access
-    * reactive values.
+  /** Override to define component's render tree. Use attr.signal, attr.get,
+    * attr.set directly - Props is implicitly available.
     */
-  def render(props: Props): HtmlElement
+  def render(using Props): HtmlElement
+
+  // Extension methods to access reactive props directly from attributes
+  extension [T](attr: ReactiveAttr[T])(using props: Props) {
+    def signal: Signal[T] = props(attr).signal
+    def get: T = props(attr).get
+    def set(value: T): Unit = props(attr).set(value)
+    def update(f: T => T): Unit = props(attr).set(f(props(attr).get))
+  }
 
   // -------------------------------------------------------------------------
   // Props - runtime reactive property access
@@ -97,10 +105,10 @@ abstract class LaminarWebComponent(val tagName: String) { self =>
         shadow.appendChild(styleElement)
       }
 
-      val props = new Props(this)
+      given props: Props = new Props(this)
       _props = Some(props)
 
-      val root = renderDetached(self.render(props), activateNow = true)
+      val root = renderDetached(self.render, activateNow = true)
       _detachedRoot = Some(root)
       shadow.appendChild(root.ref)
     }
