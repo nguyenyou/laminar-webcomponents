@@ -66,8 +66,6 @@ object HelloCounter extends LaminarWebComponent("hello-counter") {
   val step = attr.int("step", 1)
   val label = attr.string("label", "Counter")
 
-  override def attributes = (count, step, label)
-
   override def render(using Props): HtmlElement = {
     div(
       cls := classNames.counter,

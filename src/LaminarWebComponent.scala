@@ -11,13 +11,14 @@ import scala.scalajs.js
 abstract class LaminarWebComponent(val tagName: String) {
 
   // -------------------------------------------------------------------------
-  // Attribute definitions (override in subclass)
+  // Attribute definitions (auto-registered via attr.* methods)
   // -------------------------------------------------------------------------
 
-  /** Override to define component attributes. Return a tuple or single
-    * ReactiveAttr.
-    */
-  def attributes: Tuple | ReactiveAttr[?] | EmptyTuple = EmptyTuple
+  private val _registeredAttrs =
+    scala.collection.mutable.ListBuffer[ReactiveAttr[?]]()
+
+  /** All registered attributes for this component (auto-collected) */
+  final def registeredAttributes: Seq[ReactiveAttr[?]] = _registeredAttrs.toSeq
 
   // -------------------------------------------------------------------------
   // Style definitions (override in subclass)
@@ -26,35 +27,31 @@ abstract class LaminarWebComponent(val tagName: String) {
   /** Override to define component styles. Can return a String or css macro
     * result.
     */
-  def styles: Any = ""
+  def styles: String = ""
 
   // -------------------------------------------------------------------------
-  // Attribute factory methods
+  // Attribute factory methods (auto-registering)
   // -------------------------------------------------------------------------
 
   protected object attr {
+    private def register[T](ra: ReactiveAttr[T]): ReactiveAttr[T] = {
+      _registeredAttrs += ra
+      ra
+    }
+
     def string(name: String, default: String = ""): ReactiveAttr[String] =
-      ReactiveAttr.string(name, default)
+      register(ReactiveAttr.string(name, default))
     def int(name: String, default: Int = 0): ReactiveAttr[Int] =
-      ReactiveAttr.int(name, default)
+      register(ReactiveAttr.int(name, default))
     def boolean(name: String, default: Boolean = false): ReactiveAttr[Boolean] =
-      ReactiveAttr.boolean(name, default)
+      register(ReactiveAttr.boolean(name, default))
     def double(name: String, default: Double = 0.0): ReactiveAttr[Double] =
-      ReactiveAttr.double(name, default)
+      register(ReactiveAttr.double(name, default))
   }
 
   // -------------------------------------------------------------------------
   // Style and render logic
   // -------------------------------------------------------------------------
-
-  /** Extracts the CSS string from styles (handles both String and css macro
-    * result)
-    */
-  private def cssString: String = styles match {
-    case s: String => s
-    case t: Tuple  => t.productElement(0).asInstanceOf[String]
-    case _         => ""
-  }
 
   /** Override to define component's render tree. Use attr.signal, attr.get,
     * attr.set directly - Props is implicitly available.
@@ -114,10 +111,9 @@ abstract class LaminarWebComponent(val tagName: String) {
         var mode = dom.ShadowRootMode.open
       })
 
-      val css = cssString
-      if (css.nonEmpty) {
+      if (styles.nonEmpty) {
         val styleElement = dom.document.createElement("style")
-        styleElement.textContent = css
+        styleElement.textContent = styles
         shadow.appendChild(styleElement)
       }
 
@@ -148,21 +144,9 @@ abstract class LaminarWebComponent(val tagName: String) {
   // Registration & Laminar integration
   // -------------------------------------------------------------------------
 
-  /** Extracts attribute names from the attributes definition */
+  /** Extracts attribute names from registered attributes */
   private def observedAttributeNames: js.Array[String] = {
-    val attrs = attributes
-    val names = js.Array[String]()
-
-    def collectNames(t: Any): Unit = t match {
-      case EmptyTuple          => ()
-      case ra: ReactiveAttr[?] => names.push(ra.attrName)
-      case tuple: Tuple =>
-        tuple.productIterator.foreach(collectNames)
-      case _ => ()
-    }
-
-    collectNames(attrs)
-    names
+    js.Array(_registeredAttrs.map(_.attrName).toSeq*)
   }
 
   /** Register this web component with the browser */

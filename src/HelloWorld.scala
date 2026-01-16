@@ -22,8 +22,6 @@ object HelloWorld extends LaminarWebComponent("hello-world") {
 
   val name = attr.string("name", "World")
 
-  override def attributes = name
-
   override def styles = _styles
 
   override def render(using Props): HtmlElement = {
