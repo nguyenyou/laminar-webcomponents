@@ -1033,6 +1033,8 @@ function $p_LLaminarWebComponent__observedAttributeNames__sjs_js_Array($thiz) {
 function $c_LLaminarWebComponent() {
   this.LLaminarWebComponent__f_tagName = null;
   this.LLaminarWebComponent__f_LaminarWebComponent$$_registeredAttrs = null;
+  this.LLaminarWebComponent__f_sharedStylesheet$lzy1 = null;
+  this.LLaminarWebComponent__f_sharedStylesheetbitmap$1 = false;
   this.LLaminarWebComponent__f_attr$lzy1 = null;
   this.LLaminarWebComponent__f_attrbitmap$1 = false;
   this.LLaminarWebComponent__f_ComponentInstance$jsname = null;
@@ -1047,6 +1049,23 @@ function $h_LLaminarWebComponent() {
 $h_LLaminarWebComponent.prototype = $c_LLaminarWebComponent.prototype;
 $c_LLaminarWebComponent.prototype.styles__T = (function() {
   return "";
+});
+$c_LLaminarWebComponent.prototype.LaminarWebComponent$$sharedStylesheet__s_Option = (function() {
+  if ((!this.LLaminarWebComponent__f_sharedStylesheetbitmap$1)) {
+    var css = this.styles__T();
+    $m_sc_StringOps$();
+    var this$3 = $n(css);
+    if ((!(this$3 === ""))) {
+      var sheet = new CSSStyleSheet();
+      sheet.replaceSync(css);
+      var $x_1 = new $c_s_Some(sheet);
+    } else {
+      var $x_1 = $m_s_None$();
+    }
+    this.LLaminarWebComponent__f_sharedStylesheet$lzy1 = $x_1;
+    this.LLaminarWebComponent__f_sharedStylesheetbitmap$1 = true;
+  }
+  return this.LLaminarWebComponent__f_sharedStylesheet$lzy1;
 });
 $c_LLaminarWebComponent.prototype.attr__LLaminarWebComponent$attr$ = (function() {
   if ((!this.LLaminarWebComponent__f_attrbitmap$1)) {
@@ -7832,6 +7851,8 @@ function $p_LHelloCounter$__renderButtons__LLaminarWebComponent$Props__Lcom_raqu
 function $c_LHelloCounter$() {
   this.LLaminarWebComponent__f_tagName = null;
   this.LLaminarWebComponent__f_LaminarWebComponent$$_registeredAttrs = null;
+  this.LLaminarWebComponent__f_sharedStylesheet$lzy1 = null;
+  this.LLaminarWebComponent__f_sharedStylesheetbitmap$1 = false;
   this.LLaminarWebComponent__f_attr$lzy1 = null;
   this.LLaminarWebComponent__f_attrbitmap$1 = false;
   this.LLaminarWebComponent__f_ComponentInstance$jsname = null;
@@ -7894,6 +7915,8 @@ function $m_LHelloCounter$() {
 function $c_LHelloWorld$() {
   this.LLaminarWebComponent__f_tagName = null;
   this.LLaminarWebComponent__f_LaminarWebComponent$$_registeredAttrs = null;
+  this.LLaminarWebComponent__f_sharedStylesheet$lzy1 = null;
+  this.LLaminarWebComponent__f_sharedStylesheetbitmap$1 = false;
   this.LLaminarWebComponent__f_attr$lzy1 = null;
   this.LLaminarWebComponent__f_attrbitmap$1 = false;
   this.LLaminarWebComponent__f_ComponentInstance$jsname = null;
@@ -7944,6 +7967,8 @@ function $m_LHelloWorld$() {
 function $c_LTuButton$() {
   this.LLaminarWebComponent__f_tagName = null;
   this.LLaminarWebComponent__f_LaminarWebComponent$$_registeredAttrs = null;
+  this.LLaminarWebComponent__f_sharedStylesheet$lzy1 = null;
+  this.LLaminarWebComponent__f_sharedStylesheetbitmap$1 = false;
   this.LLaminarWebComponent__f_attr$lzy1 = null;
   this.LLaminarWebComponent__f_attrbitmap$1 = false;
   this.LLaminarWebComponent__f_ComponentInstance$jsname = null;
@@ -8015,6 +8040,8 @@ function $m_LTuButton$() {
 function $c_LTuCheckbox$() {
   this.LLaminarWebComponent__f_tagName = null;
   this.LLaminarWebComponent__f_LaminarWebComponent$$_registeredAttrs = null;
+  this.LLaminarWebComponent__f_sharedStylesheet$lzy1 = null;
+  this.LLaminarWebComponent__f_sharedStylesheetbitmap$1 = false;
   this.LLaminarWebComponent__f_attr$lzy1 = null;
   this.LLaminarWebComponent__f_attrbitmap$1 = false;
   this.LLaminarWebComponent__f_ComponentInstance$jsname = null;
@@ -8110,6 +8137,8 @@ function $m_LTuCheckbox$() {
 function $c_LTuIcon$() {
   this.LLaminarWebComponent__f_tagName = null;
   this.LLaminarWebComponent__f_LaminarWebComponent$$_registeredAttrs = null;
+  this.LLaminarWebComponent__f_sharedStylesheet$lzy1 = null;
+  this.LLaminarWebComponent__f_sharedStylesheetbitmap$1 = false;
   this.LLaminarWebComponent__f_attr$lzy1 = null;
   this.LLaminarWebComponent__f_attrbitmap$1 = false;
   this.LLaminarWebComponent__f_ComponentInstance$jsname = null;
@@ -8183,6 +8212,8 @@ function $m_LTuIcon$() {
 function $c_LTuInput$() {
   this.LLaminarWebComponent__f_tagName = null;
   this.LLaminarWebComponent__f_LaminarWebComponent$$_registeredAttrs = null;
+  this.LLaminarWebComponent__f_sharedStylesheet$lzy1 = null;
+  this.LLaminarWebComponent__f_sharedStylesheetbitmap$1 = false;
   this.LLaminarWebComponent__f_attr$lzy1 = null;
   this.LLaminarWebComponent__f_attrbitmap$1 = false;
   this.LLaminarWebComponent__f_ComponentInstance$jsname = null;
@@ -8268,6 +8299,8 @@ function $m_LTuInput$() {
 function $c_LTuOption$() {
   this.LLaminarWebComponent__f_tagName = null;
   this.LLaminarWebComponent__f_LaminarWebComponent$$_registeredAttrs = null;
+  this.LLaminarWebComponent__f_sharedStylesheet$lzy1 = null;
+  this.LLaminarWebComponent__f_sharedStylesheetbitmap$1 = false;
   this.LLaminarWebComponent__f_attr$lzy1 = null;
   this.LLaminarWebComponent__f_attrbitmap$1 = false;
   this.LLaminarWebComponent__f_ComponentInstance$jsname = null;
@@ -8330,6 +8363,8 @@ function $m_LTuOption$() {
 function $c_LTuRadio$() {
   this.LLaminarWebComponent__f_tagName = null;
   this.LLaminarWebComponent__f_LaminarWebComponent$$_registeredAttrs = null;
+  this.LLaminarWebComponent__f_sharedStylesheet$lzy1 = null;
+  this.LLaminarWebComponent__f_sharedStylesheetbitmap$1 = false;
   this.LLaminarWebComponent__f_attr$lzy1 = null;
   this.LLaminarWebComponent__f_attrbitmap$1 = false;
   this.LLaminarWebComponent__f_ComponentInstance$jsname = null;
@@ -8431,6 +8466,8 @@ function $m_LTuRadio$() {
 function $c_LTuSelect$() {
   this.LLaminarWebComponent__f_tagName = null;
   this.LLaminarWebComponent__f_LaminarWebComponent$$_registeredAttrs = null;
+  this.LLaminarWebComponent__f_sharedStylesheet$lzy1 = null;
+  this.LLaminarWebComponent__f_sharedStylesheetbitmap$1 = false;
   this.LLaminarWebComponent__f_attr$lzy1 = null;
   this.LLaminarWebComponent__f_attrbitmap$1 = false;
   this.LLaminarWebComponent__f_ComponentInstance$jsname = null;
@@ -8531,6 +8568,8 @@ function $m_LTuSelect$() {
 function $c_LTuTextarea$() {
   this.LLaminarWebComponent__f_tagName = null;
   this.LLaminarWebComponent__f_LaminarWebComponent$$_registeredAttrs = null;
+  this.LLaminarWebComponent__f_sharedStylesheet$lzy1 = null;
+  this.LLaminarWebComponent__f_sharedStylesheetbitmap$1 = false;
   this.LLaminarWebComponent__f_attr$lzy1 = null;
   this.LLaminarWebComponent__f_attrbitmap$1 = false;
   this.LLaminarWebComponent__f_ComponentInstance$jsname = null;
@@ -21367,13 +21406,10 @@ function $s_LLaminarWebComponent$ComponentInstance__connectedCallback__LLaminarW
     this$2.mode = "open";
     return this$2;
   })());
-  $m_sc_StringOps$();
-  var x = $n($as_LLaminarWebComponent(this$1[$r_LLaminarWebComponent$ComponentInstance__$outer])).styles__T();
-  var this$5 = $n(x);
-  if ((!(this$5 === ""))) {
-    var styleElement = document.createElement("style");
-    styleElement.textContent = $n($as_LLaminarWebComponent(this$1[$r_LLaminarWebComponent$ComponentInstance__$outer])).styles__T();
-    shadow.appendChild(styleElement);
+  var this$3 = $n($n($as_LLaminarWebComponent(this$1[$r_LLaminarWebComponent$ComponentInstance__$outer])).LaminarWebComponent$$sharedStylesheet__s_Option());
+  if ((!this$3.isEmpty__Z())) {
+    var x0 = this$3.get__O();
+    shadow.adoptedStyleSheets = [x0];
   }
   var value = $ps_LLaminarWebComponent$ComponentInstance__instanceProps$1__LLaminarWebComponent$ComponentInstance__sr_LazyRef__LLaminarWebComponent$Props(this$1, instanceProps$lzy1);
   this$1[$r_LLaminarWebComponent$ComponentInstance___instanceProps] = new $c_s_Some(value);
@@ -21381,8 +21417,8 @@ function $s_LLaminarWebComponent$ComponentInstance__connectedCallback__LLaminarW
   var instanceProps$lzy1$3 = instanceProps$lzy1;
   var root = new $c_Lcom_raquo_laminar_nodes_DetachedRoot($as_Lcom_raquo_laminar_nodes_ReactiveHtmlElement($n($n($as_LLaminarWebComponent(this$1[$r_LLaminarWebComponent$ComponentInstance__$outer])).render__F1()).apply__O__O($ps_LLaminarWebComponent$ComponentInstance__instanceProps$1__LLaminarWebComponent$ComponentInstance__sr_LazyRef__LLaminarWebComponent$Props(this$1, instanceProps$lzy1$3))), true);
   this$1[$r_LLaminarWebComponent$ComponentInstance___detachedRoot] = new $c_s_Some(root);
-  var this$9 = $n(root.Lcom_raquo_laminar_nodes_DetachedRoot__f_node);
-  shadow.appendChild(this$9.Lcom_raquo_laminar_nodes_ReactiveHtmlElement__f_ref);
+  var this$7 = $n(root.Lcom_raquo_laminar_nodes_DetachedRoot__f_node);
+  shadow.appendChild(this$7.Lcom_raquo_laminar_nodes_ReactiveHtmlElement__f_ref);
 }
 function $s_LLaminarWebComponent$ComponentInstance__disconnectedCallback__LLaminarWebComponent$ComponentInstance__V(this$1) {
   var this$2 = $n($as_s_Option(this$1[$r_LLaminarWebComponent$ComponentInstance___detachedRoot]));

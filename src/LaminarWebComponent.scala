@@ -13,6 +13,16 @@ abstract class LaminarWebComponent(val tagName: String) {
 
   def styles: String = ""
 
+  // Shared stylesheet - created once per component type, shared by all instances
+  private lazy val sharedStylesheet: Option[dom.CSSStyleSheet] = {
+    val css = styles
+    if (css.nonEmpty) {
+      val sheet = new dom.CSSStyleSheet()
+      sheet.asInstanceOf[js.Dynamic].replaceSync(css)
+      Some(sheet)
+    } else None
+  }
+
   protected object attr {
     private def register[T](ra: ReactiveAttr[T]): ReactiveAttr[T] = {
       _registeredAttrs += ra
@@ -98,10 +108,9 @@ abstract class LaminarWebComponent(val tagName: String) {
         var mode = dom.ShadowRootMode.open
       })
 
-      if (styles.nonEmpty) {
-        val styleElement = dom.document.createElement("style")
-        styleElement.textContent = styles
-        shadow.appendChild(styleElement)
+      // Use adoptedStyleSheets to share a single CSSStyleSheet across all instances
+      sharedStylesheet.foreach { sheet =>
+        shadow.asInstanceOf[js.Dynamic].adoptedStyleSheets = js.Array(sheet)
       }
 
       given instanceProps: Props = new Props(this)
