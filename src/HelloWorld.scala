@@ -1,20 +1,14 @@
 import com.raquo.laminar.api.L.*
-import scala.scalajs.js
 
 // =============================================================================
 // HelloWorld Web Component
 // =============================================================================
 
-object HelloWorld extends LaminarWebComponent[HelloWorldComponent] {
-  val tagName = "hello-world"
+object HelloWorld extends LaminarWebComponent("hello-world") {
 
   val name = attr.string("name", "World")
 
-  val api = register(js.constructorOf[HelloWorldComponent])
-}
-
-class HelloWorldComponent extends WebComponent {
-  private val nameProp = prop(HelloWorld.name)
+  override def attributes = name
 
   override def styles: String = """
     .container {
@@ -29,10 +23,10 @@ class HelloWorldComponent extends WebComponent {
     }
   """
 
-  override def render: HtmlElement = {
+  override def render(props: Props): HtmlElement = {
     div(
       cls := "container",
-      child.text <-- nameProp.signal.map(n => s"Hello, $n!")
+      child.text <-- props(name).signal.map(n => s"Hello, $n!")
     )
   }
 }

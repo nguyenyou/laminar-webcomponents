@@ -1,24 +1,16 @@
 import com.raquo.laminar.api.L.*
-import scala.scalajs.js
 
 // =============================================================================
 // HelloCounter Web Component - A counter with increment/decrement buttons
 // =============================================================================
 
-object HelloCounter extends LaminarWebComponent[HelloCounterComponent] {
-  val tagName = "hello-counter"
+object HelloCounter extends LaminarWebComponent("hello-counter") {
 
   val count = attr.int("count", 0)
   val step = attr.int("step", 1)
   val label = attr.string("label", "Counter")
 
-  val api = register(js.constructorOf[HelloCounterComponent])
-}
-
-class HelloCounterComponent extends WebComponent {
-  private val countProp = prop(HelloCounter.count)
-  private val stepProp = prop(HelloCounter.step)
-  private val labelProp = prop(HelloCounter.label)
+  override def attributes = (count, step, label)
 
   override def styles: String = """
     .counter {
@@ -67,7 +59,11 @@ class HelloCounterComponent extends WebComponent {
     }
   """
 
-  override def render: HtmlElement = {
+  override def render(props: Props): HtmlElement = {
+    val countProp = props(count)
+    val stepProp = props(step)
+    val labelProp = props(label)
+
     div(
       cls := "counter",
       span(cls := "label", child.text <-- labelProp.signal),
