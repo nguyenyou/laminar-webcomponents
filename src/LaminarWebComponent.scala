@@ -24,8 +24,7 @@ abstract class LaminarWebComponent(val tagName: String) {
   // Style definitions (override in subclass)
   // -------------------------------------------------------------------------
 
-  /** Override to define component styles. Can return a String or css macro
-    * result.
+  /** Override to define component styles.
     */
   def styles: String = ""
 
