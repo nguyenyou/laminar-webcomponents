@@ -65,15 +65,16 @@ abstract class WebComponent extends dom.HTMLElement {
 // Companion Object Helper Trait
 // =============================================================================
 
-trait WebComponentCompanion[C <: WebComponent](val tagName: String)(using
-    jsConstructor: () => js.Dynamic
-) {
+trait WebComponentCompanion[C <: WebComponent](val tagName: String) {
+  // Override with: js.constructorOf[YourComponent]
+  protected def jsConstructor: js.Dynamic
+
   // Typed Laminar tag
   lazy val tag: CustomHtmlTag[dom.HTMLElement] = CustomHtmlTag(tagName)
 
   // Register with CustomElements registry
   def register(): Unit = {
-    dom.window.customElements.define(tagName, jsConstructor())
+    dom.window.customElements.define(tagName, jsConstructor)
   }
 
   // Convenience constructor

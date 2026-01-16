@@ -1166,7 +1166,7 @@ var $d_LReactiveProp = new $TypeData().initClass($c_LReactiveProp, "ReactiveProp
 }));
 function $f_LWebComponentCompanion__register__V($thiz) {
   var \u03b41$ = window.customElements;
-  \u03b41$.define($thiz.tagName__T(), $n($thiz.WebComponentCompanion$$jsConstructor__F0()).apply__O());
+  \u03b41$.define($thiz.tagName__T(), $thiz.jsConstructor__sjs_js_Dynamic());
 }
 function $is_Lcom_raquo_airstream_core_InternalObserver(obj) {
   return (!(!((obj && obj.$classData) && obj.$classData.ancestors.Lcom_raquo_airstream_core_InternalObserver)));
@@ -6104,7 +6104,6 @@ $c_s_util_hashing_MurmurHash3.prototype.listHash__sci_List__I__I = (function(xs,
 /** @constructor */
 function $c_LHelloCounter$() {
   this.LHelloCounter$__f_tagName = null;
-  this.LHelloCounter$__f_WebComponentCompanion$$jsConstructor = null;
   this.LHelloCounter$__f_tag$lzy1 = null;
   this.LHelloCounter$__f_tagbitmap$1 = false;
   this.LHelloCounter$__f_count = null;
@@ -6112,7 +6111,6 @@ function $c_LHelloCounter$() {
   this.LHelloCounter$__f_label = null;
   $n_LHelloCounter$ = this;
   this.LHelloCounter$__f_tagName = "hello-counter";
-  this.LHelloCounter$__f_WebComponentCompanion$$jsConstructor = new $c_sr_AbstractFunction0_$$Lambda$a02b774b97db8234e08c6a02dd06557c99779855((() => $a_LHelloCounter()));
   $a_LHelloCounter().observedAttributes = ["label", "step", "count"];
   $n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L);
   var codec = $m_Lcom_raquo_laminar_codecs_package$().IntAsStringCodec__Lcom_raquo_laminar_codecs_Codec();
@@ -6133,15 +6131,15 @@ $h_LHelloCounter$.prototype = $c_LHelloCounter$.prototype;
 $c_LHelloCounter$.prototype.tagName__T = (function() {
   return this.LHelloCounter$__f_tagName;
 });
-$c_LHelloCounter$.prototype.WebComponentCompanion$$jsConstructor__F0 = (function() {
-  return this.LHelloCounter$__f_WebComponentCompanion$$jsConstructor;
-});
 $c_LHelloCounter$.prototype.tag__Lcom_raquo_laminar_tags_CustomHtmlTag = (function() {
   if ((!this.LHelloCounter$__f_tagbitmap$1)) {
     this.LHelloCounter$__f_tag$lzy1 = new $c_Lcom_raquo_laminar_tags_CustomHtmlTag(this.LHelloCounter$__f_tagName, $m_Lcom_raquo_laminar_tags_CustomHtmlTag$().$lessinit$greater$default$2__F1(), ($m_Lcom_raquo_laminar_tags_CustomHtmlTag$(), (void 0)));
     this.LHelloCounter$__f_tagbitmap$1 = true;
   }
   return this.LHelloCounter$__f_tag$lzy1;
+});
+$c_LHelloCounter$.prototype.jsConstructor__sjs_js_Dynamic = (function() {
+  return $a_LHelloCounter();
 });
 var $d_LHelloCounter$ = new $TypeData().initClass($c_LHelloCounter$, "HelloCounter$", ({
   LHelloCounter$: 1,
@@ -6157,13 +6155,11 @@ function $m_LHelloCounter$() {
 /** @constructor */
 function $c_LHelloWorld$() {
   this.LHelloWorld$__f_tagName = null;
-  this.LHelloWorld$__f_WebComponentCompanion$$jsConstructor = null;
   this.LHelloWorld$__f_tag$lzy1 = null;
   this.LHelloWorld$__f_tagbitmap$1 = false;
   this.LHelloWorld$__f_name = null;
   $n_LHelloWorld$ = this;
   this.LHelloWorld$__f_tagName = "hello-world";
-  this.LHelloWorld$__f_WebComponentCompanion$$jsConstructor = new $c_sr_AbstractFunction0_$$Lambda$a02b774b97db8234e08c6a02dd06557c99779855((() => $a_LHelloWorld()));
   $a_LHelloWorld().observedAttributes = ["name"];
   $n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L);
   var codec = $m_Lcom_raquo_laminar_codecs_package$().Lcom_raquo_laminar_codecs_package$__f_StringAsIsCodec;
@@ -6178,15 +6174,15 @@ $h_LHelloWorld$.prototype = $c_LHelloWorld$.prototype;
 $c_LHelloWorld$.prototype.tagName__T = (function() {
   return this.LHelloWorld$__f_tagName;
 });
-$c_LHelloWorld$.prototype.WebComponentCompanion$$jsConstructor__F0 = (function() {
-  return this.LHelloWorld$__f_WebComponentCompanion$$jsConstructor;
-});
 $c_LHelloWorld$.prototype.tag__Lcom_raquo_laminar_tags_CustomHtmlTag = (function() {
   if ((!this.LHelloWorld$__f_tagbitmap$1)) {
     this.LHelloWorld$__f_tag$lzy1 = new $c_Lcom_raquo_laminar_tags_CustomHtmlTag(this.LHelloWorld$__f_tagName, $m_Lcom_raquo_laminar_tags_CustomHtmlTag$().$lessinit$greater$default$2__F1(), ($m_Lcom_raquo_laminar_tags_CustomHtmlTag$(), (void 0)));
     this.LHelloWorld$__f_tagbitmap$1 = true;
   }
   return this.LHelloWorld$__f_tag$lzy1;
+});
+$c_LHelloWorld$.prototype.jsConstructor__sjs_js_Dynamic = (function() {
+  return $a_LHelloWorld();
 });
 var $d_LHelloWorld$ = new $TypeData().initClass($c_LHelloWorld$, "HelloWorld$", ({
   LHelloWorld$: 1,

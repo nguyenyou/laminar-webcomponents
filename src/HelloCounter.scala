@@ -85,9 +85,9 @@ class HelloCounter extends WebComponent {
 }
 
 object HelloCounter
-    extends WebComponentCompanion[HelloCounter]("hello-counter")(
-      using () => js.constructorOf[HelloCounter]
-    ) {
+    extends WebComponentCompanion[HelloCounter]("hello-counter") {
+  protected def jsConstructor = js.constructorOf[HelloCounter]
+
   object attrs {
     val count = ReactiveAttr.int("count", 0)
     val step = ReactiveAttr.int("step", 1)

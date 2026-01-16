@@ -32,10 +32,9 @@ class HelloWorld extends WebComponent {
   }
 }
 
-object HelloWorld
-    extends WebComponentCompanion[HelloWorld]("hello-world")(
-      using () => js.constructorOf[HelloWorld]
-    ) {
+object HelloWorld extends WebComponentCompanion[HelloWorld]("hello-world") {
+  protected def jsConstructor = js.constructorOf[HelloWorld]
+
   object attrs {
     val name = ReactiveAttr.string("name", "World")
   }
