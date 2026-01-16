@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tu Components CDN Demo</title>
+  <!-- Material Symbols for icons -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+    section {
+      margin-bottom: 24px;
+    }
+    h2 {
+      border-bottom: 1px solid #e5e7eb;
+      padding-bottom: 8px;
+    }
+    .demo-row {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Tu Components - CDN Demo</h1>
+  <p>These components are loaded via a single JavaScript file - no build tools required!</p>
+
+  <section>
+    <h2>Buttons</h2>
+    <div class="demo-row">
+      <tu-button variant="primary">Primary</tu-button>
+      <tu-button variant="secondary">Secondary</tu-button>
+      <tu-button variant="outline">Outline</tu-button>
+      <tu-button variant="ghost">Ghost</tu-button>
+      <tu-button disabled="true">Disabled</tu-button>
+    </div>
+    <div class="demo-row">
+      <tu-button size="small">Small</tu-button>
+      <tu-button size="medium">Medium</tu-button>
+      <tu-button size="large">Large</tu-button>
+    </div>
+  </section>
+
+  <section>
+    <h2>Buttons with Icons</h2>
+    <div class="demo-row">
+      <tu-button variant="primary">
+        <tu-icon slot="prefix" name="add"></tu-icon>
+        Add Item
+      </tu-button>
+      <tu-button variant="outline">
+        Download
+        <tu-icon slot="suffix" name="download"></tu-icon>
+      </tu-button>
+      <tu-button variant="secondary">
+        <tu-icon slot="prefix" name="arrow_back"></tu-icon>
+        Navigate
+        <tu-icon slot="suffix" name="arrow_forward"></tu-icon>
+      </tu-button>
+    </div>
+  </section>
+
+  <section>
+    <h2>Icons</h2>
+    <div class="demo-row">
+      <tu-icon name="home"></tu-icon>
+      <tu-icon name="settings"></tu-icon>
+      <tu-icon name="favorite" filled="true"></tu-icon>
+      <tu-icon name="star" size="32"></tu-icon>
+      <tu-icon name="check_circle" size="48" filled="true"></tu-icon>
+    </div>
+  </section>
+
+  <section>
+    <h2>Input</h2>
+    <div class="demo-row" style="flex-direction: column; align-items: stretch;">
+      <tu-input placeholder="Enter text..."></tu-input>
+      <tu-input type="password" placeholder="Password"></tu-input>
+      <tu-input size="small" placeholder="Small input"></tu-input>
+      <tu-input disabled="true" value="Disabled input"></tu-input>
+    </div>
+  </section>
+
+  <section>
+    <h2>Checkbox & Radio</h2>
+    <div class="demo-row" style="flex-direction: column; align-items: flex-start;">
+      <tu-checkbox label="Option 1"></tu-checkbox>
+      <tu-checkbox label="Option 2" checked="true"></tu-checkbox>
+      <tu-checkbox label="Disabled" disabled="true"></tu-checkbox>
+    </div>
+    <div class="demo-row" style="flex-direction: column; align-items: flex-start; margin-top: 12px;">
+      <tu-radio name="choice" value="a" label="Choice A"></tu-radio>
+      <tu-radio name="choice" value="b" label="Choice B"></tu-radio>
+      <tu-radio name="choice" value="c" label="Choice C" checked="true"></tu-radio>
+    </div>
+  </section>
+
+  <section>
+    <h2>Textarea</h2>
+    <tu-textarea placeholder="Enter your message..." rows="4" style="width: 100%;"></tu-textarea>
+  </section>
+
+  <section>
+    <h2>Select</h2>
+    <tu-select placeholder="Choose a fruit">
+      <tu-option value="apple" label="Apple"></tu-option>
+      <tu-option value="banana" label="Banana"></tu-option>
+      <tu-option value="cherry" label="Cherry"></tu-option>
+    </tu-select>
+  </section>
+
+  <!-- Load the components - this single script registers all tu-* elements -->
+  <script src="tu-components.js"></script>
+</body>
+</html>
+
