@@ -39,11 +39,14 @@ class HelloWorld extends dom.HTMLElement {
       var mode = dom.ShadowRootMode.open
     })
 
+    // Append styles to shadow root (like Lit does)
+    val styleElement = dom.document.createElement("style")
+    styleElement.textContent = styles
+    shadowRoot.appendChild(styleElement)
+
+    // Append content to shadow root
     val element = renderDetached(
-      div(
-        styleTag(styles),
-        div(cls := "container", "Hello, World!")
-      ),
+      div(cls := "container", "Hello, World!"),
       activateNow = true
     )
     detachedRoot = Some(element)
