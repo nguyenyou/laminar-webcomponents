@@ -40,3 +40,4 @@ object ReactiveAttr {
       com.raquo.laminar.codecs.DoubleAsStringCodec
     )
 }
+
