@@ -1,9 +1,3 @@
-//> using scala 3.8.0
-//> using platform js
-//> using jsModuleKind esmodule
-//> using dep com.raquo::laminar::17.2.1
-//> using dep org.scala-js::scalajs-dom::2.8.1
-
 import com.raquo.laminar.api.L.*
 import com.raquo.laminar.codecs.StringAsIsCodec
 import com.raquo.laminar.nodes.DetachedRoot
@@ -17,8 +11,13 @@ import scala.scalajs.js.annotation.*
 // =============================================================================
 
 class HelloWorld extends dom.HTMLElement {
+  import HelloWorld.attrs
+
   private var detachedRoot: Option[DetachedRoot[HtmlElement]] = None
-  private val nameVar = Var("World")
+
+  // Create reactive props from attribute definitions
+  private val nameProp = ReactiveProp(attrs.name)
+  private val countProp = ReactiveProp(attrs.count)
 
   private val styles: String = """
     .container {
@@ -33,26 +32,22 @@ class HelloWorld extends dom.HTMLElement {
     }
   """
 
-  def render = {
-    div(
-      cls := "container",
-      child.text <-- nameVar.signal.map(n => s"Hello, $n!")
-    )
-  }
-
   def connectedCallback(): Unit = {
     val shadow = this.attachShadow(new dom.ShadowRootInit {
       var mode = dom.ShadowRootMode.open
     })
 
-    // Inject styles into shadow DOM
     val styleElement = dom.document.createElement("style")
     styleElement.textContent = styles
     shadow.appendChild(styleElement)
 
-    // Render Laminar content
     val root = renderDetached(
-      render,
+      div(
+        cls := "container",
+        child.text <-- nameProp.signal.combineWith(countProp.signal).map {
+          case (name, count) => s"Hello, $name! (count: $count)"
+        }
+      ),
       activateNow = true
     )
     detachedRoot = Some(root)
@@ -65,70 +60,47 @@ class HelloWorld extends dom.HTMLElement {
   }
 
   def attributeChangedCallback(
-      name: String,
+      attrName: String,
       oldValue: String | Null,
       newValue: String | Null
   ): Unit = {
-    println(
-      s"attributeChangedCallback: $name changed from $oldValue to $newValue"
+    attrs.handleChange(attrName, newValue)(
+      attrs.name -> nameProp,
+      attrs.count -> countProp
     )
-    name match {
-      case "name" => nameVar.set(Option(newValue).getOrElse("World"))
-      case _      => ()
-    }
   }
 }
 
 object HelloWorld {
-  @JSExportStatic
-  val observedAttributes: js.Array[String] = js.Array("name")
+  // Define attributes - macro will extract names for observedAttributes
+  object attrs {
+    val name = ReactiveAttr.string("name", "World")
+    val count = ReactiveAttr.int("count", 0)
 
-  // Register this component with the browser
+    // Helper to dispatch attribute changes
+    def handleChange(attrName: String, value: String | Null)(
+        handlers: (ReactiveAttr[?], ReactiveProp[?])*
+    ): Unit = {
+      handlers.foreach { case (attr, prop) =>
+        if (attr.attrName == attrName) {
+          prop.asInstanceOf[ReactiveProp[Any]].handleChange(value)
+        }
+      }
+    }
+  }
+
+  // Macro-generated observedAttributes from attrs object
+  @JSExportStatic
+  val observedAttributes: js.Array[String] =
+    extractObservedAttributes[attrs.type]
+
   def register(): Unit = {
     dom.window.customElements
       .define("hello-world", js.constructorOf[HelloWorld])
   }
 
-  // Typed Laminar tag for using this component
   val tag: CustomHtmlTag[dom.HTMLElement] = CustomHtmlTag("hello-world")
-
-  // Type-safe attribute
   val name: HtmlAttr[String] = htmlAttr("name", StringAsIsCodec)
 
-  // Convenience constructor
   def apply(mods: Modifier[HtmlElement]*): HtmlElement = tag(mods*)
-}
-
-// =============================================================================
-// Main Application
-// =============================================================================
-
-@main
-def main(): Unit = {
-  // Register the custom element
-  HelloWorld.register()
-
-  // Use the component with typed API
-  val app = div(
-    input(
-      typ := "text",
-      placeholder := "Enter your name",
-      padding := "10px",
-      fontSize := "16px",
-      marginBottom := "20px",
-      inContext { thisNode =>
-        onInput.mapToValue --> { value =>
-          // Find the hello-world element and update its attribute
-          thisNode.ref.parentElement
-            .querySelector("hello-world")
-            .setAttribute("name", value)
-        }
-      }
-    ),
-    HelloWorld(
-      HelloWorld.name := "World"
-    )
-  )
-
-  render(dom.document.getElementById("app"), app)
 }
