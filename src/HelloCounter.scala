@@ -1,12 +1,31 @@
 import com.raquo.laminar.api.L.*
 import scala.scalajs.js
-import scala.scalajs.js.annotation.*
 
 // =============================================================================
 // HelloCounter Web Component - A counter with increment/decrement buttons
 // =============================================================================
 
-class HelloCounter extends WebComponent {
+object HelloCounter {
+  object attrs {
+    val count = ReactiveAttr.int("count", 0)
+    val step = ReactiveAttr.int("step", 1)
+    val label = ReactiveAttr.string("label", "Counter")
+  }
+
+  // One-liner registration!
+  val api = registerWebComponent(
+    "hello-counter",
+    attrs,
+    js.constructorOf[HelloCounterComponent]
+  )
+
+  def apply(mods: Modifier[HtmlElement]*) = api(mods*)
+  val count = api.intAttr("count")
+  val step = api.intAttr("step")
+  val label = api.stringAttr("label")
+}
+
+class HelloCounterComponent extends WebComponent {
   import HelloCounter.attrs
 
   private val countProp = prop(attrs.count)
@@ -82,22 +101,4 @@ class HelloCounter extends WebComponent {
       )
     )
   }
-}
-
-object HelloCounter
-    extends WebComponentCompanion[HelloCounter]("hello-counter") {
-  protected def jsConstructor = js.constructorOf[HelloCounter]
-
-  object attrs {
-    val count = ReactiveAttr.int("count", 0)
-    val step = ReactiveAttr.int("step", 1)
-    val label = ReactiveAttr.string("label", "Counter")
-  }
-
-  @JSExportStatic
-  val observedAttributes = extractObservedAttributes[attrs.type]
-
-  val count: HtmlAttr[Int] = intAttr("count")
-  val step: HtmlAttr[Int] = intAttr("step")
-  val label: HtmlAttr[String] = stringAttr("label")
 }

@@ -1,12 +1,28 @@
 import com.raquo.laminar.api.L.*
 import scala.scalajs.js
-import scala.scalajs.js.annotation.*
 
 // =============================================================================
 // HelloWorld Web Component
 // =============================================================================
 
-class HelloWorld extends WebComponent {
+object HelloWorld {
+  object attrs {
+    val name = ReactiveAttr.string("name", "World")
+  }
+
+  // One-liner registration - macro handles everything!
+  val api = registerWebComponent(
+    "hello-world",
+    attrs,
+    js.constructorOf[HelloWorldComponent]
+  )
+
+  // Re-export for convenience
+  def apply(mods: Modifier[HtmlElement]*) = api(mods*)
+  val name = api.stringAttr("name")
+}
+
+class HelloWorldComponent extends WebComponent {
   import HelloWorld.attrs
 
   private val nameProp = prop(attrs.name)
@@ -30,17 +46,4 @@ class HelloWorld extends WebComponent {
       child.text <-- nameProp.signal.map(n => s"Hello, $n!")
     )
   }
-}
-
-object HelloWorld extends WebComponentCompanion[HelloWorld]("hello-world") {
-  protected def jsConstructor = js.constructorOf[HelloWorld]
-
-  object attrs {
-    val name = ReactiveAttr.string("name", "World")
-  }
-
-  @JSExportStatic
-  val observedAttributes = extractObservedAttributes[attrs.type]
-
-  val name: HtmlAttr[String] = stringAttr("name")
 }

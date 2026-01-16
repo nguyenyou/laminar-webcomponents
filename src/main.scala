@@ -7,9 +7,8 @@ import org.scalajs.dom
 
 @main
 def main(): Unit = {
-  // Register all custom elements
-  HelloWorld.register()
-  HelloCounter.register()
+  // Force initialization (registration happens automatically via the macro)
+  val _ = (HelloWorld.api, HelloCounter.api)
 
   val app = div(
     display := "flex",

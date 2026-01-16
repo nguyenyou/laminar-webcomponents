@@ -1,8 +1,11 @@
-import scala.quoted.*
 import scala.scalajs.js
+import org.scalajs.dom
+import com.raquo.laminar.api.L.*
+import com.raquo.laminar.tags.CustomHtmlTag
+import com.raquo.laminar.codecs.StringAsIsCodec
 
 // =============================================================================
-// Reactive Attribute - Runtime class
+// Reactive Attribute - Definition class (used in attrs object)
 // =============================================================================
 
 class ReactiveAttr[T](
@@ -26,22 +29,21 @@ object ReactiveAttr {
 }
 
 // =============================================================================
-// Macros for extracting attribute names from companion objects
+// Macros
 // =============================================================================
 
-/** Extracts all ReactiveAttr field names from a companion object type */
+/** Extracts all ReactiveAttr field names from an object type */
 inline def extractObservedAttributes[T]: js.Array[String] =
   ${ extractObservedAttributesImpl[T] }
 
-private def extractObservedAttributesImpl[T: Type](using
-    Quotes
-): Expr[js.Array[String]] = {
-  import quotes.reflect.*
+private def extractObservedAttributesImpl[T: scala.quoted.Type](using
+    q: scala.quoted.Quotes
+): scala.quoted.Expr[js.Array[String]] = {
+  import q.reflect.*
+  import scala.quoted.{Expr, Varargs}
 
   val tpe = TypeRepr.of[T]
   val moduleSymbol = tpe.typeSymbol
-
-  // Find all vals that return ReactiveAttr[_]
   val reactiveAttrType = TypeRepr.of[ReactiveAttr[?]]
 
   val attrFields = moduleSymbol.fieldMembers.filter { field =>
@@ -49,10 +51,7 @@ private def extractObservedAttributesImpl[T: Type](using
     fieldType <:< reactiveAttrType
   }
 
-  // For each field, extract the attrName from the initializer
-  // Handles patterns like: ReactiveAttr.string("name", "default")
   val attrNames: List[Expr[String]] = attrFields.map { field =>
-    // Try to extract literal string from the AST
     def extractStringLiteral(tree: Tree): Option[String] = tree match {
       case Literal(StringConstant(s))      => Some(s)
       case Apply(_, args) if args.nonEmpty => extractStringLiteral(args.head)
@@ -62,7 +61,6 @@ private def extractObservedAttributesImpl[T: Type](using
     field.tree match {
       case ValDef(_, _, Some(rhs)) =>
         extractStringLiteral(rhs).map(Expr(_)).getOrElse {
-          // Fallback: use field name as attribute name (kebab-case convention)
           Expr(field.name.stripSuffix(" "))
         }
       case _ =>
@@ -71,4 +69,41 @@ private def extractObservedAttributesImpl[T: Type](using
   }
 
   '{ js.Array(${ Varargs(attrNames) }*) }
+}
+
+/** Registers a WebComponent and returns a typed API - no companion object
+  * needed!
+  */
+inline def registerWebComponent[A](
+    tagName: String,
+    attrs: A,
+    ctor: js.Dynamic
+): WebComponentApi = {
+  val attrNames = extractObservedAttributes[A]
+  // Set observedAttributes dynamically - no @JSExportStatic needed!
+  ctor.observedAttributes = attrNames
+  dom.window.customElements.define(tagName, ctor)
+  new WebComponentApi(tagName)
+}
+
+// =============================================================================
+// WebComponentApi - Returned by registerWebComponent macro
+// =============================================================================
+
+class WebComponentApi(val tagName: String) {
+  lazy val tag: CustomHtmlTag[dom.HTMLElement] = CustomHtmlTag(tagName)
+
+  def apply(mods: Modifier[HtmlElement]*): HtmlElement = tag(mods*)
+
+  def stringAttr(name: String): HtmlAttr[String] =
+    htmlAttr(name, StringAsIsCodec)
+
+  def intAttr(name: String): HtmlAttr[Int] =
+    htmlAttr(name, com.raquo.laminar.codecs.IntAsStringCodec)
+
+  def doubleAttr(name: String): HtmlAttr[Double] =
+    htmlAttr(name, com.raquo.laminar.codecs.DoubleAsStringCodec)
+
+  def boolAttr(name: String): HtmlAttr[Boolean] =
+    htmlAttr(name, com.raquo.laminar.codecs.BooleanAsTrueFalseStringCodec)
 }
