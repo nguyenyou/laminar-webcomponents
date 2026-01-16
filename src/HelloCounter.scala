@@ -1,6 +1,4 @@
 import com.raquo.laminar.api.L.*
-import com.raquo.laminar.tags.CustomHtmlTag
-import org.scalajs.dom
 import scala.scalajs.js
 import scala.scalajs.js.annotation.*
 
@@ -11,7 +9,6 @@ import scala.scalajs.js.annotation.*
 class HelloCounter extends WebComponent {
   import HelloCounter.attrs
 
-  // Reactive props from attributes
   private val countProp = prop(attrs.count)
   private val stepProp = prop(attrs.step)
   private val labelProp = prop(attrs.label)
@@ -87,7 +84,10 @@ class HelloCounter extends WebComponent {
   }
 }
 
-object HelloCounter {
+object HelloCounter
+    extends WebComponentCompanion[HelloCounter]("hello-counter")(
+      using () => js.constructorOf[HelloCounter]
+    ) {
   object attrs {
     val count = ReactiveAttr.int("count", 0)
     val step = ReactiveAttr.int("step", 1)
@@ -98,19 +98,7 @@ object HelloCounter {
   val observedAttributes: js.Array[String] =
     extractObservedAttributes[attrs.type]
 
-  def register(): Unit = {
-    dom.window.customElements
-      .define("hello-counter", js.constructorOf[HelloCounter])
-  }
-
-  val tag: CustomHtmlTag[dom.HTMLElement] = CustomHtmlTag("hello-counter")
-
-  val count: HtmlAttr[Int] =
-    htmlAttr("count", com.raquo.laminar.codecs.IntAsStringCodec)
-  val step: HtmlAttr[Int] =
-    htmlAttr("step", com.raquo.laminar.codecs.IntAsStringCodec)
-  val label: HtmlAttr[String] =
-    htmlAttr("label", com.raquo.laminar.codecs.StringAsIsCodec)
-
-  def apply(mods: Modifier[HtmlElement]*): HtmlElement = tag(mods*)
+  val count: HtmlAttr[Int] = intAttr("count")
+  val step: HtmlAttr[Int] = intAttr("step")
+  val label: HtmlAttr[String] = stringAttr("label")
 }

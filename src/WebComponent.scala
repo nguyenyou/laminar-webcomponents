@@ -65,30 +65,30 @@ abstract class WebComponent extends dom.HTMLElement {
 // Companion Object Helper Trait
 // =============================================================================
 
-trait WebComponentCompanion[C <: WebComponent] {
-  // Must be implemented by subclass
-  def tagName: String
-
-  // Define attributes in a nested object for macro extraction
-  type Attrs
-  def attrs: Attrs
-
-  // Macro-generated - must be implemented using extractObservedAttributes
-  def observedAttributeNames: js.Array[String]
-
-  // Register with CustomElements registry
-  def register()(using constructor: js.Dynamic): Unit = {
-    dom.window.customElements.define(tagName, constructor)
-  }
-
+trait WebComponentCompanion[C <: WebComponent](val tagName: String)(using
+    jsConstructor: () => js.Dynamic
+) {
   // Typed Laminar tag
   lazy val tag: CustomHtmlTag[dom.HTMLElement] = CustomHtmlTag(tagName)
+
+  // Register with CustomElements registry
+  def register(): Unit = {
+    dom.window.customElements.define(tagName, jsConstructor())
+  }
 
   // Convenience constructor
   def apply(mods: Modifier[HtmlElement]*): HtmlElement = tag(mods*)
 
-  // Helper for string attributes
+  // Attribute helpers
   protected def stringAttr(name: String): HtmlAttr[String] =
     htmlAttr(name, StringAsIsCodec)
-}
 
+  protected def intAttr(name: String): HtmlAttr[Int] =
+    htmlAttr(name, com.raquo.laminar.codecs.IntAsStringCodec)
+
+  protected def doubleAttr(name: String): HtmlAttr[Double] =
+    htmlAttr(name, com.raquo.laminar.codecs.DoubleAsStringCodec)
+
+  protected def boolAttr(name: String): HtmlAttr[Boolean] =
+    htmlAttr(name, com.raquo.laminar.codecs.BooleanAsTrueFalseStringCodec)
+}

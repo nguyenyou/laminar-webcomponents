@@ -1,6 +1,4 @@
 import com.raquo.laminar.api.L.*
-import com.raquo.laminar.tags.CustomHtmlTag
-import org.scalajs.dom
 import scala.scalajs.js
 import scala.scalajs.js.annotation.*
 
@@ -11,7 +9,6 @@ import scala.scalajs.js.annotation.*
 class HelloWorld extends WebComponent {
   import HelloWorld.attrs
 
-  // Create reactive props - automatically registered for attributeChangedCallback
   private val nameProp = prop(attrs.name)
 
   override def styles: String = """
@@ -35,7 +32,10 @@ class HelloWorld extends WebComponent {
   }
 }
 
-object HelloWorld {
+object HelloWorld
+    extends WebComponentCompanion[HelloWorld]("hello-world")(
+      using () => js.constructorOf[HelloWorld]
+    ) {
   object attrs {
     val name = ReactiveAttr.string("name", "World")
   }
@@ -44,15 +44,5 @@ object HelloWorld {
   val observedAttributes: js.Array[String] =
     extractObservedAttributes[attrs.type]
 
-  def register(): Unit = {
-    dom.window.customElements
-      .define("hello-world", js.constructorOf[HelloWorld])
-  }
-
-  val tag: CustomHtmlTag[dom.HTMLElement] = CustomHtmlTag("hello-world")
-
-  val name: HtmlAttr[String] =
-    htmlAttr("name", com.raquo.laminar.codecs.StringAsIsCodec)
-
-  def apply(mods: Modifier[HtmlElement]*): HtmlElement = tag(mods*)
+  val name: HtmlAttr[String] = stringAttr("name")
 }
