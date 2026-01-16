@@ -1045,6 +1045,9 @@ $c_LLaminarWebComponent.prototype.constructor = $c_LLaminarWebComponent;
 function $h_LLaminarWebComponent() {
 }
 $h_LLaminarWebComponent.prototype = $c_LLaminarWebComponent.prototype;
+$c_LLaminarWebComponent.prototype.styles__T = (function() {
+  return "";
+});
 $c_LLaminarWebComponent.prototype.attr__LLaminarWebComponent$attr$ = (function() {
   if ((!this.LLaminarWebComponent__f_attrbitmap$1)) {
     this.LLaminarWebComponent__f_attr$lzy1 = new $c_LLaminarWebComponent$attr$(this);
@@ -6377,16 +6380,9 @@ function $c_LHelloWorld$() {
   this.LLaminarWebComponent__f_ComponentInstance$jsname = null;
   this.LLaminarWebComponent__f_register$lzy1 = null;
   this.LLaminarWebComponent__f_registerbitmap$1 = false;
-  this.LHelloWorld$__f__styles = null;
-  this.LHelloWorld$__f_classNames = null;
   this.LHelloWorld$__f_name = null;
   $ct_LLaminarWebComponent__T__(this, "hello-world");
   $n_LHelloWorld$ = this;
-  var _2 = new $c_T2("container", "1");
-  var \u03b42$___1 = ".container {\n  padding: 20px;\n  background-color: #4a90d9;\n  color: white;\n  border-radius: 8px;\n  font-family: system-ui, sans-serif;\n  font-size: 24px;\n  text-align: center;\n  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);\n}\n";
-  var \u03b42$___2 = _2;
-  this.LHelloWorld$__f__styles = $as_T(\u03b42$___1);
-  this.LHelloWorld$__f_classNames = $as_T2(\u03b42$___2);
   this.LHelloWorld$__f_name = $n(this.attr__LLaminarWebComponent$attr$()).string__T__T__LReactiveAttr("name", "World");
 }
 $c_LHelloWorld$.prototype = new $h_LLaminarWebComponent();
@@ -6395,14 +6391,8 @@ $c_LHelloWorld$.prototype.constructor = $c_LHelloWorld$;
 function $h_LHelloWorld$() {
 }
 $h_LHelloWorld$.prototype = $c_LHelloWorld$.prototype;
-$c_LHelloWorld$.prototype.styles__T = (function() {
-  return this.LHelloWorld$__f__styles;
-});
 $c_LHelloWorld$.prototype.render__LLaminarWebComponent$Props__Lcom_raquo_laminar_nodes_ReactiveHtmlElement = (function(x$1) {
-  var $x_2 = $n($n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L).div__Lcom_raquo_laminar_tags_HtmlTag());
-  var $x_1 = $n($n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L).Lcom_raquo_laminar_api_package$$anon$1__f_cls);
-  var x$proxy1 = this.LHelloWorld$__f_classNames;
-  var x0 = $x_1.$colon$eq__T__Lcom_raquo_laminar_modifiers_CompositeKeySetter($as_T($n(x$proxy1).T2__f__1));
+  var $x_1 = $n($n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L).div__Lcom_raquo_laminar_tags_HtmlTag());
   $n($n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L).Lcom_raquo_laminar_api_package$$anon$1__f_child);
   var this$2 = $n(this.signal__LReactiveAttr__LLaminarWebComponent$Props__Lcom_raquo_airstream_core_Signal(this.LHelloWorld$__f_name, x$1));
   var project = new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((n$2) => {
@@ -6410,9 +6400,9 @@ $c_LHelloWorld$.prototype.render__LLaminarWebComponent$Props__Lcom_raquo_laminar
     return (("Hello, " + n) + "!");
   }));
   var textSource = new $c_Lcom_raquo_airstream_misc_MapSignal(this$2, project, $m_s_None$());
-  var x1 = $m_Lcom_raquo_laminar_inserters_ChildTextInserter$().apply__Lcom_raquo_airstream_core_Observable__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_inserters_DynamicInserter(textSource, $m_Lcom_raquo_laminar_modifiers_RenderableText$().Lcom_raquo_laminar_modifiers_RenderableText$__f_stringRenderable);
-  var array = [x0, x1];
-  return $x_2.apply__sci_Seq__Lcom_raquo_laminar_nodes_ReactiveHtmlElement(new $c_sjsr_WrappedVarArgs(array));
+  var x0 = $m_Lcom_raquo_laminar_inserters_ChildTextInserter$().apply__Lcom_raquo_airstream_core_Observable__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_inserters_DynamicInserter(textSource, $m_Lcom_raquo_laminar_modifiers_RenderableText$().Lcom_raquo_laminar_modifiers_RenderableText$__f_stringRenderable);
+  var array = [x0];
+  return $x_1.apply__sci_Seq__Lcom_raquo_laminar_nodes_ReactiveHtmlElement(new $c_sjsr_WrappedVarArgs(array));
 });
 var $d_LHelloWorld$ = new $TypeData().initClass($c_LHelloWorld$, "HelloWorld$", ({
   LHelloWorld$: 1,
