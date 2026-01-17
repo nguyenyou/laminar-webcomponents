@@ -1219,18 +1219,21 @@ $c_LLaminarWebComponent$attr$.prototype.boolean__T__Z__Z__LReactiveAttr = (funct
 var $d_LLaminarWebComponent$attr$ = new $TypeData().initClass($c_LLaminarWebComponent$attr$, "LaminarWebComponent$attr$", ({
   LLaminarWebComponent$attr$: 1
 }));
+function $ct_LReactiveAttr__T__O__F1__Lcom_raquo_laminar_codecs_Codec__Z__($thiz, attrName, default$1, parse, codec, reflect) {
+  $thiz.LReactiveAttr__f_attrName = attrName;
+  $thiz.LReactiveAttr__f_default = default$1;
+  $thiz.LReactiveAttr__f_parse = parse;
+  $thiz.LReactiveAttr__f_codec = codec;
+  $thiz.LReactiveAttr__f_reflect = reflect;
+  return $thiz;
+}
 /** @constructor */
-function $c_LReactiveAttr(attrName, default$1, parse, codec, reflect) {
+function $c_LReactiveAttr() {
   this.LReactiveAttr__f_attrName = null;
   this.LReactiveAttr__f_default = null;
   this.LReactiveAttr__f_parse = null;
   this.LReactiveAttr__f_codec = null;
   this.LReactiveAttr__f_reflect = false;
-  this.LReactiveAttr__f_attrName = attrName;
-  this.LReactiveAttr__f_default = default$1;
-  this.LReactiveAttr__f_parse = parse;
-  this.LReactiveAttr__f_codec = codec;
-  this.LReactiveAttr__f_reflect = reflect;
 }
 $c_LReactiveAttr.prototype = new $h_O();
 $c_LReactiveAttr.prototype.constructor = $c_LReactiveAttr;
@@ -1260,20 +1263,20 @@ function $h_LReactiveAttr$() {
 }
 $h_LReactiveAttr$.prototype = $c_LReactiveAttr$.prototype;
 $c_LReactiveAttr$.prototype.string__T__T__Z__LReactiveAttr = (function(name, default$1, reflect) {
-  return new $c_LReactiveAttr(name, default$1, new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((x$2) => {
+  return $ct_LReactiveAttr__T__O__F1__Lcom_raquo_laminar_codecs_Codec__Z__(new $c_LReactiveAttr(), name, default$1, new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((x$2) => {
     var x = $as_T(x$2);
     return x;
   })), $m_Lcom_raquo_laminar_codecs_package$().Lcom_raquo_laminar_codecs_package$__f_StringAsIsCodec, reflect);
 });
 $c_LReactiveAttr$.prototype.int__T__I__Z__LReactiveAttr = (function(name, default$1, reflect) {
-  return new $c_LReactiveAttr(name, default$1, new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((s$2) => {
+  return $ct_LReactiveAttr__T__O__F1__Lcom_raquo_laminar_codecs_Codec__Z__(new $c_LReactiveAttr(), name, default$1, new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((s$2) => {
     var s = $as_T(s$2);
     var this$4 = $n(($m_sc_StringOps$(), $m_sc_StringParsers$().parseInt__T__s_Option(s)));
     return $uI((this$4.isEmpty__Z() ? default$1 : this$4.get__O()));
   })), $m_Lcom_raquo_laminar_codecs_package$().IntAsStringCodec__Lcom_raquo_laminar_codecs_Codec(), reflect);
 });
 $c_LReactiveAttr$.prototype.boolean__T__Z__Z__LReactiveAttr = (function(name, default$1, reflect) {
-  return new $c_LReactiveAttr(name, default$1, new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$1$2) => {
+  return $ct_LReactiveAttr__T__O__F1__Lcom_raquo_laminar_codecs_Codec__Z__(new $c_LReactiveAttr(), name, default$1, new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$1$2) => {
     var _$1 = $as_T(_$1$2);
     return (_$1 !== null);
   })), $m_Lcom_raquo_laminar_codecs_package$().BooleanAsTrueFalseStringCodec__Lcom_raquo_laminar_codecs_Codec(), reflect);
@@ -4832,9 +4835,9 @@ $c_Lmain$package$.prototype.main__V = (function() {
   var $x_118 = $x_123.apply__sci_Seq__Lcom_raquo_laminar_nodes_ReactiveHtmlElement(new $c_sjsr_WrappedVarArgs(array$2));
   var $x_117 = $m_LHelloWorld$();
   var this$20 = $m_sjsr_package$();
-  var xs$3 = new ($d_F1.getArrayOf().constr)([new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$1$2) => {
-    var _$1 = $as_LHelloWorld$(_$1$2);
-    var this$18 = $n($n(_$1).LHelloWorld$__f_name);
+  var xs$3 = new ($d_F1.getArrayOf().constr)([new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$40$2) => {
+    var _$40 = $as_LHelloWorld$(_$40$2);
+    var this$18 = $n($n(_$40).LHelloWorld$__f_name);
     $n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L);
     var name = this$18.LReactiveAttr__f_attrName;
     var codec$1 = this$18.LReactiveAttr__f_codec;
@@ -4863,23 +4866,23 @@ $c_Lmain$package$.prototype.main__V = (function() {
   var $x_109 = $n($n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L).gap__Lcom_raquo_laminar_keys_StyleProp()).$colon$eq__O__Lcom_raquo_laminar_modifiers_KeySetter("16px");
   var $x_108 = $m_LHelloCounter$();
   var this$42 = $m_sjsr_package$();
-  var xs$7 = new ($d_F1.getArrayOf().constr)([new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$2$2) => {
-    var _$2 = $as_LHelloCounter$(_$2$2);
-    var this$34 = $n($n(_$2).LHelloCounter$__f_label);
+  var xs$7 = new ($d_F1.getArrayOf().constr)([new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$41$2) => {
+    var _$41 = $as_LHelloCounter$(_$41$2);
+    var this$34 = $n($n(_$41).LHelloCounter$__f_label);
     $n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L);
     var name$1 = this$34.LReactiveAttr__f_attrName;
     var codec$2 = this$34.LReactiveAttr__f_codec;
     return new $c_Lcom_raquo_laminar_keys_HtmlAttr(name$1, codec$2).$colon$eq__O__Lcom_raquo_laminar_modifiers_KeySetter("Score");
-  })), new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$3$2) => {
-    var _$3 = $as_LHelloCounter$(_$3$2);
-    var this$37 = $n($n(_$3).LHelloCounter$__f_count);
+  })), new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$42$2) => {
+    var _$42 = $as_LHelloCounter$(_$42$2);
+    var this$37 = $n($n(_$42).LHelloCounter$__f_count);
     $n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L);
     var name$2 = this$37.LReactiveAttr__f_attrName;
     var codec$3 = this$37.LReactiveAttr__f_codec;
     return new $c_Lcom_raquo_laminar_keys_HtmlAttr(name$2, codec$3).$colon$eq__O__Lcom_raquo_laminar_modifiers_KeySetter(0);
-  })), new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$4$2) => {
-    var _$4 = $as_LHelloCounter$(_$4$2);
-    var this$40 = $n($n(_$4).LHelloCounter$__f_step);
+  })), new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$43$2) => {
+    var _$43 = $as_LHelloCounter$(_$43$2);
+    var this$40 = $n($n(_$43).LHelloCounter$__f_step);
     $n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L);
     var name$3 = this$40.LReactiveAttr__f_attrName;
     var codec$4 = this$40.LReactiveAttr__f_codec;
@@ -4893,23 +4896,23 @@ $c_Lmain$package$.prototype.main__V = (function() {
   var $x_106 = $x_108.apply__sci_Seq__sci_Seq__Lcom_raquo_laminar_nodes_ReactiveHtmlElement($x_107, new $c_sjsr_WrappedVarArgs(array$8));
   var $x_105 = $m_LHelloCounter$();
   var this$57 = $m_sjsr_package$();
-  var xs$9 = new ($d_F1.getArrayOf().constr)([new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$5$2) => {
-    var _$5 = $as_LHelloCounter$(_$5$2);
-    var this$49 = $n($n(_$5).LHelloCounter$__f_label);
+  var xs$9 = new ($d_F1.getArrayOf().constr)([new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$44$2) => {
+    var _$44 = $as_LHelloCounter$(_$44$2);
+    var this$49 = $n($n(_$44).LHelloCounter$__f_label);
     $n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L);
     var name$4 = this$49.LReactiveAttr__f_attrName;
     var codec$5 = this$49.LReactiveAttr__f_codec;
     return new $c_Lcom_raquo_laminar_keys_HtmlAttr(name$4, codec$5).$colon$eq__O__Lcom_raquo_laminar_modifiers_KeySetter("Lives");
-  })), new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$6$2) => {
-    var _$6 = $as_LHelloCounter$(_$6$2);
-    var this$52 = $n($n(_$6).LHelloCounter$__f_count);
+  })), new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$45$2) => {
+    var _$45 = $as_LHelloCounter$(_$45$2);
+    var this$52 = $n($n(_$45).LHelloCounter$__f_count);
     $n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L);
     var name$5 = this$52.LReactiveAttr__f_attrName;
     var codec$6 = this$52.LReactiveAttr__f_codec;
     return new $c_Lcom_raquo_laminar_keys_HtmlAttr(name$5, codec$6).$colon$eq__O__Lcom_raquo_laminar_modifiers_KeySetter(3);
-  })), new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$7$2) => {
-    var _$7 = $as_LHelloCounter$(_$7$2);
-    var this$55 = $n($n(_$7).LHelloCounter$__f_step);
+  })), new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$46$2) => {
+    var _$46 = $as_LHelloCounter$(_$46$2);
+    var this$55 = $n($n(_$46).LHelloCounter$__f_step);
     $n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L);
     var name$6 = this$55.LReactiveAttr__f_attrName;
     var codec$7 = this$55.LReactiveAttr__f_codec;
@@ -4942,9 +4945,9 @@ $c_Lmain$package$.prototype.main__V = (function() {
   var $x_95 = $n($n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L).alignItems__Lcom_raquo_laminar_keys_StyleProp()).$colon$eq__O__Lcom_raquo_laminar_modifiers_KeySetter("center");
   var $x_94 = $m_LTuButton$();
   var this$76 = $m_sjsr_package$();
-  var xs$14 = new ($d_F1.getArrayOf().constr)([new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$8$2) => {
-    var _$8 = $as_LTuButton$(_$8$2);
-    var this$74 = $n($n(_$8).LTuButton$__f_variant);
+  var xs$14 = new ($d_F1.getArrayOf().constr)([new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$47$2) => {
+    var _$47 = $as_LTuButton$(_$47$2);
+    var this$74 = $n($n(_$47).LTuButton$__f_variant);
     $n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L);
     var name$7 = this$74.LReactiveAttr__f_attrName;
     var codec$8 = this$74.LReactiveAttr__f_codec;
@@ -4960,9 +4963,9 @@ $c_Lmain$package$.prototype.main__V = (function() {
   var $x_92 = $x_94.apply__sci_Seq__sci_Seq__Lcom_raquo_laminar_nodes_ReactiveHtmlElement($x_93, new $c_sjsr_WrappedVarArgs(array$15));
   var $x_91 = $m_LTuButton$();
   var this$86 = $m_sjsr_package$();
-  var xs$16 = new ($d_F1.getArrayOf().constr)([new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$9$2) => {
-    var _$9 = $as_LTuButton$(_$9$2);
-    var this$84 = $n($n(_$9).LTuButton$__f_variant);
+  var xs$16 = new ($d_F1.getArrayOf().constr)([new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$48$2) => {
+    var _$48 = $as_LTuButton$(_$48$2);
+    var this$84 = $n($n(_$48).LTuButton$__f_variant);
     $n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L);
     var name$8 = this$84.LReactiveAttr__f_attrName;
     var codec$9 = this$84.LReactiveAttr__f_codec;
@@ -4978,9 +4981,9 @@ $c_Lmain$package$.prototype.main__V = (function() {
   var $x_89 = $x_91.apply__sci_Seq__sci_Seq__Lcom_raquo_laminar_nodes_ReactiveHtmlElement($x_90, new $c_sjsr_WrappedVarArgs(array$17));
   var $x_88 = $m_LTuButton$();
   var this$96 = $m_sjsr_package$();
-  var xs$18 = new ($d_F1.getArrayOf().constr)([new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$10$2) => {
-    var _$10 = $as_LTuButton$(_$10$2);
-    var this$94 = $n($n(_$10).LTuButton$__f_variant);
+  var xs$18 = new ($d_F1.getArrayOf().constr)([new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$49$2) => {
+    var _$49 = $as_LTuButton$(_$49$2);
+    var this$94 = $n($n(_$49).LTuButton$__f_variant);
     $n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L);
     var name$9 = this$94.LReactiveAttr__f_attrName;
     var codec$10 = this$94.LReactiveAttr__f_codec;
@@ -4996,9 +4999,9 @@ $c_Lmain$package$.prototype.main__V = (function() {
   var $x_86 = $x_88.apply__sci_Seq__sci_Seq__Lcom_raquo_laminar_nodes_ReactiveHtmlElement($x_87, new $c_sjsr_WrappedVarArgs(array$19));
   var $x_85 = $m_LTuButton$();
   var this$106 = $m_sjsr_package$();
-  var xs$20 = new ($d_F1.getArrayOf().constr)([new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$11$2) => {
-    var _$11 = $as_LTuButton$(_$11$2);
-    var this$104 = $n($n(_$11).LTuButton$__f_variant);
+  var xs$20 = new ($d_F1.getArrayOf().constr)([new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$50$2) => {
+    var _$50 = $as_LTuButton$(_$50$2);
+    var this$104 = $n($n(_$50).LTuButton$__f_variant);
     $n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L);
     var name$10 = this$104.LReactiveAttr__f_attrName;
     var codec$11 = this$104.LReactiveAttr__f_codec;
@@ -5014,9 +5017,9 @@ $c_Lmain$package$.prototype.main__V = (function() {
   var $x_83 = $x_85.apply__sci_Seq__sci_Seq__Lcom_raquo_laminar_nodes_ReactiveHtmlElement($x_84, new $c_sjsr_WrappedVarArgs(array$21));
   var $x_82 = $m_LTuButton$();
   var this$116 = $m_sjsr_package$();
-  var xs$22 = new ($d_F1.getArrayOf().constr)([new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$12$2) => {
-    var _$12 = $as_LTuButton$(_$12$2);
-    var this$114 = $n($n(_$12).LTuButton$__f_btnDisabled);
+  var xs$22 = new ($d_F1.getArrayOf().constr)([new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$51$2) => {
+    var _$51 = $as_LTuButton$(_$51$2);
+    var this$114 = $n($n(_$51).LTuButton$__f_btnDisabled);
     $n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L);
     var name$11 = this$114.LReactiveAttr__f_attrName;
     var codec$12 = this$114.LReactiveAttr__f_codec;
@@ -5040,9 +5043,9 @@ $c_Lmain$package$.prototype.main__V = (function() {
   var $x_75 = $n($n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L).alignItems__Lcom_raquo_laminar_keys_StyleProp()).$colon$eq__O__Lcom_raquo_laminar_modifiers_KeySetter("center");
   var $x_74 = $m_LTuButton$();
   var this$129 = $m_sjsr_package$();
-  var xs$25 = new ($d_F1.getArrayOf().constr)([new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$13$2) => {
-    var _$13 = $as_LTuButton$(_$13$2);
-    var this$127 = $n($n(_$13).LTuButton$__f_btnSize);
+  var xs$25 = new ($d_F1.getArrayOf().constr)([new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$52$2) => {
+    var _$52 = $as_LTuButton$(_$52$2);
+    var this$127 = $n($n(_$52).LTuButton$__f_btnSize);
     $n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L);
     var name$12 = this$127.LReactiveAttr__f_attrName;
     var codec$13 = this$127.LReactiveAttr__f_codec;
@@ -5058,9 +5061,9 @@ $c_Lmain$package$.prototype.main__V = (function() {
   var $x_72 = $x_74.apply__sci_Seq__sci_Seq__Lcom_raquo_laminar_nodes_ReactiveHtmlElement($x_73, new $c_sjsr_WrappedVarArgs(array$26));
   var $x_71 = $m_LTuButton$();
   var this$139 = $m_sjsr_package$();
-  var xs$27 = new ($d_F1.getArrayOf().constr)([new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$14$2) => {
-    var _$14 = $as_LTuButton$(_$14$2);
-    var this$137 = $n($n(_$14).LTuButton$__f_btnSize);
+  var xs$27 = new ($d_F1.getArrayOf().constr)([new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$53$2) => {
+    var _$53 = $as_LTuButton$(_$53$2);
+    var this$137 = $n($n(_$53).LTuButton$__f_btnSize);
     $n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L);
     var name$13 = this$137.LReactiveAttr__f_attrName;
     var codec$14 = this$137.LReactiveAttr__f_codec;
@@ -5076,9 +5079,9 @@ $c_Lmain$package$.prototype.main__V = (function() {
   var $x_69 = $x_71.apply__sci_Seq__sci_Seq__Lcom_raquo_laminar_nodes_ReactiveHtmlElement($x_70, new $c_sjsr_WrappedVarArgs(array$28));
   var $x_68 = $m_LTuButton$();
   var this$149 = $m_sjsr_package$();
-  var xs$29 = new ($d_F1.getArrayOf().constr)([new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$15$2) => {
-    var _$15 = $as_LTuButton$(_$15$2);
-    var this$147 = $n($n(_$15).LTuButton$__f_btnSize);
+  var xs$29 = new ($d_F1.getArrayOf().constr)([new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$54$2) => {
+    var _$54 = $as_LTuButton$(_$54$2);
+    var this$147 = $n($n(_$54).LTuButton$__f_btnSize);
     $n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L);
     var name$14 = this$147.LReactiveAttr__f_attrName;
     var codec$15 = this$147.LReactiveAttr__f_codec;
@@ -5112,9 +5115,9 @@ $c_Lmain$package$.prototype.main__V = (function() {
   var $x_59 = $n($n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L).alignItems__Lcom_raquo_laminar_keys_StyleProp()).$colon$eq__O__Lcom_raquo_laminar_modifiers_KeySetter("center");
   var $x_58 = $m_LTuIcon$();
   var this$169 = $m_sjsr_package$();
-  var xs$34 = new ($d_F1.getArrayOf().constr)([new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$16$2) => {
-    var _$16 = $as_LTuIcon$(_$16$2);
-    var this$167 = $n($n(_$16).LTuIcon$__f_iconName);
+  var xs$34 = new ($d_F1.getArrayOf().constr)([new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$55$2) => {
+    var _$55 = $as_LTuIcon$(_$55$2);
+    var this$167 = $n($n(_$55).LTuIcon$__f_iconName);
     $n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L);
     var name$15 = this$167.LReactiveAttr__f_attrName;
     var codec$16 = this$167.LReactiveAttr__f_codec;
@@ -5128,9 +5131,9 @@ $c_Lmain$package$.prototype.main__V = (function() {
   var $x_56 = $x_58.apply__sci_Seq__sci_Seq__Lcom_raquo_laminar_nodes_ReactiveHtmlElement($x_57, new $c_sjsr_WrappedVarArgs(array$35));
   var $x_55 = $m_LTuIcon$();
   var this$178 = $m_sjsr_package$();
-  var xs$36 = new ($d_F1.getArrayOf().constr)([new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$17$2) => {
-    var _$17 = $as_LTuIcon$(_$17$2);
-    var this$176 = $n($n(_$17).LTuIcon$__f_iconName);
+  var xs$36 = new ($d_F1.getArrayOf().constr)([new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$56$2) => {
+    var _$56 = $as_LTuIcon$(_$56$2);
+    var this$176 = $n($n(_$56).LTuIcon$__f_iconName);
     $n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L);
     var name$16 = this$176.LReactiveAttr__f_attrName;
     var codec$17 = this$176.LReactiveAttr__f_codec;
@@ -5144,16 +5147,16 @@ $c_Lmain$package$.prototype.main__V = (function() {
   var $x_53 = $x_55.apply__sci_Seq__sci_Seq__Lcom_raquo_laminar_nodes_ReactiveHtmlElement($x_54, new $c_sjsr_WrappedVarArgs(array$37));
   var $x_52 = $m_LTuIcon$();
   var this$190 = $m_sjsr_package$();
-  var xs$38 = new ($d_F1.getArrayOf().constr)([new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$18$2) => {
-    var _$18 = $as_LTuIcon$(_$18$2);
-    var this$185 = $n($n(_$18).LTuIcon$__f_iconName);
+  var xs$38 = new ($d_F1.getArrayOf().constr)([new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$57$2) => {
+    var _$57 = $as_LTuIcon$(_$57$2);
+    var this$185 = $n($n(_$57).LTuIcon$__f_iconName);
     $n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L);
     var name$17 = this$185.LReactiveAttr__f_attrName;
     var codec$18 = this$185.LReactiveAttr__f_codec;
     return new $c_Lcom_raquo_laminar_keys_HtmlAttr(name$17, codec$18).$colon$eq__O__Lcom_raquo_laminar_modifiers_KeySetter("favorite");
-  })), new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$19$2) => {
-    var _$19 = $as_LTuIcon$(_$19$2);
-    var this$188 = $n($n(_$19).LTuIcon$__f_filled);
+  })), new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$58$2) => {
+    var _$58 = $as_LTuIcon$(_$58$2);
+    var this$188 = $n($n(_$58).LTuIcon$__f_filled);
     $n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L);
     var name$18 = this$188.LReactiveAttr__f_attrName;
     var codec$19 = this$188.LReactiveAttr__f_codec;
@@ -5167,16 +5170,16 @@ $c_Lmain$package$.prototype.main__V = (function() {
   var $x_50 = $x_52.apply__sci_Seq__sci_Seq__Lcom_raquo_laminar_nodes_ReactiveHtmlElement($x_51, new $c_sjsr_WrappedVarArgs(array$39));
   var $x_49 = $m_LTuIcon$();
   var this$202 = $m_sjsr_package$();
-  var xs$40 = new ($d_F1.getArrayOf().constr)([new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$20$2) => {
-    var _$20 = $as_LTuIcon$(_$20$2);
-    var this$197 = $n($n(_$20).LTuIcon$__f_iconName);
+  var xs$40 = new ($d_F1.getArrayOf().constr)([new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$59$2) => {
+    var _$59 = $as_LTuIcon$(_$59$2);
+    var this$197 = $n($n(_$59).LTuIcon$__f_iconName);
     $n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L);
     var name$19 = this$197.LReactiveAttr__f_attrName;
     var codec$20 = this$197.LReactiveAttr__f_codec;
     return new $c_Lcom_raquo_laminar_keys_HtmlAttr(name$19, codec$20).$colon$eq__O__Lcom_raquo_laminar_modifiers_KeySetter("star");
-  })), new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$21$2) => {
-    var _$21 = $as_LTuIcon$(_$21$2);
-    var this$200 = $n($n(_$21).LTuIcon$__f_iconSize);
+  })), new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$60$2) => {
+    var _$60 = $as_LTuIcon$(_$60$2);
+    var this$200 = $n($n(_$60).LTuIcon$__f_iconSize);
     $n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L);
     var name$20 = this$200.LReactiveAttr__f_attrName;
     var codec$21 = this$200.LReactiveAttr__f_codec;
@@ -5190,23 +5193,23 @@ $c_Lmain$package$.prototype.main__V = (function() {
   var $x_47 = $x_49.apply__sci_Seq__sci_Seq__Lcom_raquo_laminar_nodes_ReactiveHtmlElement($x_48, new $c_sjsr_WrappedVarArgs(array$41));
   var $x_46 = $m_LTuIcon$();
   var this$217 = $m_sjsr_package$();
-  var xs$42 = new ($d_F1.getArrayOf().constr)([new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$22$2) => {
-    var _$22 = $as_LTuIcon$(_$22$2);
-    var this$209 = $n($n(_$22).LTuIcon$__f_iconName);
+  var xs$42 = new ($d_F1.getArrayOf().constr)([new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$61$2) => {
+    var _$61 = $as_LTuIcon$(_$61$2);
+    var this$209 = $n($n(_$61).LTuIcon$__f_iconName);
     $n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L);
     var name$21 = this$209.LReactiveAttr__f_attrName;
     var codec$22 = this$209.LReactiveAttr__f_codec;
     return new $c_Lcom_raquo_laminar_keys_HtmlAttr(name$21, codec$22).$colon$eq__O__Lcom_raquo_laminar_modifiers_KeySetter("check_circle");
-  })), new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$23$2) => {
-    var _$23 = $as_LTuIcon$(_$23$2);
-    var this$212 = $n($n(_$23).LTuIcon$__f_iconSize);
+  })), new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$62$2) => {
+    var _$62 = $as_LTuIcon$(_$62$2);
+    var this$212 = $n($n(_$62).LTuIcon$__f_iconSize);
     $n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L);
     var name$22 = this$212.LReactiveAttr__f_attrName;
     var codec$23 = this$212.LReactiveAttr__f_codec;
     return new $c_Lcom_raquo_laminar_keys_HtmlAttr(name$22, codec$23).$colon$eq__O__Lcom_raquo_laminar_modifiers_KeySetter("48");
-  })), new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$24$2) => {
-    var _$24 = $as_LTuIcon$(_$24$2);
-    var this$215 = $n($n(_$24).LTuIcon$__f_filled);
+  })), new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$63$2) => {
+    var _$63 = $as_LTuIcon$(_$63$2);
+    var this$215 = $n($n(_$63).LTuIcon$__f_filled);
     $n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L);
     var name$23 = this$215.LReactiveAttr__f_attrName;
     var codec$24 = this$215.LReactiveAttr__f_codec;
@@ -5238,17 +5241,17 @@ $c_Lmain$package$.prototype.main__V = (function() {
   var $x_37 = $n($n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L).alignItems__Lcom_raquo_laminar_keys_StyleProp()).$colon$eq__O__Lcom_raquo_laminar_modifiers_KeySetter("center");
   var $x_36 = $m_LTuButton$();
   var this$248 = $m_sjsr_package$();
-  var xs$50 = new ($d_F1.getArrayOf().constr)([new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$25$2) => {
-    $as_LTuButton$(_$25$2);
+  var xs$50 = new ($d_F1.getArrayOf().constr)([new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$64$2) => {
+    $as_LTuButton$(_$64$2);
     var this$247 = $n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L);
     var $x_34 = $n($m_LTuButton$slots$().LTuButton$slots$__f_prefix);
     var this$243 = $m_sjsr_package$();
     $n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L);
     var $x_33 = $m_LTuIcon$();
     var this$236 = $m_sjsr_package$();
-    var xs$47 = new ($d_F1.getArrayOf().constr)([new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$26$2) => {
-      var _$26 = $as_LTuIcon$(_$26$2);
-      var this$234 = $n($n(_$26).LTuIcon$__f_iconName);
+    var xs$47 = new ($d_F1.getArrayOf().constr)([new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$65$2) => {
+      var _$65 = $as_LTuIcon$(_$65$2);
+      var this$234 = $n($n(_$65).LTuIcon$__f_iconName);
       $n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L);
       var name$24 = this$234.LReactiveAttr__f_attrName;
       var codec$25 = this$234.LReactiveAttr__f_codec;
@@ -5278,24 +5281,24 @@ $c_Lmain$package$.prototype.main__V = (function() {
   var $x_31 = $x_36.apply__sci_Seq__sci_Seq__Lcom_raquo_laminar_nodes_ReactiveHtmlElement($x_35, new $c_sjsr_WrappedVarArgs(array$51));
   var $x_30 = $m_LTuButton$();
   var this$273 = $m_sjsr_package$();
-  var xs$55 = new ($d_F1.getArrayOf().constr)([new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$27$2) => {
-    var _$27 = $as_LTuButton$(_$27$2);
-    var this$256 = $n($n(_$27).LTuButton$__f_variant);
+  var xs$55 = new ($d_F1.getArrayOf().constr)([new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$66$2) => {
+    var _$66 = $as_LTuButton$(_$66$2);
+    var this$256 = $n($n(_$66).LTuButton$__f_variant);
     $n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L);
     var name$25 = this$256.LReactiveAttr__f_attrName;
     var codec$26 = this$256.LReactiveAttr__f_codec;
     return new $c_Lcom_raquo_laminar_keys_HtmlAttr(name$25, codec$26).$colon$eq__O__Lcom_raquo_laminar_modifiers_KeySetter("outline");
-  })), new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$28$2) => {
-    $as_LTuButton$(_$28$2);
+  })), new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$67$2) => {
+    $as_LTuButton$(_$67$2);
     var this$272 = $n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L);
     var $x_28 = $n($m_LTuButton$slots$().LTuButton$slots$__f_suffix);
     var this$268 = $m_sjsr_package$();
     $n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L);
     var $x_27 = $m_LTuIcon$();
     var this$261 = $m_sjsr_package$();
-    var xs$52 = new ($d_F1.getArrayOf().constr)([new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$29$2) => {
-      var _$29 = $as_LTuIcon$(_$29$2);
-      var this$259 = $n($n(_$29).LTuIcon$__f_iconName);
+    var xs$52 = new ($d_F1.getArrayOf().constr)([new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$68$2) => {
+      var _$68 = $as_LTuIcon$(_$68$2);
+      var this$259 = $n($n(_$68).LTuIcon$__f_iconName);
       $n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L);
       var name$26 = this$259.LReactiveAttr__f_attrName;
       var codec$27 = this$259.LReactiveAttr__f_codec;
@@ -5325,24 +5328,24 @@ $c_Lmain$package$.prototype.main__V = (function() {
   var $x_25 = $x_30.apply__sci_Seq__sci_Seq__Lcom_raquo_laminar_nodes_ReactiveHtmlElement($x_29, new $c_sjsr_WrappedVarArgs(array$56));
   var $x_24 = $m_LTuButton$();
   var this$313 = $m_sjsr_package$();
-  var xs$63 = new ($d_F1.getArrayOf().constr)([new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$30$2) => {
-    var _$30 = $as_LTuButton$(_$30$2);
-    var this$281 = $n($n(_$30).LTuButton$__f_variant);
+  var xs$63 = new ($d_F1.getArrayOf().constr)([new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$69$2) => {
+    var _$69 = $as_LTuButton$(_$69$2);
+    var this$281 = $n($n(_$69).LTuButton$__f_variant);
     $n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L);
     var name$27 = this$281.LReactiveAttr__f_attrName;
     var codec$28 = this$281.LReactiveAttr__f_codec;
     return new $c_Lcom_raquo_laminar_keys_HtmlAttr(name$27, codec$28).$colon$eq__O__Lcom_raquo_laminar_modifiers_KeySetter("secondary");
-  })), new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$31$2) => {
-    $as_LTuButton$(_$31$2);
+  })), new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$70$2) => {
+    $as_LTuButton$(_$70$2);
     var this$297 = $n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L);
     var $x_19 = $n($m_LTuButton$slots$().LTuButton$slots$__f_prefix);
     var this$293 = $m_sjsr_package$();
     $n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L);
     var $x_18 = $m_LTuIcon$();
     var this$286 = $m_sjsr_package$();
-    var xs$57 = new ($d_F1.getArrayOf().constr)([new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$32$2) => {
-      var _$32 = $as_LTuIcon$(_$32$2);
-      var this$284 = $n($n(_$32).LTuIcon$__f_iconName);
+    var xs$57 = new ($d_F1.getArrayOf().constr)([new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$71$2) => {
+      var _$71 = $as_LTuIcon$(_$71$2);
+      var this$284 = $n($n(_$71).LTuIcon$__f_iconName);
       $n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L);
       var name$28 = this$284.LReactiveAttr__f_attrName;
       var codec$29 = this$284.LReactiveAttr__f_codec;
@@ -5361,17 +5364,17 @@ $c_Lmain$package$.prototype.main__V = (function() {
     var asModifier$2 = $m_s_$less$colon$less$().s_$less$colon$less$__f_singleton;
     var renderableSeq$2 = $m_Lcom_raquo_laminar_modifiers_RenderableSeq$collectionSeqRenderable$();
     return $f_Lcom_raquo_laminar_api_Implicits__seqToModifier__O__F1__Lcom_raquo_laminar_modifiers_RenderableSeq__Lcom_raquo_laminar_modifiers_Modifier(this$297, modifiers$2, asModifier$2, renderableSeq$2);
-  })), new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$33$2) => {
-    $as_LTuButton$(_$33$2);
+  })), new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$72$2) => {
+    $as_LTuButton$(_$72$2);
     var this$312 = $n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L);
     var $x_22 = $n($m_LTuButton$slots$().LTuButton$slots$__f_suffix);
     var this$308 = $m_sjsr_package$();
     $n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L);
     var $x_21 = $m_LTuIcon$();
     var this$301 = $m_sjsr_package$();
-    var xs$60 = new ($d_F1.getArrayOf().constr)([new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$34$2) => {
-      var _$34 = $as_LTuIcon$(_$34$2);
-      var this$299 = $n($n(_$34).LTuIcon$__f_iconName);
+    var xs$60 = new ($d_F1.getArrayOf().constr)([new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$73$2) => {
+      var _$73 = $as_LTuIcon$(_$73$2);
+      var this$299 = $n($n(_$73).LTuIcon$__f_iconName);
       $n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L);
       var name$29 = this$299.LReactiveAttr__f_attrName;
       var codec$30 = this$299.LReactiveAttr__f_codec;
@@ -5419,9 +5422,9 @@ $c_Lmain$package$.prototype.main__V = (function() {
   var $x_9 = $n($n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L).gap__Lcom_raquo_laminar_keys_StyleProp()).$colon$eq__O__Lcom_raquo_laminar_modifiers_KeySetter("8px");
   var $x_8 = $m_LTuCheckbox$();
   var this$333 = $m_sjsr_package$();
-  var xs$68 = new ($d_F1.getArrayOf().constr)([new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$35$2) => {
-    var _$35 = $as_LTuCheckbox$(_$35$2);
-    var this$331 = $n($n(_$35).LTuCheckbox$__f_labelText);
+  var xs$68 = new ($d_F1.getArrayOf().constr)([new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$74$2) => {
+    var _$74 = $as_LTuCheckbox$(_$74$2);
+    var this$331 = $n($n(_$74).LTuCheckbox$__f_labelText);
     $n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L);
     var name$30 = this$331.LReactiveAttr__f_attrName;
     var codec$31 = this$331.LReactiveAttr__f_codec;
@@ -5435,16 +5438,16 @@ $c_Lmain$package$.prototype.main__V = (function() {
   var $x_6 = $x_8.apply__sci_Seq__sci_Seq__Lcom_raquo_laminar_nodes_ReactiveHtmlElement($x_7, new $c_sjsr_WrappedVarArgs(array$69));
   var $x_5 = $m_LTuCheckbox$();
   var this$345 = $m_sjsr_package$();
-  var xs$70 = new ($d_F1.getArrayOf().constr)([new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$36$2) => {
-    var _$36 = $as_LTuCheckbox$(_$36$2);
-    var this$340 = $n($n(_$36).LTuCheckbox$__f_labelText);
+  var xs$70 = new ($d_F1.getArrayOf().constr)([new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$75$2) => {
+    var _$75 = $as_LTuCheckbox$(_$75$2);
+    var this$340 = $n($n(_$75).LTuCheckbox$__f_labelText);
     $n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L);
     var name$31 = this$340.LReactiveAttr__f_attrName;
     var codec$32 = this$340.LReactiveAttr__f_codec;
     return new $c_Lcom_raquo_laminar_keys_HtmlAttr(name$31, codec$32).$colon$eq__O__Lcom_raquo_laminar_modifiers_KeySetter("Option 2");
-  })), new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$37$2) => {
-    var _$37 = $as_LTuCheckbox$(_$37$2);
-    var this$343 = $n($n(_$37).LTuCheckbox$__f_isChecked);
+  })), new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$76$2) => {
+    var _$76 = $as_LTuCheckbox$(_$76$2);
+    var this$343 = $n($n(_$76).LTuCheckbox$__f_isChecked);
     $n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L);
     var name$32 = this$343.LReactiveAttr__f_attrName;
     var codec$33 = this$343.LReactiveAttr__f_codec;
@@ -5458,16 +5461,16 @@ $c_Lmain$package$.prototype.main__V = (function() {
   var $x_3 = $x_5.apply__sci_Seq__sci_Seq__Lcom_raquo_laminar_nodes_ReactiveHtmlElement($x_4, new $c_sjsr_WrappedVarArgs(array$71));
   var $x_2 = $m_LTuCheckbox$();
   var this$357 = $m_sjsr_package$();
-  var xs$72 = new ($d_F1.getArrayOf().constr)([new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$38$2) => {
-    var _$38 = $as_LTuCheckbox$(_$38$2);
-    var this$352 = $n($n(_$38).LTuCheckbox$__f_labelText);
+  var xs$72 = new ($d_F1.getArrayOf().constr)([new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$77$2) => {
+    var _$77 = $as_LTuCheckbox$(_$77$2);
+    var this$352 = $n($n(_$77).LTuCheckbox$__f_labelText);
     $n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L);
     var name$33 = this$352.LReactiveAttr__f_attrName;
     var codec$34 = this$352.LReactiveAttr__f_codec;
     return new $c_Lcom_raquo_laminar_keys_HtmlAttr(name$33, codec$34).$colon$eq__O__Lcom_raquo_laminar_modifiers_KeySetter("Disabled");
-  })), new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$39$2) => {
-    var _$39 = $as_LTuCheckbox$(_$39$2);
-    var this$355 = $n($n(_$39).LTuCheckbox$__f_isDisabled);
+  })), new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$78$2) => {
+    var _$78 = $as_LTuCheckbox$(_$78$2);
+    var this$355 = $n($n(_$78).LTuCheckbox$__f_isDisabled);
     $n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L);
     var name$34 = this$355.LReactiveAttr__f_attrName;
     var codec$35 = this$355.LReactiveAttr__f_codec;
@@ -8305,40 +8308,40 @@ function $c_LTuButton$() {
   $ct_LLaminarWebComponent__T__(this, "tu-button");
   $n_LTuButton$ = this;
   var _2 = new $c_T10("btn", "15s", "5", "small", "medium", "large", "primary", "secondary", "outline", "ghost");
-  var \u03b42$___1 = ":host {\n  display: inline-block;\n}\n.btn {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  gap: 8px;\n  border: none;\n  border-radius: 6px;\n  font-family: system-ui, sans-serif;\n  font-weight: 500;\n  cursor: pointer;\n  transition: all 0.15s ease;\n}\n.btn:disabled {\n  opacity: 0.5;\n  cursor: not-allowed;\n}\n.btn.small {\n  padding: 6px 12px;\n  font-size: 13px;\n}\n.btn.medium {\n  padding: 10px 18px;\n  font-size: 14px;\n}\n.btn.large {\n  padding: 14px 24px;\n  font-size: 16px;\n}\n.btn.primary {\n  background: #3b82f6;\n  color: white;\n}\n.btn.primary:hover:not(:disabled) {\n  background: #2563eb;\n}\n.btn.secondary {\n  background: #6b7280;\n  color: white;\n}\n.btn.secondary:hover:not(:disabled) {\n  background: #4b5563;\n}\n.btn.outline {\n  background: transparent;\n  color: #3b82f6;\n  border: 1px solid #3b82f6;\n}\n.btn.outline:hover:not(:disabled) {\n  background: #eff6ff;\n}\n.btn.ghost {\n  background: transparent;\n  color: #374151;\n}\n.btn.ghost:hover:not(:disabled) {\n  background: #f3f4f6;\n}\n::slotted(tu-icon) {\n  display: inline-flex;\n}\n";
-  var \u03b42$___2 = _2;
-  this.LTuButton$__f__styles = $as_T(\u03b42$___1);
-  this.LTuButton$__f_classNames = $as_T10(\u03b42$___2);
+  var \u03b44$___1 = ":host {\n  display: inline-block;\n}\n.btn {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  gap: 8px;\n  border: none;\n  border-radius: 6px;\n  font-family: system-ui, sans-serif;\n  font-weight: 500;\n  cursor: pointer;\n  transition: all 0.15s ease;\n}\n.btn:disabled {\n  opacity: 0.5;\n  cursor: not-allowed;\n}\n.btn.small {\n  padding: 6px 12px;\n  font-size: 13px;\n}\n.btn.medium {\n  padding: 10px 18px;\n  font-size: 14px;\n}\n.btn.large {\n  padding: 14px 24px;\n  font-size: 16px;\n}\n.btn.primary {\n  background: #3b82f6;\n  color: white;\n}\n.btn.primary:hover:not(:disabled) {\n  background: #2563eb;\n}\n.btn.secondary {\n  background: #6b7280;\n  color: white;\n}\n.btn.secondary:hover:not(:disabled) {\n  background: #4b5563;\n}\n.btn.outline {\n  background: transparent;\n  color: #3b82f6;\n  border: 1px solid #3b82f6;\n}\n.btn.outline:hover:not(:disabled) {\n  background: #eff6ff;\n}\n.btn.ghost {\n  background: transparent;\n  color: #374151;\n}\n.btn.ghost:hover:not(:disabled) {\n  background: #f3f4f6;\n}\n::slotted(tu-icon) {\n  display: inline-flex;\n}\n";
+  var \u03b44$___2 = _2;
+  this.LTuButton$__f__styles = $as_T(\u03b44$___1);
+  this.LTuButton$__f_classNames = $as_T10(\u03b44$___2);
   var attr$_this = this.attr__LLaminarWebComponent$attr$();
   $n(this.attr__LLaminarWebComponent$attr$());
-  var reflect$proxy1 = false;
+  var reflect$proxy2 = false;
   var this$6 = $m_sci_Set$();
   var array = ["primary", "secondary", "outline", "ghost"];
   var elems = new $c_sjsr_WrappedVarArgs(array);
-  var uv$proxy1 = new $c_LUnionValues$UnionValuesImpl(this$6.from__sc_IterableOnce__sci_Set(elems));
+  var uv$proxy2 = new $c_LUnionValues$UnionValuesImpl(this$6.from__sc_IterableOnce__sci_Set(elems));
   var this$8 = $n(attr$_this);
-  var validValues = uv$proxy1.LUnionValues$UnionValuesImpl__f_values;
+  var validValues = uv$proxy2.LUnionValues$UnionValuesImpl__f_values;
   var codec = new $c_LStringUnionCodec(validValues, "primary");
-  var ra = new $c_LReactiveAttr("variant", "primary", new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((s$2) => {
+  var ra = new $c_LStringUnionAttr("variant", "primary", new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((s$2) => {
     var s = $as_T(s$2);
     return ($n(validValues).contains__O__Z(s) ? s : "primary");
-  })), codec, reflect$proxy1);
-  this.LTuButton$__f_variant = $p_LLaminarWebComponent$attr$__register__LReactiveAttr__LReactiveAttr(this$8, ra);
+  })), codec, reflect$proxy2, validValues);
+  this.LTuButton$__f_variant = $as_LStringUnionAttr($p_LLaminarWebComponent$attr$__register__LReactiveAttr__LReactiveAttr(this$8, ra));
   var attr$_this$2 = this.attr__LLaminarWebComponent$attr$();
   $n(this.attr__LLaminarWebComponent$attr$());
-  var reflect$proxy2 = false;
+  var reflect$proxy3 = false;
   var this$12 = $m_sci_Set$();
   var array$1 = ["small", "medium", "large"];
   var elems$1 = new $c_sjsr_WrappedVarArgs(array$1);
-  var uv$proxy2 = new $c_LUnionValues$UnionValuesImpl(this$12.from__sc_IterableOnce__sci_Set(elems$1));
+  var uv$proxy3 = new $c_LUnionValues$UnionValuesImpl(this$12.from__sc_IterableOnce__sci_Set(elems$1));
   var this$14 = $n(attr$_this$2);
-  var validValues$2 = uv$proxy2.LUnionValues$UnionValuesImpl__f_values;
+  var validValues$2 = uv$proxy3.LUnionValues$UnionValuesImpl__f_values;
   var codec$2 = new $c_LStringUnionCodec(validValues$2, "medium");
-  var ra$1 = new $c_LReactiveAttr("size", "medium", new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((s$2$1) => {
+  var ra$1 = new $c_LStringUnionAttr("size", "medium", new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((s$2$1) => {
     var s$1 = $as_T(s$2$1);
     return ($n(validValues$2).contains__O__Z(s$1) ? s$1 : "medium");
-  })), codec$2, reflect$proxy2);
-  this.LTuButton$__f_btnSize = $p_LLaminarWebComponent$attr$__register__LReactiveAttr__LReactiveAttr(this$14, ra$1);
+  })), codec$2, reflect$proxy3, validValues$2);
+  this.LTuButton$__f_btnSize = $as_LStringUnionAttr($p_LLaminarWebComponent$attr$__register__LReactiveAttr__LReactiveAttr(this$14, ra$1));
   this.LTuButton$__f_btnDisabled = $n(this.attr__LLaminarWebComponent$attr$()).boolean__T__Z__Z__LReactiveAttr("disabled", false, ($n(this.attr__LLaminarWebComponent$attr$()), false));
 }
 $c_LTuButton$.prototype = new $h_LLaminarWebComponent();
@@ -10034,6 +10037,35 @@ $c_s_util_hashing_MurmurHash3$accum$1.prototype.apply__O__O__O = (function(v1, v
 var $d_s_util_hashing_MurmurHash3$accum$1 = new $TypeData().initClass($c_s_util_hashing_MurmurHash3$accum$1, "scala.util.hashing.MurmurHash3$accum$1", ({
   s_util_hashing_MurmurHash3$accum$1: 1,
   F2: 1
+}));
+/** @constructor */
+function $c_LStringUnionAttr(attrName, default$1, parse, codec, reflect, validValues) {
+  this.LReactiveAttr__f_attrName = null;
+  this.LReactiveAttr__f_default = null;
+  this.LReactiveAttr__f_parse = null;
+  this.LReactiveAttr__f_codec = null;
+  this.LReactiveAttr__f_reflect = false;
+  $ct_LReactiveAttr__T__O__F1__Lcom_raquo_laminar_codecs_Codec__Z__(this, attrName, default$1, parse, codec, reflect);
+}
+$c_LStringUnionAttr.prototype = new $h_LReactiveAttr();
+$c_LStringUnionAttr.prototype.constructor = $c_LStringUnionAttr;
+/** @constructor */
+function $h_LStringUnionAttr() {
+}
+$h_LStringUnionAttr.prototype = $c_LStringUnionAttr.prototype;
+function $as_LStringUnionAttr(obj) {
+  return (((obj instanceof $c_LStringUnionAttr) || (obj === null)) ? obj : $throwClassCastException(obj, "StringUnionAttr"));
+}
+function $isArrayOf_LStringUnionAttr(obj, depth) {
+  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.LStringUnionAttr)));
+}
+function $asArrayOf_LStringUnionAttr(obj, depth) {
+  return (($isArrayOf_LStringUnionAttr(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "LStringUnionAttr;", depth));
+}
+var $d_LStringUnionAttr = new $TypeData().initClass($c_LStringUnionAttr, "StringUnionAttr", ({
+  LStringUnionAttr: 1,
+  LReactiveAttr: 1,
+  s_Selectable: 1
 }));
 class $c_Lcom_raquo_airstream_core_AirstreamError extends $c_jl_Throwable {
 }

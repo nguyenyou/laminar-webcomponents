@@ -28,7 +28,7 @@ abstract class LaminarWebComponent(val tagName: String) {
   }
 
   protected object attr {
-    private def register[T](ra: ReactiveAttr[T]): ReactiveAttr[T] = {
+    private def register[A <: ReactiveAttr[?]](ra: A): ra.type = {
       _registeredAttrs += ra
       ra
     }
@@ -40,12 +40,12 @@ abstract class LaminarWebComponent(val tagName: String) {
     ): ReactiveAttr[String] =
       register(ReactiveAttr.string(name, default, reflect))
 
-    inline def stringUnion[T <: String](
+    transparent inline def stringUnion[T <: String](
         name: String,
         default: T,
         reflect: Boolean = false
-    )(using uv: UnionValues[T]): ReactiveAttr[T] =
-      register(ReactiveAttr.stringUnion[T](name, default, reflect))
+    )(using uv: UnionValues[T]): StringUnionAttr[T] =
+      register(StringUnionAttr[T](name, default, reflect))
 
     def int(
         name: String,
