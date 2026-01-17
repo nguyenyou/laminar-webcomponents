@@ -1,6 +1,5 @@
 import com.raquo.laminar.api.L.*
 import com.raquo.laminar.nodes.Slot
-import CssMacro.css
 
 object TuButton extends LaminarWebComponent("tu-button") {
   private val (_styles, classNames) = css"""

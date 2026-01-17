@@ -1,5 +1,4 @@
 import com.raquo.laminar.api.L.*
-import CssMacro.css
 
 object HelloWorld extends LaminarWebComponent("hello-world") {
   val name = attr.string("name", "World")

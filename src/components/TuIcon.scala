@@ -1,5 +1,4 @@
 import com.raquo.laminar.api.L.*
-import CssMacro.css
 
 object TuIcon extends LaminarWebComponent("tu-icon") {
   private val (_styles, classNames) = css"""

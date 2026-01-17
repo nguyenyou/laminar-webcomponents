@@ -8086,9 +8086,9 @@ function $p_LHelloCounter$__renderCount__LLaminarWebComponent$Props__Lcom_raquo_
   var x0 = $x_1.$colon$eq__T__Lcom_raquo_laminar_modifiers_CompositeKeySetter($as_T($n(x$proxy5).T7__f__5));
   $n($n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L).Lcom_raquo_laminar_api_package$$anon$1__f_child);
   var this$3 = $n($thiz.signal__LReactiveAttr__LLaminarWebComponent$Props__Lcom_raquo_airstream_core_Signal($thiz.LHelloCounter$__f_count, contextual$3));
-  var project = new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$6$3) => {
-    var _$6$2 = $uI(_$6$3);
-    return ("" + _$6$2);
+  var project = new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$1$3) => {
+    var _$1$2 = $uI(_$1$3);
+    return ("" + _$1$2);
   }));
   var textSource = new $c_Lcom_raquo_airstream_misc_MapSignal(this$3, project, $m_s_None$());
   var x1 = $m_Lcom_raquo_laminar_inserters_ChildTextInserter$().apply__Lcom_raquo_airstream_core_Observable__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_inserters_DynamicInserter(textSource, $m_Lcom_raquo_laminar_modifiers_RenderableText$().Lcom_raquo_laminar_modifiers_RenderableText$__f_stringRenderable);
@@ -8107,10 +8107,10 @@ function $p_LHelloCounter$__renderButtons__LLaminarWebComponent$Props__Lcom_raqu
   $n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L);
   var eventProp = $n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L).onClick__Lcom_raquo_laminar_keys_EventProp();
   var this$4 = $n($m_Lcom_raquo_laminar_keys_EventProcessor$().empty__Lcom_raquo_laminar_keys_EventProp__Z__Z__Lcom_raquo_laminar_keys_EventProcessor(eventProp, false, false));
-  var onNext = new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$7$3) => {
-    $thiz.update__LReactiveAttr__LLaminarWebComponent$Props__F1__V($thiz.LHelloCounter$__f_count, contextual$4, new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$8$3) => {
-      var _$8$2 = $uI(_$8$3);
-      return ((_$8$2 - $uI($thiz.get__LReactiveAttr__LLaminarWebComponent$Props__O($thiz.LHelloCounter$__f_step, contextual$4))) | 0);
+  var onNext = new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$2$3) => {
+    $thiz.update__LReactiveAttr__LLaminarWebComponent$Props__F1__V($thiz.LHelloCounter$__f_count, contextual$4, new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$3$3) => {
+      var _$3$2 = $uI(_$3$3);
+      return ((_$3$2 - $uI($thiz.get__LReactiveAttr__LLaminarWebComponent$Props__O($thiz.LHelloCounter$__f_step, contextual$4))) | 0);
     })));
   }));
   var x1 = new $c_Lcom_raquo_laminar_modifiers_EventListener(this$4, onNext);
@@ -8123,10 +8123,10 @@ function $p_LHelloCounter$__renderButtons__LLaminarWebComponent$Props__Lcom_raqu
   $n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L);
   var eventProp$1 = $n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L).onClick__Lcom_raquo_laminar_keys_EventProp();
   var this$11 = $n($m_Lcom_raquo_laminar_keys_EventProcessor$().empty__Lcom_raquo_laminar_keys_EventProp__Z__Z__Lcom_raquo_laminar_keys_EventProcessor(eventProp$1, false, false));
-  var onNext$1 = new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$9$3) => {
-    $thiz.update__LReactiveAttr__LLaminarWebComponent$Props__F1__V($thiz.LHelloCounter$__f_count, contextual$4, new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$10$3) => {
-      var _$10$2 = $uI(_$10$3);
-      return ((_$10$2 + $uI($thiz.get__LReactiveAttr__LLaminarWebComponent$Props__O($thiz.LHelloCounter$__f_step, contextual$4))) | 0);
+  var onNext$1 = new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$4$3) => {
+    $thiz.update__LReactiveAttr__LLaminarWebComponent$Props__F1__V($thiz.LHelloCounter$__f_count, contextual$4, new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$5$3) => {
+      var _$5$2 = $uI(_$5$3);
+      return ((_$5$2 + $uI($thiz.get__LReactiveAttr__LLaminarWebComponent$Props__O($thiz.LHelloCounter$__f_step, contextual$4))) | 0);
     })));
   }));
   var x1$1 = new $c_Lcom_raquo_laminar_modifiers_EventListener(this$11, onNext$1);
@@ -8154,10 +8154,10 @@ function $c_LHelloCounter$() {
   $ct_LLaminarWebComponent__T__(this, "hello-counter");
   $n_LHelloCounter$ = this;
   var _2 = new $c_T7("counter", "2", "label", "9", "count", "buttons", "1s");
-  var \u03b44$___1 = ".counter {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  padding: 24px;\n  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);\n  color: white;\n  border-radius: 12px;\n  font-family: system-ui, sans-serif;\n  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);\n  gap: 16px;\n}\n.counter .label {\n  font-size: 14px;\n  text-transform: uppercase;\n  letter-spacing: 2px;\n  opacity: 0.9;\n}\n.counter .count {\n  font-size: 48px;\n  font-weight: bold;\n}\n.counter .buttons {\n  display: flex;\n  gap: 12px;\n}\n.counter button {\n  padding: 12px 24px;\n  font-size: 18px;\n  font-weight: bold;\n  border: none;\n  border-radius: 8px;\n  cursor: pointer;\n  transition: transform 0.1s, box-shadow 0.1s;\n  background: white;\n  color: #667eea;\n}\n.counter button:hover {\n  transform: translateY(-2px);\n  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);\n}\n.counter button:active {\n  transform: translateY(0);\n}\n";
-  var \u03b44$___2 = _2;
-  this.LHelloCounter$__f__styles = $as_T(\u03b44$___1);
-  this.LHelloCounter$__f_classNames = $as_T7(\u03b44$___2);
+  var \u03b42$___1 = ".counter {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  padding: 24px;\n  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);\n  color: white;\n  border-radius: 12px;\n  font-family: system-ui, sans-serif;\n  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);\n  gap: 16px;\n}\n.counter .label {\n  font-size: 14px;\n  text-transform: uppercase;\n  letter-spacing: 2px;\n  opacity: 0.9;\n}\n.counter .count {\n  font-size: 48px;\n  font-weight: bold;\n}\n.counter .buttons {\n  display: flex;\n  gap: 12px;\n}\n.counter button {\n  padding: 12px 24px;\n  font-size: 18px;\n  font-weight: bold;\n  border: none;\n  border-radius: 8px;\n  cursor: pointer;\n  transition: transform 0.1s, box-shadow 0.1s;\n  background: white;\n  color: #667eea;\n}\n.counter button:hover {\n  transform: translateY(-2px);\n  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);\n}\n.counter button:active {\n  transform: translateY(0);\n}\n";
+  var \u03b42$___2 = _2;
+  this.LHelloCounter$__f__styles = $as_T(\u03b42$___1);
+  this.LHelloCounter$__f_classNames = $as_T7(\u03b42$___2);
   this.LHelloCounter$__f_count = $n(this.attr__LLaminarWebComponent$attr$()).int__T__I__Z__LReactiveAttr("count", 0, true);
   this.LHelloCounter$__f_step = $n(this.attr__LLaminarWebComponent$attr$()).int__T__I__Z__LReactiveAttr("step", 1, ($n(this.attr__LLaminarWebComponent$attr$()), false));
   this.LHelloCounter$__f_label = $n(this.attr__LLaminarWebComponent$attr$()).string__T__T__Z__LReactiveAttr("label", "Counter", ($n(this.attr__LLaminarWebComponent$attr$()), false));
@@ -8308,39 +8308,39 @@ function $c_LTuButton$() {
   $ct_LLaminarWebComponent__T__(this, "tu-button");
   $n_LTuButton$ = this;
   var _2 = new $c_T10("btn", "15s", "5", "small", "medium", "large", "primary", "secondary", "outline", "ghost");
-  var \u03b44$___1 = ":host {\n  display: inline-block;\n}\n.btn {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  gap: 8px;\n  border: none;\n  border-radius: 6px;\n  font-family: system-ui, sans-serif;\n  font-weight: 500;\n  cursor: pointer;\n  transition: all 0.15s ease;\n}\n.btn:disabled {\n  opacity: 0.5;\n  cursor: not-allowed;\n}\n.btn.small {\n  padding: 6px 12px;\n  font-size: 13px;\n}\n.btn.medium {\n  padding: 10px 18px;\n  font-size: 14px;\n}\n.btn.large {\n  padding: 14px 24px;\n  font-size: 16px;\n}\n.btn.primary {\n  background: #3b82f6;\n  color: white;\n}\n.btn.primary:hover:not(:disabled) {\n  background: #2563eb;\n}\n.btn.secondary {\n  background: #6b7280;\n  color: white;\n}\n.btn.secondary:hover:not(:disabled) {\n  background: #4b5563;\n}\n.btn.outline {\n  background: transparent;\n  color: #3b82f6;\n  border: 1px solid #3b82f6;\n}\n.btn.outline:hover:not(:disabled) {\n  background: #eff6ff;\n}\n.btn.ghost {\n  background: transparent;\n  color: #374151;\n}\n.btn.ghost:hover:not(:disabled) {\n  background: #f3f4f6;\n}\n::slotted(tu-icon) {\n  display: inline-flex;\n}\n";
-  var \u03b44$___2 = _2;
-  this.LTuButton$__f__styles = $as_T(\u03b44$___1);
-  this.LTuButton$__f_classNames = $as_T10(\u03b44$___2);
+  var \u03b42$___1 = ":host {\n  display: inline-block;\n}\n.btn {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  gap: 8px;\n  border: none;\n  border-radius: 6px;\n  font-family: system-ui, sans-serif;\n  font-weight: 500;\n  cursor: pointer;\n  transition: all 0.15s ease;\n}\n.btn:disabled {\n  opacity: 0.5;\n  cursor: not-allowed;\n}\n.btn.small {\n  padding: 6px 12px;\n  font-size: 13px;\n}\n.btn.medium {\n  padding: 10px 18px;\n  font-size: 14px;\n}\n.btn.large {\n  padding: 14px 24px;\n  font-size: 16px;\n}\n.btn.primary {\n  background: #3b82f6;\n  color: white;\n}\n.btn.primary:hover:not(:disabled) {\n  background: #2563eb;\n}\n.btn.secondary {\n  background: #6b7280;\n  color: white;\n}\n.btn.secondary:hover:not(:disabled) {\n  background: #4b5563;\n}\n.btn.outline {\n  background: transparent;\n  color: #3b82f6;\n  border: 1px solid #3b82f6;\n}\n.btn.outline:hover:not(:disabled) {\n  background: #eff6ff;\n}\n.btn.ghost {\n  background: transparent;\n  color: #374151;\n}\n.btn.ghost:hover:not(:disabled) {\n  background: #f3f4f6;\n}\n::slotted(tu-icon) {\n  display: inline-flex;\n}\n";
+  var \u03b42$___2 = _2;
+  this.LTuButton$__f__styles = $as_T(\u03b42$___1);
+  this.LTuButton$__f_classNames = $as_T10(\u03b42$___2);
   var attr$_this = this.attr__LLaminarWebComponent$attr$();
   $n(this.attr__LLaminarWebComponent$attr$());
-  var reflect$proxy2 = false;
+  var reflect$proxy1 = false;
   var this$6 = $m_sci_Set$();
   var array = ["primary", "secondary", "outline", "ghost"];
   var elems = new $c_sjsr_WrappedVarArgs(array);
-  var uv$proxy2 = new $c_LUnionValues$UnionValuesImpl(this$6.from__sc_IterableOnce__sci_Set(elems));
+  var uv$proxy1 = new $c_LUnionValues$UnionValuesImpl(this$6.from__sc_IterableOnce__sci_Set(elems));
   var this$8 = $n(attr$_this);
-  var validValues = uv$proxy2.LUnionValues$UnionValuesImpl__f_values;
+  var validValues = uv$proxy1.LUnionValues$UnionValuesImpl__f_values;
   var codec = new $c_LStringUnionCodec(validValues, "primary");
   var ra = new $c_LStringUnionAttr("variant", "primary", new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((s$2) => {
     var s = $as_T(s$2);
     return ($n(validValues).contains__O__Z(s) ? s : "primary");
-  })), codec, reflect$proxy2, validValues);
+  })), codec, reflect$proxy1, validValues);
   this.LTuButton$__f_variant = $as_LStringUnionAttr($p_LLaminarWebComponent$attr$__register__LReactiveAttr__LReactiveAttr(this$8, ra));
   var attr$_this$2 = this.attr__LLaminarWebComponent$attr$();
   $n(this.attr__LLaminarWebComponent$attr$());
-  var reflect$proxy3 = false;
+  var reflect$proxy2 = false;
   var this$12 = $m_sci_Set$();
   var array$1 = ["small", "medium", "large"];
   var elems$1 = new $c_sjsr_WrappedVarArgs(array$1);
-  var uv$proxy3 = new $c_LUnionValues$UnionValuesImpl(this$12.from__sc_IterableOnce__sci_Set(elems$1));
+  var uv$proxy2 = new $c_LUnionValues$UnionValuesImpl(this$12.from__sc_IterableOnce__sci_Set(elems$1));
   var this$14 = $n(attr$_this$2);
-  var validValues$2 = uv$proxy3.LUnionValues$UnionValuesImpl__f_values;
+  var validValues$2 = uv$proxy2.LUnionValues$UnionValuesImpl__f_values;
   var codec$2 = new $c_LStringUnionCodec(validValues$2, "medium");
   var ra$1 = new $c_LStringUnionAttr("size", "medium", new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((s$2$1) => {
     var s$1 = $as_T(s$2$1);
     return ($n(validValues$2).contains__O__Z(s$1) ? s$1 : "medium");
-  })), codec$2, reflect$proxy3, validValues$2);
+  })), codec$2, reflect$proxy2, validValues$2);
   this.LTuButton$__f_btnSize = $as_LStringUnionAttr($p_LLaminarWebComponent$attr$__register__LReactiveAttr__LReactiveAttr(this$14, ra$1));
   this.LTuButton$__f_btnDisabled = $n(this.attr__LLaminarWebComponent$attr$()).boolean__T__Z__Z__LReactiveAttr("disabled", false, ($n(this.attr__LLaminarWebComponent$attr$()), false));
 }
@@ -8418,10 +8418,10 @@ function $c_LTuCheckbox$() {
   $ct_LLaminarWebComponent__T__(this, "tu-checkbox");
   $n_LTuCheckbox$ = this;
   var _2 = new $c_T4("label", "disabled", "5", "checkbox");
-  var \u03b44$___1 = ":host {\n  display: inline-block;\n}\n.label {\n  display: inline-flex;\n  align-items: center;\n  gap: 8px;\n  cursor: pointer;\n  font-family: system-ui, sans-serif;\n  font-size: 14px;\n  color: #374151;\n}\n.label.disabled {\n  opacity: 0.5;\n  cursor: not-allowed;\n}\n.checkbox {\n  width: 18px;\n  height: 18px;\n  margin: 0;\n  cursor: pointer;\n  accent-color: #3b82f6;\n}\n.checkbox:disabled {\n  cursor: not-allowed;\n}\n";
-  var \u03b44$___2 = _2;
-  this.LTuCheckbox$__f__styles = $as_T(\u03b44$___1);
-  this.LTuCheckbox$__f_classNames = $as_T4(\u03b44$___2);
+  var \u03b42$___1 = ":host {\n  display: inline-block;\n}\n.label {\n  display: inline-flex;\n  align-items: center;\n  gap: 8px;\n  cursor: pointer;\n  font-family: system-ui, sans-serif;\n  font-size: 14px;\n  color: #374151;\n}\n.label.disabled {\n  opacity: 0.5;\n  cursor: not-allowed;\n}\n.checkbox {\n  width: 18px;\n  height: 18px;\n  margin: 0;\n  cursor: pointer;\n  accent-color: #3b82f6;\n}\n.checkbox:disabled {\n  cursor: not-allowed;\n}\n";
+  var \u03b42$___2 = _2;
+  this.LTuCheckbox$__f__styles = $as_T(\u03b42$___1);
+  this.LTuCheckbox$__f_classNames = $as_T4(\u03b42$___2);
   this.LTuCheckbox$__f_isChecked = $n(this.attr__LLaminarWebComponent$attr$()).boolean__T__Z__Z__LReactiveAttr("checked", false, ($n(this.attr__LLaminarWebComponent$attr$()), false));
   this.LTuCheckbox$__f_isDisabled = $n(this.attr__LLaminarWebComponent$attr$()).boolean__T__Z__Z__LReactiveAttr("disabled", false, ($n(this.attr__LLaminarWebComponent$attr$()), false));
   this.LTuCheckbox$__f_labelText = $n(this.attr__LLaminarWebComponent$attr$()).string__T__T__Z__LReactiveAttr("label", "", ($n(this.attr__LLaminarWebComponent$attr$()), false));
@@ -8524,10 +8524,10 @@ function $c_LTuIcon$() {
   $ct_LLaminarWebComponent__T__(this, "tu-icon");
   $n_LTuIcon$ = this;
   var _2 = new $c_T1("icon");
-  var \u03b44$___1 = ":host {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n}\n.icon {\n  font-family: 'Material Symbols Outlined';\n  font-weight: normal;\n  font-style: normal;\n  line-height: 1;\n  letter-spacing: normal;\n  text-transform: none;\n  display: inline-block;\n  white-space: nowrap;\n  word-wrap: normal;\n  direction: ltr;\n  -webkit-font-smoothing: antialiased;\n  font-variation-settings: 'FILL' var(--fill, 0);\n}\n";
-  var \u03b44$___2 = _2;
-  this.LTuIcon$__f__styles = $as_T(\u03b44$___1);
-  this.LTuIcon$__f_classNames = $as_T1(\u03b44$___2);
+  var \u03b42$___1 = ":host {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n}\n.icon {\n  font-family: 'Material Symbols Outlined';\n  font-weight: normal;\n  font-style: normal;\n  line-height: 1;\n  letter-spacing: normal;\n  text-transform: none;\n  display: inline-block;\n  white-space: nowrap;\n  word-wrap: normal;\n  direction: ltr;\n  -webkit-font-smoothing: antialiased;\n  font-variation-settings: 'FILL' var(--fill, 0);\n}\n";
+  var \u03b42$___2 = _2;
+  this.LTuIcon$__f__styles = $as_T(\u03b42$___1);
+  this.LTuIcon$__f_classNames = $as_T1(\u03b42$___2);
   this.LTuIcon$__f_iconName = $n(this.attr__LLaminarWebComponent$attr$()).string__T__T__Z__LReactiveAttr("name", "star", ($n(this.attr__LLaminarWebComponent$attr$()), false));
   this.LTuIcon$__f_iconSize = $n(this.attr__LLaminarWebComponent$attr$()).string__T__T__Z__LReactiveAttr("size", "24", ($n(this.attr__LLaminarWebComponent$attr$()), false));
   this.LTuIcon$__f_filled = $n(this.attr__LLaminarWebComponent$attr$()).boolean__T__Z__Z__LReactiveAttr("filled", false, ($n(this.attr__LLaminarWebComponent$attr$()), false));

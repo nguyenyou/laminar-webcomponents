@@ -4,6 +4,8 @@ import com.raquo.laminar.tags.CustomHtmlTag
 import org.scalajs.dom
 import scala.scalajs.js
 
+export CssMacro.css
+
 abstract class LaminarWebComponent(val tagName: String) {
 
   type ModFunction = this.type => Modifier[HtmlElement]
