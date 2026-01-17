@@ -3,7 +3,6 @@ import com.raquo.laminar.api.L.*
 import CssMacro.css
 
 object TuSelect extends LaminarWebComponent("tu-select") {
-  type Self = TuSelect.type
   private val (_styles, classNames) = css"""
     :host {
       display: inline-block;

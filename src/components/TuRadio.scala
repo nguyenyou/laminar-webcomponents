@@ -3,7 +3,6 @@ import com.raquo.laminar.api.L.*
 import CssMacro.css
 
 object TuRadio extends LaminarWebComponent("tu-radio") {
-  type Self = TuRadio.type
   private val (_styles, classNames) = css"""
     :host {
       display: inline-block;
