@@ -109,31 +109,6 @@ def main(): Unit = {
       )
     ),
     div(
-      h2("TuInput Component"),
-      div(
-        display := "flex",
-        flexDirection := "column",
-        gap := "12px",
-        TuInput(_.inputPlaceholder := "Enter text...")(),
-        TuInput(
-          _.inputType := "password",
-          _.inputPlaceholder := "Password"
-        )(),
-        TuInput(
-          _.inputSize := "small",
-          _.inputPlaceholder := "Small input"
-        )(),
-        TuInput(
-          _.inputSize := "large",
-          _.inputPlaceholder := "Large input"
-        )(),
-        TuInput(
-          _.inputDisabled := true,
-          _.inputValue := "Disabled input"
-        )()
-      )
-    ),
-    div(
       h2("TuCheckbox Component"),
       div(
         display := "flex",
@@ -148,45 +123,6 @@ def main(): Unit = {
           _.labelText := "Disabled",
           _.isDisabled := true
         )()
-      )
-    ),
-    div(
-      h2("TuRadio Component"),
-      div(
-        display := "flex",
-        flexDirection := "column",
-        gap := "8px",
-        TuRadio(
-          _.radioName := "choice",
-          _.radioValue := "a",
-          _.labelText := "Choice A"
-        )(),
-        TuRadio(
-          _.radioName := "choice",
-          _.radioValue := "b",
-          _.labelText := "Choice B"
-        )(),
-        TuRadio(
-          _.radioName := "choice",
-          _.radioValue := "c",
-          _.labelText := "Choice C",
-          _.isChecked := true
-        )()
-      )
-    ),
-    div(
-      h2("TuTextarea Component"),
-      TuTextarea(
-        _.textPlaceholder := "Enter your message...",
-        _.numRows := 4
-      )()
-    ),
-    div(
-      h2("TuSelect Component"),
-      TuSelect(_.selectPlaceholder := "Choose a fruit")(
-        TuOption(_.optionValue := "apple", _.optionLabel := "Apple")(),
-        TuOption(_.optionValue := "banana", _.optionLabel := "Banana")(),
-        TuOption(_.optionValue := "cherry", _.optionLabel := "Cherry")()
       )
     )
   )
