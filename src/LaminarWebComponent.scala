@@ -4,11 +4,9 @@ import com.raquo.laminar.tags.CustomHtmlTag
 import org.scalajs.dom
 import scala.scalajs.js
 
-abstract class LaminarWebComponent(val tagName: String) { self: Self =>
+abstract class LaminarWebComponent(val tagName: String) {
 
-  type Self
-
-  type ModFunction = Self => Modifier[HtmlElement]
+  type ModFunction = this.type => Modifier[HtmlElement]
 
   type ComponentMod = Modifier[HtmlElement] | ModFunction
 
@@ -156,7 +154,7 @@ abstract class LaminarWebComponent(val tagName: String) { self: Self =>
     register
     val el = CustomHtmlTag[dom.HTMLElement](tagName)()
     modFns.foreach { modFn =>
-      modFn(self)(el)
+      modFn(this)(el)
     }
     mods.foreach { mod =>
       mod(el)

@@ -2,7 +2,6 @@ import com.raquo.laminar.api.L.*
 import CssMacro.css
 
 object HelloWorld extends LaminarWebComponent("hello-world") {
-  type Self = HelloWorld.type
   val name = attr.string("name", "World")
 
   override def render: View = div(
