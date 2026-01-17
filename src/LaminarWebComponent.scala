@@ -49,6 +49,13 @@ abstract class LaminarWebComponent(val tagName: String) {
     )(using uv: UnionValues[T]): StringUnionAttr[T] =
       register(StringUnionAttr[T](name, default, reflect))
 
+    transparent inline def `enum`[E](
+        name: String,
+        default: E,
+        reflect: Boolean = false
+    )(using ev: EnumValues[E]): EnumAttr[E] =
+      register(EnumAttr[E](name, default, reflect))
+
     def int(
         name: String,
         default: Int = 0,

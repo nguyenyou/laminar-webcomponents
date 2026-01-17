@@ -58,11 +58,29 @@ object TuButton extends LaminarWebComponent("tu-button") {
   """
   override def styles = _styles
 
-  type Variant = "primary" | "secondary" | "outline" | "ghost"
-  type Size = "small" | "medium" | "large"
+  enum Variant {
+    case Primary, Secondary, Outline, Ghost
 
-  val variant = attr.stringUnion[Variant]("variant", "primary")
-  val btnSize = attr.stringUnion[Size]("size", "medium")
+    def cssClass: String = this match {
+      case Primary   => "primary"
+      case Secondary => "secondary"
+      case Outline   => "outline"
+      case Ghost     => "ghost"
+    }
+  }
+
+  enum Size {
+    case Small, Medium, Large
+
+    def cssClass: String = this match {
+      case Small  => "small"
+      case Medium => "medium"
+      case Large  => "large"
+    }
+  }
+
+  val variant = attr.`enum`[Variant]("variant", Variant.Primary)
+  val btnSize = attr.`enum`[Size]("size", Size.Medium)
   val btnDisabled = attr.boolean("disabled", false)
 
   object slots {
@@ -73,7 +91,7 @@ object TuButton extends LaminarWebComponent("tu-button") {
   override def render: View = button(
     cls <-- variant.signal
       .combineWith(btnSize.signal)
-      .map((v, s) => s"${classNames.btn} $v $s"),
+      .map((v, s) => s"${classNames.btn} ${v.cssClass} ${s.cssClass}"),
     disabled <-- btnDisabled.signal,
     slotElement("prefix"),
     slotElement(),

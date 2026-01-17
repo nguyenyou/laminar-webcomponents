@@ -55,10 +55,10 @@ def main(): Unit = {
         gap := "12px",
         flexWrap := "wrap",
         alignItems := "center",
-        TuButton(_.variant.primary)("Primary"),
-        TuButton(_.variant.secondary)("Secondary"),
-        TuButton(_.variant.outline)("Outline"),
-        TuButton(_.variant.ghost)("Ghost"),
+        TuButton(_.variant := TuButton.Variant.Primary)("Primary"),
+        TuButton(_.variant.Secondary)("Secondary"),
+        TuButton(_.variant.Outline)("Outline"),
+        TuButton(_.variant.Ghost)("Ghost"),
         TuButton(_.btnDisabled := true)("Disabled")
       ),
       div(
@@ -66,9 +66,9 @@ def main(): Unit = {
         display := "flex",
         gap := "12px",
         alignItems := "center",
-        TuButton(_.btnSize.small)("Small"),
-        TuButton(_.btnSize.medium)("Medium"),
-        TuButton(_.btnSize.large)("Large")
+        TuButton(_.btnSize.Small)("Small"),
+        TuButton(_.btnSize.Medium)("Medium"),
+        TuButton(_.btnSize.Large)("Large")
       )
     ),
     div(
@@ -98,11 +98,11 @@ def main(): Unit = {
           _.slots.prefix(TuIcon(_.iconName := "add")())
         )("Add Item"),
         TuButton(
-          _.variant := "outline",
+          _.variant.Outline,
           _.slots.suffix(TuIcon(_.iconName := "download")())
         )("Download"),
         TuButton(
-          _.variant := "secondary",
+          _.variant.Secondary,
           _.slots.prefix(TuIcon(_.iconName := "arrow_back")()),
           _.slots.suffix(TuIcon(_.iconName := "arrow_forward")())
         )("Back")
