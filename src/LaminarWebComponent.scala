@@ -152,14 +152,14 @@ abstract class LaminarWebComponent(val tagName: String) { self: Self =>
     dom.window.customElements.define(tagName, ctor)
   }
 
-  def apply(mods: ComponentMod*): HtmlElement = {
+  def apply(modFns: ModFunction*)(mods: Modifier[HtmlElement]*): HtmlElement = {
     register
     val el = CustomHtmlTag[dom.HTMLElement](tagName)()
-    mods.foreach {
-      case mod: Modifier[_ >: HtmlElement] @unchecked =>
-        mod(el)
-      case modFn: ModFunction @unchecked =>
-        modFn(self)(el)
+    modFns.foreach { modFn =>
+      modFn(self)(el)
+    }
+    mods.foreach { mod =>
+      mod(el)
     }
     el
   }
