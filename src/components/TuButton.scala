@@ -59,9 +59,11 @@ object TuButton extends LaminarWebComponent("tu-button") {
   """
   override def styles = _styles
 
-  val variant =
-    attr.string("variant", "primary")
-  val btnSize = attr.string("size", "medium")
+  type Variant = "primary" | "secondary" | "outline" | "ghost"
+  type Size = "small" | "medium" | "large"
+
+  val variant = attr.stringUnion[Variant]("variant", "primary")
+  val btnSize = attr.stringUnion[Size]("size", "medium")
   val btnDisabled = attr.boolean("disabled", false)
 
   object slots {
