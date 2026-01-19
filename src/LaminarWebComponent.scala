@@ -120,6 +120,13 @@ abstract class LaminarWebComponent(val tagName: String) {
     def update(f: T => T): Unit = props(attr).update(f)
   }
 
+  extension [T](dsl: ReactiveAttrDsl[T])(using props: Props) {
+    def signal: Signal[T] = props(dsl.reactiveAttr).signal
+    def get: T = props(dsl.reactiveAttr).get
+    def set(value: T): Unit = props(dsl.reactiveAttr).set(value)
+    def update(f: T => T): Unit = props(dsl.reactiveAttr).update(f)
+  }
+
   private class ComponentInstance extends dom.HTMLElement {
     private var _detachedRoot: Option[DetachedRoot[HtmlElement]] = None
     private var _instanceProps: Option[Props] = None

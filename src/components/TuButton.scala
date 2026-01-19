@@ -2,7 +2,8 @@ import com.raquo.laminar.api.L.*
 import com.raquo.laminar.nodes.Slot
 
 object TuButton extends LaminarWebComponent("tu-button") {
-  enum Variant {
+  // Enum with different name to avoid Scala.js linker conflict with `variant` object
+  enum ButtonVariant {
     case Primary, Secondary, Outline, Ghost
 
     def cssClass: String = this match {
@@ -13,11 +14,30 @@ object TuButton extends LaminarWebComponent("tu-button") {
     }
   }
 
-  type Size = "small" | "medium" | "large"
+  type ButtonSize = "small" | "medium" | "large"
 
-  val variant = attr.`enum`[Variant]("variant", Variant.Primary)
-  val btnSize = attr.stringUnion[Size]("size", "medium")
-  val btnDisabled = attr.boolean("disabled", false)
+  // Public API: _.variant.Primary, _.variant.Secondary, etc.
+  object variant
+      extends EnumAttrDsl(
+        attr.`enum`[ButtonVariant]("variant", ButtonVariant.Primary)
+      ) {
+    def Primary: Setter[HtmlElement] = attr := ButtonVariant.Primary
+    def Secondary: Setter[HtmlElement] = attr := ButtonVariant.Secondary
+    def Outline: Setter[HtmlElement] = attr := ButtonVariant.Outline
+    def Ghost: Setter[HtmlElement] = attr := ButtonVariant.Ghost
+  }
+
+  // Public API: _.size.small, _.size.medium, _.size.large
+  object size
+      extends StringUnionAttrDsl[ButtonSize](
+        attr.stringUnion[ButtonSize]("size", "medium")
+      ) {
+    def small: Setter[HtmlElement] = attr := "small"
+    def medium: Setter[HtmlElement] = attr := "medium"
+    def large: Setter[HtmlElement] = attr := "large"
+  }
+
+  val disabled = attr.boolean("disabled", false)
 
   object slots {
     val prefix: Slot = Slot("prefix")
@@ -26,9 +46,9 @@ object TuButton extends LaminarWebComponent("tu-button") {
 
   override def render: View = button(
     cls <-- variant.signal
-      .combineWith(btnSize.signal)
+      .combineWith(size.signal)
       .map((v, s) => s"${classNames.btn} ${v.cssClass} $s"),
-    disabled <-- btnDisabled.signal,
+    com.raquo.laminar.api.L.disabled <-- disabled.signal,
     slotElement("prefix"),
     slotElement(),
     slotElement("suffix")

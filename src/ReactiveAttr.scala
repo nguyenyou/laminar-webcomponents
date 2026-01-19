@@ -275,6 +275,54 @@ class EnumCodec[E](values: Map[String, E], default: E)
     reverseMap.getOrElse(scalaValue, reverseMap(default))
 }
 
+/** Wrapper for EnumAttr that allows defining IDE-friendly helper methods.
+  * Usage:
+  * ```scala
+  * object variant
+  *     extends EnumAttrDsl(attr.`enum`[Variant]("variant", Variant.Primary)) {
+  *   lazy val Primary = attr := Variant.Primary
+  *   lazy val Secondary = attr := Variant.Secondary
+  * }
+  * ```
+  */
+class EnumAttrDsl[E](val attr: EnumAttr[E]) extends ReactiveAttrDsl[E](attr)
+
+/** Wrapper for StringUnionAttr that allows defining IDE-friendly helper
+  * methods. Usage:
+  * ```scala
+  * object size
+  *     extends StringUnionAttrDsl[Size](
+  *       attr.stringUnion[Size]("size", "medium")
+  *     ) {
+  *   lazy val small = attr := "small"
+  *   lazy val medium = attr := "medium"
+  *   lazy val large = attr := "large"
+  * }
+  * ```
+  */
+class StringUnionAttrDsl[T <: String](val attr: StringUnionAttr[T])
+    extends ReactiveAttrDsl[T](attr)
+
+/** Base wrapper for ReactiveAttr that allows defining IDE-friendly helper
+  * methods. Provides implicit conversion so the DSL object can be used wherever
+  * ReactiveAttr is expected.
+  */
+class ReactiveAttrDsl[T](val _attr: ReactiveAttr[T]) {
+
+  /** Access the underlying ReactiveAttr */
+  def reactiveAttr: ReactiveAttr[T] = _attr
+
+  /** Allow using := directly on the DSL object */
+  def :=(value: T): Setter[HtmlElement] = _attr := value
+}
+
+object ReactiveAttrDsl {
+
+  /** Implicit conversion from DSL wrapper to ReactiveAttr for API compatibility
+    */
+  given [T]: Conversion[ReactiveAttrDsl[T], ReactiveAttr[T]] = _.reactiveAttr
+}
+
 object ReactiveAttr {
   def string(
       name: String,

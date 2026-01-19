@@ -55,20 +55,20 @@ def main(): Unit = {
         gap := "12px",
         flexWrap := "wrap",
         alignItems := "center",
-        TuButton(_.variant := TuButton.Variant.Primary)("Primary"),
+        TuButton(_.variant.Primary)("Primary"),
         TuButton(_.variant.Secondary)("Secondary"),
         TuButton(_.variant.Outline)("Outline"),
         TuButton(_.variant.Ghost)("Ghost"),
-        TuButton(_.btnDisabled := true)("Disabled")
+        TuButton(_.disabled := true)("Disabled")
       ),
       div(
         marginTop := "12px",
         display := "flex",
         gap := "12px",
         alignItems := "center",
-        TuButton(_.btnSize.small)("Small"),
-        TuButton(_.btnSize.medium)("Medium"),
-        TuButton(_.btnSize.large)("Large")
+        TuButton(_.size.small)("Small"),
+        TuButton(_.size.medium)("Medium"),
+        TuButton(_.size.large)("Large")
       )
     ),
     div(
