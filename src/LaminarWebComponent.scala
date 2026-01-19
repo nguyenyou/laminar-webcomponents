@@ -62,14 +62,14 @@ abstract class LaminarWebComponent(val tagName: String) {
     ): ReactiveAttr[String] =
       register(ReactiveAttr.string(name, default, reflect))
 
-    transparent inline def stringUnion[T <: String](
+    inline def stringUnion[T <: String](
         name: String,
         default: T,
         reflect: Boolean = false
     )(using uv: UnionValues[T]): StringUnionAttr[T] =
       register(StringUnionAttr[T](name, default, reflect))
 
-    transparent inline def `enum`[E](
+    inline def `enum`[E](
         name: String,
         default: E,
         reflect: Boolean = false

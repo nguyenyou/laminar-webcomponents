@@ -1292,9 +1292,9 @@ $c_LReactiveAttr$.prototype.int__T__I__Z__LReactiveAttr = (function(name, defaul
   })), $m_Lcom_raquo_laminar_codecs_package$().IntAsStringCodec__Lcom_raquo_laminar_codecs_Codec(), reflect);
 });
 $c_LReactiveAttr$.prototype.boolean__T__Z__Z__LReactiveAttr = (function(name, default$1, reflect) {
-  return $ct_LReactiveAttr__T__O__F1__Lcom_raquo_laminar_codecs_Codec__Z__(new $c_LReactiveAttr(), name, default$1, new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$5$2) => {
-    var _$5 = $as_T(_$5$2);
-    return (_$5 !== null);
+  return $ct_LReactiveAttr__T__O__F1__Lcom_raquo_laminar_codecs_Codec__Z__(new $c_LReactiveAttr(), name, default$1, new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$3$2) => {
+    var _$3 = $as_T(_$3$2);
+    return (_$3 !== null);
   })), $m_Lcom_raquo_laminar_codecs_package$().BooleanAsTrueFalseStringCodec__Lcom_raquo_laminar_codecs_Codec(), reflect);
 });
 var $d_LReactiveAttr$ = new $TypeData().initClass($c_LReactiveAttr$, "ReactiveAttr$", ({
@@ -8243,6 +8243,34 @@ $c_s_util_hashing_MurmurHash3.prototype.listHash__sci_List__I__I = (function(xs,
   }
   return ((rangeState === 2) ? this.rangeHash__I__I__I__I__I(initial, rangeDiff, prev, seed) : this.finalizeHash__I__I__I(h, n));
 });
+/** @constructor */
+function $c_LEnumAttr(attrName, default$1, parse, codec, reflect, enumValues) {
+  this.LReactiveAttr__f_attrName = null;
+  this.LReactiveAttr__f_default = null;
+  this.LReactiveAttr__f_parse = null;
+  this.LReactiveAttr__f_codec = null;
+  this.LReactiveAttr__f_reflect = false;
+  $ct_LReactiveAttr__T__O__F1__Lcom_raquo_laminar_codecs_Codec__Z__(this, attrName, default$1, parse, codec, reflect);
+}
+$c_LEnumAttr.prototype = new $h_LReactiveAttr();
+$c_LEnumAttr.prototype.constructor = $c_LEnumAttr;
+/** @constructor */
+function $h_LEnumAttr() {
+}
+$h_LEnumAttr.prototype = $c_LEnumAttr.prototype;
+function $as_LEnumAttr(obj) {
+  return (((obj instanceof $c_LEnumAttr) || (obj === null)) ? obj : $throwClassCastException(obj, "EnumAttr"));
+}
+function $isArrayOf_LEnumAttr(obj, depth) {
+  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.LEnumAttr)));
+}
+function $asArrayOf_LEnumAttr(obj, depth) {
+  return (($isArrayOf_LEnumAttr(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "LEnumAttr;", depth));
+}
+var $d_LEnumAttr = new $TypeData().initClass($c_LEnumAttr, "EnumAttr", ({
+  LEnumAttr: 1,
+  LReactiveAttr: 1
+}));
 function $ct_LEnumAttrDsl__LEnumAttr__($thiz, attr) {
   $thiz.LEnumAttrDsl__f_attr = attr;
   $ct_LReactiveAttrDsl__LReactiveAttr__($thiz, attr);
@@ -8514,6 +8542,34 @@ function $m_LHelloWorld$() {
   }
   return $n_LHelloWorld$;
 }
+/** @constructor */
+function $c_LStringUnionAttr(attrName, default$1, parse, codec, reflect, validValues) {
+  this.LReactiveAttr__f_attrName = null;
+  this.LReactiveAttr__f_default = null;
+  this.LReactiveAttr__f_parse = null;
+  this.LReactiveAttr__f_codec = null;
+  this.LReactiveAttr__f_reflect = false;
+  $ct_LReactiveAttr__T__O__F1__Lcom_raquo_laminar_codecs_Codec__Z__(this, attrName, default$1, parse, codec, reflect);
+}
+$c_LStringUnionAttr.prototype = new $h_LReactiveAttr();
+$c_LStringUnionAttr.prototype.constructor = $c_LStringUnionAttr;
+/** @constructor */
+function $h_LStringUnionAttr() {
+}
+$h_LStringUnionAttr.prototype = $c_LStringUnionAttr.prototype;
+function $as_LStringUnionAttr(obj) {
+  return (((obj instanceof $c_LStringUnionAttr) || (obj === null)) ? obj : $throwClassCastException(obj, "StringUnionAttr"));
+}
+function $isArrayOf_LStringUnionAttr(obj, depth) {
+  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.LStringUnionAttr)));
+}
+function $asArrayOf_LStringUnionAttr(obj, depth) {
+  return (($isArrayOf_LStringUnionAttr(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "LStringUnionAttr;", depth));
+}
+var $d_LStringUnionAttr = new $TypeData().initClass($c_LStringUnionAttr, "StringUnionAttr", ({
+  LStringUnionAttr: 1,
+  LReactiveAttr: 1
+}));
 function $ct_LStringUnionAttrDsl__LStringUnionAttr__($thiz, attr) {
   $thiz.LStringUnionAttrDsl__f_attr = attr;
   $ct_LReactiveAttrDsl__LReactiveAttr__($thiz, attr);
@@ -8572,10 +8628,10 @@ function $c_LTuButton$() {
   this.LTuButton$__f_onClick = $n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L).onClick__Lcom_raquo_laminar_keys_EventProp();
   this.LTuButton$__f_onHovered = new $c_LCustomEventProp("hovered");
   var _2 = new $c_T10("btn", "15s", "5", "small", "medium", "large", "primary", "secondary", "outline", "ghost");
-  var \u03b42$___1 = ":host {\n  display: inline-block;\n}\n.btn {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  gap: 8px;\n  border: none;\n  border-radius: 6px;\n  font-family: system-ui, sans-serif;\n  font-weight: 500;\n  cursor: pointer;\n  transition: all 0.15s ease;\n}\n.btn:disabled {\n  opacity: 0.5;\n  cursor: not-allowed;\n}\n.btn.small {\n  padding: 6px 12px;\n  font-size: 13px;\n}\n.btn.medium {\n  padding: 10px 18px;\n  font-size: 14px;\n}\n.btn.large {\n  padding: 14px 24px;\n  font-size: 16px;\n}\n.btn.primary {\n  background: #3b82f6;\n  color: white;\n}\n.btn.primary:hover:not(:disabled) {\n  background: #2563eb;\n}\n.btn.secondary {\n  background: #6b7280;\n  color: white;\n}\n.btn.secondary:hover:not(:disabled) {\n  background: #4b5563;\n}\n.btn.outline {\n  background: transparent;\n  color: #3b82f6;\n  border: 1px solid #3b82f6;\n}\n.btn.outline:hover:not(:disabled) {\n  background: #eff6ff;\n}\n.btn.ghost {\n  background: transparent;\n  color: #374151;\n}\n.btn.ghost:hover:not(:disabled) {\n  background: #f3f4f6;\n}\n::slotted(tu-icon) {\n  display: inline-flex;\n}\n";
-  var \u03b42$___2 = _2;
-  this.LTuButton$__f__styles = $as_T(\u03b42$___1);
-  this.LTuButton$__f_classNames = $as_T10(\u03b42$___2);
+  var \u03b44$___1 = ":host {\n  display: inline-block;\n}\n.btn {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  gap: 8px;\n  border: none;\n  border-radius: 6px;\n  font-family: system-ui, sans-serif;\n  font-weight: 500;\n  cursor: pointer;\n  transition: all 0.15s ease;\n}\n.btn:disabled {\n  opacity: 0.5;\n  cursor: not-allowed;\n}\n.btn.small {\n  padding: 6px 12px;\n  font-size: 13px;\n}\n.btn.medium {\n  padding: 10px 18px;\n  font-size: 14px;\n}\n.btn.large {\n  padding: 14px 24px;\n  font-size: 16px;\n}\n.btn.primary {\n  background: #3b82f6;\n  color: white;\n}\n.btn.primary:hover:not(:disabled) {\n  background: #2563eb;\n}\n.btn.secondary {\n  background: #6b7280;\n  color: white;\n}\n.btn.secondary:hover:not(:disabled) {\n  background: #4b5563;\n}\n.btn.outline {\n  background: transparent;\n  color: #3b82f6;\n  border: 1px solid #3b82f6;\n}\n.btn.outline:hover:not(:disabled) {\n  background: #eff6ff;\n}\n.btn.ghost {\n  background: transparent;\n  color: #374151;\n}\n.btn.ghost:hover:not(:disabled) {\n  background: #f3f4f6;\n}\n::slotted(tu-icon) {\n  display: inline-flex;\n}\n";
+  var \u03b44$___2 = _2;
+  this.LTuButton$__f__styles = $as_T(\u03b44$___1);
+  this.LTuButton$__f_classNames = $as_T10(\u03b44$___2);
 }
 $c_LTuButton$.prototype = new $h_LLaminarWebComponent();
 $c_LTuButton$.prototype.constructor = $c_LTuButton$;
@@ -8626,11 +8682,11 @@ $c_LTuButton$.prototype.TuButton$$$size$$superArg$1__LStringUnionAttr = (functio
   })), codec, reflect$proxy2, validValues);
   return $as_LStringUnionAttr($p_LLaminarWebComponent$attr$__register__LReactiveAttr__LReactiveAttr(this$6, ra));
 });
-$c_LTuButton$.prototype.render__LLaminarWebComponent$Props__Lcom_raquo_laminar_nodes_ReactiveHtmlElement = (function(contextual$1) {
+$c_LTuButton$.prototype.render__LLaminarWebComponent$Props__Lcom_raquo_laminar_nodes_ReactiveHtmlElement = (function(contextual$2) {
   var $x_2 = $n($n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L).button__Lcom_raquo_laminar_tags_HtmlTag());
   var $x_1 = $n($n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L).Lcom_raquo_laminar_api_package$$anon$1__f_cls);
-  var signal = this.signal__LReactiveAttrDsl__LLaminarWebComponent$Props__Lcom_raquo_airstream_core_Signal($m_LTuButton$variant$(), contextual$1);
-  var this$4 = $n($m_Lcom_raquo_airstream_combine_generated_CombinableSignal$().combineWith$extension__Lcom_raquo_airstream_core_Signal__Lcom_raquo_airstream_core_Source$SignalSource__Lapp_tulz_tuplez_Composition__Lcom_raquo_airstream_core_Signal(signal, this.signal__LReactiveAttrDsl__LLaminarWebComponent$Props__Lcom_raquo_airstream_core_Signal($m_LTuButton$size$(), contextual$1), new $c_Lapp_tulz_tuplez_Composition\uff3fPri0$$anon$1()));
+  var signal = this.signal__LReactiveAttrDsl__LLaminarWebComponent$Props__Lcom_raquo_airstream_core_Signal($m_LTuButton$variant$(), contextual$2);
+  var this$4 = $n($m_Lcom_raquo_airstream_combine_generated_CombinableSignal$().combineWith$extension__Lcom_raquo_airstream_core_Signal__Lcom_raquo_airstream_core_Source$SignalSource__Lapp_tulz_tuplez_Composition__Lcom_raquo_airstream_core_Signal(signal, this.signal__LReactiveAttrDsl__LLaminarWebComponent$Props__Lcom_raquo_airstream_core_Signal($m_LTuButton$size$(), contextual$2), new $c_Lapp_tulz_tuplez_Composition\uff3fPri0$$anon$1()));
   var project = new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((x$1$2) => {
     var x$1 = $as_T2(x$1$2);
     var v = $as_LTuButton$ButtonVariant($n(x$1).T2__f__1);
@@ -8639,19 +8695,19 @@ $c_LTuButton$.prototype.render__LLaminarWebComponent$Props__Lcom_raquo_laminar_n
     return (((($as_T($n(x$proxy1).T10__f__1) + " ") + $n(v).cssClass__T()) + " ") + s);
   }));
   var x0 = $x_1.$less$minus$minus__Lcom_raquo_airstream_core_Source__Lcom_raquo_laminar_keys_CompositeKey$CompositeValueMapper__Lcom_raquo_laminar_modifiers_KeyUpdater(new $c_Lcom_raquo_airstream_misc_MapSignal(this$4, project, $m_s_None$()), $n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L).StringValueMapper__Lcom_raquo_laminar_keys_CompositeKey$CompositeValueMappers$StringValueMapper$());
-  var x1 = $n($n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L).disabled__Lcom_raquo_laminar_keys_HtmlProp()).$less$minus$minus__Lcom_raquo_airstream_core_Source__Lcom_raquo_laminar_modifiers_KeyUpdater(this.signal__LReactiveAttr__LLaminarWebComponent$Props__Lcom_raquo_airstream_core_Signal(this.LTuButton$__f_disabled, contextual$1));
+  var x1 = $n($n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L).disabled__Lcom_raquo_laminar_keys_HtmlProp()).$less$minus$minus__Lcom_raquo_airstream_core_Source__Lcom_raquo_laminar_modifiers_KeyUpdater(this.signal__LReactiveAttr__LLaminarWebComponent$Props__Lcom_raquo_airstream_core_Signal(this.LTuButton$__f_disabled, contextual$2));
   $n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L);
   var eventProp = $n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L).onMouseEnter__Lcom_raquo_laminar_keys_EventProp();
   var this$7 = $n($m_Lcom_raquo_laminar_keys_EventProcessor$().empty__Lcom_raquo_laminar_keys_EventProp__Z__Z__Lcom_raquo_laminar_keys_EventProcessor(eventProp, false, false));
-  var onNext = new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$1$3) => {
-    this.dispatchCustomEvent__T__sjs_js_Any__LLaminarWebComponent$Props__Z("hovered", $m_LTuButton$HoveredDetail$().apply__Z__LTuButton$HoveredDetail(true), contextual$1);
+  var onNext = new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$3$3) => {
+    this.dispatchCustomEvent__T__sjs_js_Any__LLaminarWebComponent$Props__Z("hovered", $m_LTuButton$HoveredDetail$().apply__Z__LTuButton$HoveredDetail(true), contextual$2);
   }));
   var x2 = new $c_Lcom_raquo_laminar_modifiers_EventListener(this$7, onNext);
   $n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L);
   var eventProp$1 = $n($m_Lcom_raquo_laminar_api_package$().Lcom_raquo_laminar_api_package$__f_L).onMouseLeave__Lcom_raquo_laminar_keys_EventProp();
   var this$10 = $n($m_Lcom_raquo_laminar_keys_EventProcessor$().empty__Lcom_raquo_laminar_keys_EventProp__Z__Z__Lcom_raquo_laminar_keys_EventProcessor(eventProp$1, false, false));
-  var onNext$1 = new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$2$3) => {
-    this.dispatchCustomEvent__T__sjs_js_Any__LLaminarWebComponent$Props__Z("hovered", $m_LTuButton$HoveredDetail$().apply__Z__LTuButton$HoveredDetail(false), contextual$1);
+  var onNext$1 = new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((_$4$3) => {
+    this.dispatchCustomEvent__T__sjs_js_Any__LLaminarWebComponent$Props__Z("hovered", $m_LTuButton$HoveredDetail$().apply__Z__LTuButton$HoveredDetail(false), contextual$2);
   }));
   var x3 = new $c_Lcom_raquo_laminar_modifiers_EventListener(this$10, onNext$1);
   var x4 = this.slotElement__T__Lcom_raquo_laminar_nodes_ReactiveHtmlElement("prefix");
@@ -10349,64 +10405,6 @@ var $d_LCustomEventProp = new $TypeData().initClass($c_LCustomEventProp, "Custom
   LCustomEventProp: 1,
   Lcom_raquo_laminar_keys_EventProp: 1,
   Lcom_raquo_laminar_keys_Key: 1
-}));
-/** @constructor */
-function $c_LEnumAttr(attrName, default$1, parse, codec, reflect, enumValues) {
-  this.LReactiveAttr__f_attrName = null;
-  this.LReactiveAttr__f_default = null;
-  this.LReactiveAttr__f_parse = null;
-  this.LReactiveAttr__f_codec = null;
-  this.LReactiveAttr__f_reflect = false;
-  $ct_LReactiveAttr__T__O__F1__Lcom_raquo_laminar_codecs_Codec__Z__(this, attrName, default$1, parse, codec, reflect);
-}
-$c_LEnumAttr.prototype = new $h_LReactiveAttr();
-$c_LEnumAttr.prototype.constructor = $c_LEnumAttr;
-/** @constructor */
-function $h_LEnumAttr() {
-}
-$h_LEnumAttr.prototype = $c_LEnumAttr.prototype;
-function $as_LEnumAttr(obj) {
-  return (((obj instanceof $c_LEnumAttr) || (obj === null)) ? obj : $throwClassCastException(obj, "EnumAttr"));
-}
-function $isArrayOf_LEnumAttr(obj, depth) {
-  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.LEnumAttr)));
-}
-function $asArrayOf_LEnumAttr(obj, depth) {
-  return (($isArrayOf_LEnumAttr(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "LEnumAttr;", depth));
-}
-var $d_LEnumAttr = new $TypeData().initClass($c_LEnumAttr, "EnumAttr", ({
-  LEnumAttr: 1,
-  LReactiveAttr: 1,
-  s_Selectable: 1
-}));
-/** @constructor */
-function $c_LStringUnionAttr(attrName, default$1, parse, codec, reflect, validValues) {
-  this.LReactiveAttr__f_attrName = null;
-  this.LReactiveAttr__f_default = null;
-  this.LReactiveAttr__f_parse = null;
-  this.LReactiveAttr__f_codec = null;
-  this.LReactiveAttr__f_reflect = false;
-  $ct_LReactiveAttr__T__O__F1__Lcom_raquo_laminar_codecs_Codec__Z__(this, attrName, default$1, parse, codec, reflect);
-}
-$c_LStringUnionAttr.prototype = new $h_LReactiveAttr();
-$c_LStringUnionAttr.prototype.constructor = $c_LStringUnionAttr;
-/** @constructor */
-function $h_LStringUnionAttr() {
-}
-$h_LStringUnionAttr.prototype = $c_LStringUnionAttr.prototype;
-function $as_LStringUnionAttr(obj) {
-  return (((obj instanceof $c_LStringUnionAttr) || (obj === null)) ? obj : $throwClassCastException(obj, "StringUnionAttr"));
-}
-function $isArrayOf_LStringUnionAttr(obj, depth) {
-  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.LStringUnionAttr)));
-}
-function $asArrayOf_LStringUnionAttr(obj, depth) {
-  return (($isArrayOf_LStringUnionAttr(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "LStringUnionAttr;", depth));
-}
-var $d_LStringUnionAttr = new $TypeData().initClass($c_LStringUnionAttr, "StringUnionAttr", ({
-  LStringUnionAttr: 1,
-  LReactiveAttr: 1,
-  s_Selectable: 1
 }));
 function $s_LTuButton$ButtonVariant$__Primary__LTuButton$ButtonVariant() {
   $m_LTuButton$ButtonVariant$();
