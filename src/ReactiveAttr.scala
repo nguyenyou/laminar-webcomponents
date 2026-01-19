@@ -314,6 +314,12 @@ class ReactiveAttrDsl[T](val _attr: ReactiveAttr[T]) {
 
   /** Allow using := directly on the DSL object */
   def :=(value: T): Setter[HtmlElement] = _attr := value
+
+  /** Allow using <-- for reactive bindings on the DSL object */
+  def <--(source: Source[T]): Binder[HtmlElement] = _attr.asHtmlAttr <-- source
+
+  /** Allow using apply syntax: _.size("small") */
+  def apply(value: T): Setter[HtmlElement] = _attr := value
 }
 
 object ReactiveAttrDsl {

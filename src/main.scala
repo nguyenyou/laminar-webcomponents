@@ -55,7 +55,7 @@ def main(): Unit = {
         gap := "12px",
         flexWrap := "wrap",
         alignItems := "center",
-        TuButton(_.variant.Primary)("Primary"),
+        TuButton(_.variant <-- Val(TuButton.ButtonVariant.Primary))("Primary"),
         TuButton(_.variant.Secondary)("Secondary"),
         TuButton(_.variant.Outline)("Outline"),
         TuButton(_.variant.Ghost)("Ghost"),
@@ -66,8 +66,8 @@ def main(): Unit = {
         display := "flex",
         gap := "12px",
         alignItems := "center",
-        TuButton(_.size.small)("Small"),
-        TuButton(_.size.medium)("Medium"),
+        TuButton(_.size <-- Val("small"))("Small"),
+        TuButton(_.size("small"))("Medium"),
         TuButton(_.size.large)("Large")
       )
     ),
