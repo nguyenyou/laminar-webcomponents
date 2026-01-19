@@ -66,9 +66,9 @@ def main(): Unit = {
         display := "flex",
         gap := "12px",
         alignItems := "center",
-        TuButton(_.btnSize.Small)("Small"),
-        TuButton(_.btnSize.Medium)("Medium"),
-        TuButton(_.btnSize.Large)("Large")
+        TuButton(_.btnSize.small)("Small"),
+        TuButton(_.btnSize.medium)("Medium"),
+        TuButton(_.btnSize.large)("Large")
       )
     ),
     div(

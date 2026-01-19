@@ -2,6 +2,38 @@ import com.raquo.laminar.api.L.*
 import com.raquo.laminar.nodes.Slot
 
 object TuButton extends LaminarWebComponent("tu-button") {
+  enum Variant {
+    case Primary, Secondary, Outline, Ghost
+
+    def cssClass: String = this match {
+      case Primary   => "primary"
+      case Secondary => "secondary"
+      case Outline   => "outline"
+      case Ghost     => "ghost"
+    }
+  }
+
+  type Size = "small" | "medium" | "large"
+
+  val variant = attr.`enum`[Variant]("variant", Variant.Primary)
+  val btnSize = attr.stringUnion[Size]("size", "medium")
+  val btnDisabled = attr.boolean("disabled", false)
+
+  object slots {
+    val prefix: Slot = Slot("prefix")
+    val suffix: Slot = Slot("suffix")
+  }
+
+  override def render: View = button(
+    cls <-- variant.signal
+      .combineWith(btnSize.signal)
+      .map((v, s) => s"${classNames.btn} ${v.cssClass} $s"),
+    disabled <-- btnDisabled.signal,
+    slotElement("prefix"),
+    slotElement(),
+    slotElement("suffix")
+  )
+
   private val (_styles, classNames) = css"""
     :host {
       display: inline-block;
@@ -58,43 +90,4 @@ object TuButton extends LaminarWebComponent("tu-button") {
   """
   override def styles = _styles
 
-  enum Variant {
-    case Primary, Secondary, Outline, Ghost
-
-    def cssClass: String = this match {
-      case Primary   => "primary"
-      case Secondary => "secondary"
-      case Outline   => "outline"
-      case Ghost     => "ghost"
-    }
-  }
-
-  enum Size {
-    case Small, Medium, Large
-
-    def cssClass: String = this match {
-      case Small  => "small"
-      case Medium => "medium"
-      case Large  => "large"
-    }
-  }
-
-  val variant = attr.`enum`[Variant]("variant", Variant.Primary)
-  val btnSize = attr.`enum`[Size]("size", Size.Medium)
-  val btnDisabled = attr.boolean("disabled", false)
-
-  object slots {
-    val prefix: Slot = Slot("prefix")
-    val suffix: Slot = Slot("suffix")
-  }
-
-  override def render: View = button(
-    cls <-- variant.signal
-      .combineWith(btnSize.signal)
-      .map((v, s) => s"${classNames.btn} ${v.cssClass} ${s.cssClass}"),
-    disabled <-- btnDisabled.signal,
-    slotElement("prefix"),
-    slotElement(),
-    slotElement("suffix")
-  )
 }
