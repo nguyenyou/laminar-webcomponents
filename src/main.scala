@@ -69,6 +69,24 @@ def main(): Unit = {
         TuButton(_.size <-- Val("small"))("Small"),
         TuButton(_.size("small"))("Medium"),
         TuButton(_.size.large)("Large")
+      ),
+      div(
+        marginTop := "12px",
+        display := "flex",
+        gap := "12px",
+        alignItems := "center",
+        TuButton(
+          _.variant.Primary,
+          _.onClick --> Observer[dom.MouseEvent](_ =>
+            dom.console.log("Clicked!")
+          )
+        )("Click me"),
+        TuButton(
+          _.variant.Outline,
+          _.onHovered.detail --> Observer[TuButton.HoveredDetail](d =>
+            dom.console.log(s"isHovered: ${d.isHovered}")
+          )
+        )("Hover me")
       )
     ),
     div(

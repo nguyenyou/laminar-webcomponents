@@ -1,10 +1,30 @@
 import com.raquo.laminar.api.L.*
+import com.raquo.laminar.keys.EventProcessor
 import com.raquo.laminar.nodes.{DetachedRoot, Slot}
 import com.raquo.laminar.tags.CustomHtmlTag
 import org.scalajs.dom
 import scala.scalajs.js
 
 export CssMacro.css
+
+/** A CustomEvent with typed detail. Use this trait to define the shape of your
+  * event detail.
+  */
+@js.native
+trait TypedCustomEvent[D <: js.Any] extends dom.Event {
+  def detail: D = js.native
+}
+
+/** An EventProp for custom events with typed detail. Provides a `.detail`
+  * processor to extract the typed detail directly.
+  */
+class CustomEventProp[D <: js.Any](name: String)
+    extends EventProp[TypedCustomEvent[D]](name) {
+
+  /** Process the event to extract just the detail */
+  def detail: EventProcessor[TypedCustomEvent[D], D] =
+    this.map(_.detail)
+}
 
 abstract class LaminarWebComponent(val tagName: String) {
 
@@ -101,11 +121,32 @@ abstract class LaminarWebComponent(val tagName: String) {
         prop.asInstanceOf[ReactiveProp[Any]].handleChange(newValue)
       }
     }
+
+    def dispatchEvent(event: dom.Event): Boolean = element.dispatchEvent(event)
   }
 
   type View = Props ?=> HtmlElement
 
   def render: View
+
+  /** Dispatch a custom event from the host element. The event will bubble and
+    * cross shadow DOM boundaries (composed).
+    */
+  protected def dispatchCustomEvent(
+      eventName: String,
+      detail: js.Any = js.undefined
+  )(using props: Props): Boolean = {
+    val init = js.Dynamic.literal(
+      bubbles = true,
+      composed = true,
+      detail = detail
+    )
+    val event = js.Dynamic.newInstance(js.Dynamic.global.CustomEvent)(
+      eventName,
+      init
+    )
+    props.dispatchEvent(event.asInstanceOf[dom.Event])
+  }
 
   protected def slotElement(name: String = ""): HtmlElement = {
     val el = dom.document.createElement("slot").asInstanceOf[dom.html.Element]

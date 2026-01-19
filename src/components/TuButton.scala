@@ -1,7 +1,18 @@
 import com.raquo.laminar.api.L.*
 import com.raquo.laminar.nodes.Slot
+import org.scalajs.dom
+import scala.scalajs.js
 
 object TuButton extends LaminarWebComponent("tu-button") {
+
+  // Typed detail for the hovered event
+  trait HoveredDetail extends js.Object {
+    val isHovered: Boolean
+  }
+  object HoveredDetail {
+    def apply(isHovered: Boolean): HoveredDetail =
+      js.Dynamic.literal(isHovered = isHovered).asInstanceOf[HoveredDetail]
+  }
   // Enum with different name to avoid Scala.js linker conflict with `variant` object
   enum ButtonVariant {
     case Primary, Secondary, Outline, Ghost
@@ -39,6 +50,11 @@ object TuButton extends LaminarWebComponent("tu-button") {
 
   val disabled = attr.boolean("disabled", false)
 
+  val onClick = com.raquo.laminar.api.L.onClick
+
+  // Custom event: dispatched when the button is hovered/unhovered
+  val onHovered = new CustomEventProp[HoveredDetail]("hovered")
+
   object slots {
     val prefix: Slot = Slot("prefix")
     val suffix: Slot = Slot("suffix")
@@ -49,6 +65,12 @@ object TuButton extends LaminarWebComponent("tu-button") {
       .combineWith(size.signal)
       .map((v, s) => s"${classNames.btn} ${v.cssClass} $s"),
     com.raquo.laminar.api.L.disabled <-- disabled.signal,
+    onMouseEnter --> { _ =>
+      dispatchCustomEvent("hovered", HoveredDetail(true))
+    },
+    onMouseLeave --> { _ =>
+      dispatchCustomEvent("hovered", HoveredDetail(false))
+    },
     slotElement("prefix"),
     slotElement(),
     slotElement("suffix")
